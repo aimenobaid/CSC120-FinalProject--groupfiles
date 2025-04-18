@@ -16,29 +16,30 @@ public class MtnCave extends Island implements MtnCaveRequirements {
 
 
 
-    // Movement methods --- idk what these should be returning tbh so rn theyre all this
+    // Movement methods
+    //is it bad to be creating new instances of the loc classes every time we move?
     @Override
     public Island moveNorth() {
         System.out.println("You skirt around the side of the mountain towards the North Shore. Move North again to reach the shore.");
-        return this;
+        return new Mountain();
     }
 
     @Override
     public Island moveSouth() {
         System.out.println("You walk around the side of the mountain and reach a waterfall. It flows into a fresh water stream headed towards the South Shore.");
-        return this;
+        return new Waterfall();
     }
 
     @Override
     public Island moveEast() {
         System.out.println("You head down into the Light Forest. Through the trees you can see the ruins of a temple. Move East again to continue further into the forest.");
-        return this;
+        return new LightForest();
     }
 
     @Override
     public Island moveWest() {
         System.out.println("You climb west towards the top of the mountain. The path is steep and rocky. Move West again to continue climbing and reach the peak.");
-        return this;
+        return new Mountain();
     }
 
 
