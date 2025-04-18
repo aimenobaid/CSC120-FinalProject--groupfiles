@@ -50,7 +50,7 @@ public class Main {
                 case "help" -> System.out.println("""
                         Commands:
                         go north/south/east/west
-                        collect rock/stick/water/supplies
+                        collect rock/stick/water/supplies/etc
                         fish
                         build shelter
                         drink, eat

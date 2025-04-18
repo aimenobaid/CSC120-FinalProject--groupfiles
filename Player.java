@@ -48,7 +48,7 @@ public class Player {
         }
     }
     public void rest() {
-        if (currentLocation instanceof NorthShore north && north.isShelterBuilt()) {
+        if (currentLocation instanceof NorthShore north && north.shelterBuilt) {
             System.out.println("You rest in your shelter. You feel well-fed and hydrated.");
             thirst = Math.min(thirst + 30, 100);
             hunger = Math.min(hunger + 30, 100);

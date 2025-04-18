@@ -1,5 +1,5 @@
 public class NorthShore extends Island implements NorthShoreRequirements {
-    private boolean shelterBuilt;
+    protected boolean shelterBuilt;
 
     public NorthShore() {
         super("North Shore", "You are on the North Shore. There are rocks, sticks, fresh pools, and fish.");
