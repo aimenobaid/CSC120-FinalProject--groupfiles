@@ -1,19 +1,21 @@
-public class LightForest extends Island implements LightForestRequirements {
-    protected boolean shelterBuilt;
+public class LightTemple extends Island implements LightForestRequirements {
 
-    public LightForest() {
-        super("Light Forest", "You are in the Light Forest.");
-        this.shelterBuilt = false;
+    public LightTemple(){
+        super("Light Temple", "You are in the Light Temple.");
     }
 
     public void describe(){
+        
+    }
+
+    public void pray(){
 
     }
 
     public void forage(){
-        
+
     }
-    
+
     public void collectStick(){
 
     }
@@ -27,10 +29,6 @@ public class LightForest extends Island implements LightForestRequirements {
     }
 
     public void lookAround(){
-
-    }
-
-    public void buildShelter(){
 
     }
 
