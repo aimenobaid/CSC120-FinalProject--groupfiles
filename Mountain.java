@@ -37,23 +37,24 @@ public class Mountain extends Island //implements MountainRequirements
         }
     }
 
-    // Movement methods --- idk what these should be returning tbh so rn theyre all this
+    // Movement methods
+    //is it bad to be creating new instances of the loc classes every time we move?
     @Override
     public Island moveNorth() {
-        System.out.println("You head down towards the North Shore. Move North again to reach the shore.");
-        return this;
+        System.out.println("You head downwards and arrive at the North Shore");
+        return new NorthShore();
     }
 
     @Override
     public Island moveSouth() {
         System.out.println("You are at a waterfall that flows into a fresh water stream headed towards the South Shore.");
-        return this;
+        return new Waterfall();
     }
 
     @Override
     public Island moveEast() {
         System.out.println("You head down towards the Light Forest and you see a cave along the path. There appears to be an opening to the cave. Move East again to continue on to the forest.");
-        return this;
+        return new LightForest();
     }
 
     @Override
@@ -88,7 +89,6 @@ public class Mountain extends Island //implements MountainRequirements
 
 
     //has a cliff, peak, a cave, and a waterfall
-    //should cave and waterfall be separate classes? i kept peak and cliff here bc they dont do much
     //peak has a map (view of the island)
     //cave has a troll (guarding treasure? but must be lucky to kill?)
     //waterfall has a hidden cave behind it with resources
