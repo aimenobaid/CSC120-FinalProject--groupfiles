@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Random;
 
 public abstract class Island implements IslandRequirements {
     protected String name;
@@ -30,17 +31,71 @@ public abstract class Island implements IslandRequirements {
 
     public abstract void describe(); //what does abstract return type do?
 
-    public static void addItem(String item) {
+    public void collectItem(String item) {
         inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        System.out.println("You collected a " + item + ".");
+        incrementActions();
     }
 
-    public static int getItemCount(String item) {
-        return inventory.getOrDefault(item, 0);
+    public void fight() {
+        Random rand = new Random();
+        int chance = rand.nextInt(100) + 1;
+        System.out.println("You engage in a fight...");
+        if (chance <= luckPoints) {
+            System.out.println("You win the fight!");
+            adjustLuck(5);
+        } else {
+            System.out.println("You lost the fight...idiot");
+            adjustLuck(-10);
+        }
+        incrementActions();
+    }
+
+    // shelter building (default version — can be overridden, to not allow building in a certain place eg.)
+    public void buildShelter() {
+        if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
+            inventory.put("rock", inventory.get("rock") - 3);
+            inventory.put("stick", inventory.get("stick") - 3);
+            System.out.println("You built a shelter using 3 rocks and 3 sticks.");
+            incrementActions();
+        } else {
+            System.out.println("You need 3 rocks and 3 sticks to build a shelter.");
+        }
+    }
+
+    // To be overridden by child classes that track shelter status? I mostly just needed this for rest, maybe it could be done a diff way?
+    protected boolean hasShelter() {
+        return false;
+    }
+
+    // Fire building with multiple options
+    public void buildFire() {
+        if (getItemCount("stick") >= 3 && getItemCount("rock") >= 2) {
+            inventory.put("stick", inventory.get("stick") - 3);
+            inventory.put("rock", inventory.get("rock") - 2);
+            System.out.println("You built a fire using 3 sticks and 2 rocks.");
+        } else if (getItemCount("stick") >= 1 && getItemCount("coal") >= 1) {
+            inventory.put("stick", inventory.get("stick") - 1);
+            inventory.put("coal", inventory.get("coal") - 1);
+            System.out.println("You built a fire using 1 stick and 1 coal.");
+        } else {
+            System.out.println("You don't have the materials to build a fire.");
+        }
+        incrementActions();
+    }
+
+    public void lookAround() {
+        System.out.println("You look around: " + description);
+        incrementActions();
     }
 
     public static void adjustLuck(int change) {
         luckPoints += change;
         System.out.println("Luck is now: " + luckPoints);
+    }
+
+    public static int getItemCount(String item) {
+        return inventory.getOrDefault(item, 0);
     }
 
     public static void printInventory() {
@@ -54,6 +109,7 @@ public abstract class Island implements IslandRequirements {
     public String getDescription() {
         return description;
     }
+
     public static void incrementActions() {
         actionsToday++;
         if (actionsToday >= ACTIONS_PER_DAY) {
@@ -63,19 +119,28 @@ public abstract class Island implements IslandRequirements {
 
     public static void advanceDay() {
         currentDay++;
-        actionsToday = 0;
-        System.out.println("\n🌒 Night falls. You survived Day " + (currentDay - 1) + ". A new day begins.");
+        actionsToday = 5;
+        System.out.println("Night falls. You survived Day " + (currentDay - 1) + ". A new day begins.");
         System.out.println("📆 Day " + currentDay);
-        // Reset daily limits like supply collection here, if needed
-        //SouthShore.resetDailySupplies();
     }
 
     public static int getCurrentDay() {
         return currentDay;
     }
 
-
-
-    //i think we should put a lot of the basic action items here
-    //like look around, pick up, drop, fight, build shelter, etc.
+    public void rest() {
+        if (hasShelter()) {
+            System.out.println("You rest inside your shelter. It's safe and quiet. You feel restored.");
+            adjustLuck(10);
+            advanceDay();
+        } else {
+            System.out.println("You can't rest without a shelter. That's stupid.");
+        }
+    }
+    
 }
+//just added stuff based on what we talked about and anything else I could think of, if anything is annoying to implement lmk.
+
+
+//i think we should put a lot of the basic action items here
+//like look around, pick up, drop, fight, build shelter, etc.
