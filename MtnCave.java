@@ -1,5 +1,4 @@
-public class MtnCave extends Island implements MtnCaveRequirements {
-    
+public class MtnCave extends Island {
 
     public MtnCave() {
         super("Mountain Cave", "You have entered a cave in the Misty Mountain. It is dark and damp. You cannot see more than a few inches in front of you. The air is mostly still except for a faint breeze that almost feels like a creature breathing softly.");
@@ -11,13 +10,7 @@ public class MtnCave extends Island implements MtnCaveRequirements {
     }
 
 
-
-
-
-
-
     // Movement methods
-    //is it bad to be creating new instances of the loc classes every time we move?
     @Override
     public Island moveNorth() {
         System.out.println("You skirt around the side of the mountain towards the North Shore. Move North again to reach the shore.");

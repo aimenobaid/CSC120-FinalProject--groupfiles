@@ -4,4 +4,7 @@ public interface SouthShoreRequirements {
     void collectWater();
     void collectSupplies();
     void buildShelter();
+    //something to explore the shipwreck?
+    //or should it be another class like cave and waterfall are
+    //for now i'll just leave it at collectSupplies
 }

@@ -9,25 +9,42 @@ public class Stream extends Island {
         System.out.println(description);
     }
 
+    public void collectWater() {
+        System.out.println("You collect fresh water from the stream.");
+        collectItem("water");
+    }
+
+    public void collectFish() {
+        System.out.println("You catch a fish from the stream.");
+        collectItem("fish");
+    }
+
+    public void swim() {
+        System.out.println("You swim in the stream. The water is refreshing and clear.");
+    }
+
     @Override
     public Island moveNorth() {
-        return new NorthShore();
+        System.out.println("You follow the stream up towards the Misty Mountain. You find yourself in front of a beautiful waterfall. There is a path leading to a small alcove behind the water.");
+        return new Waterfall();
     }
 
     @Override
     public Island moveSouth() {
+        System.out.println("You follow the stream down towards the South Shore.");
         return new SouthShore();
     }
 
     @Override
     public Island moveEast() {
-        System.out.println("The stream narrows into dense foliage.");
-        return this;
+        System.out.println("You leave the stream and enter the Light Forest. You see temple ruins up ahead.");
+        return new LightForest();
     }
 
     @Override
     public Island moveWest() {
-        System.out.println("The stream winds back toward the forest.");
-        return null;
+        System.out.println("You leave the stream and enter the dense foliage of the Dark Forest. The trees are tall and the air is thick with the smell of damp earth. You can hear the sounds of creatures in the distance.");
+        return this;
+        //return new DarkForest();  Uncomment once DarkForest.java is built
     }
 }

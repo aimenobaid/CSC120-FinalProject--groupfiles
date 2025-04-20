@@ -4,4 +4,5 @@ public interface NorthShoreRequirements {
     void fish();
     void drinkFromPool();
     void buildShelter();
+    
 }

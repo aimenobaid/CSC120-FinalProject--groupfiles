@@ -15,18 +15,26 @@ public class Mountain extends Island //implements MountainRequirements
     
     public void mineRock() {
         System.out.println("You mine a rock from the mountain.");
-        addItem("rock");
+        collectItem("rock");
     }
 
     public void mineCoal() {
         System.out.println("You mine coal from the mountain.");
-        addItem("coal");
+        collectItem("coal");
     }
 
     public void climbMountain() {
         System.out.println("You climb to the peak of the mountain. The view is breathtaking! You can see the entire island from here.");
         atPeak = true;
         //add pop up map here
+    }
+
+    //enter the cave by pushing the rock
+    //might want to restrict this to only be an option if the person is at the cave entrance 
+    //but that would be annoying so as long as we never suggest pushing a rock in another context in mtn its prob fine
+    public Island pushRock(){
+        System.out.println("You push the rock blocking the cave entrance. It rolls away, revealing a dark cave.");
+        return new MtnCave();
     }
 
     public void viewMap(){
@@ -38,7 +46,6 @@ public class Mountain extends Island //implements MountainRequirements
     }
 
     // Movement methods
-    //is it bad to be creating new instances of the loc classes every time we move?
     @Override
     public Island moveNorth() {
         System.out.println("You head downwards and arrive at the North Shore");
@@ -53,7 +60,7 @@ public class Mountain extends Island //implements MountainRequirements
 
     @Override
     public Island moveEast() {
-        System.out.println("You head down towards the Light Forest and you see a cave along the path. There appears to be an opening to the cave. Move East again to continue on to the forest.");
+        System.out.println("You head down towards the Light Forest and you see a cave along the path. There is a rock blocking what appears to be an opening to the cave. Push the rock to try to enter the cave. Move East again to continue on to the forest.");
         return new LightForest();
     }
 
@@ -79,15 +86,7 @@ public class Mountain extends Island //implements MountainRequirements
     
 }
 
-
-
- //attributes
-    //location in the world - center of island
-
-    //methods
-    //i think fight should be inherited bc it will be needed in the dark forest as well
-
-
+// Mountain.java
     //has a cliff, peak, a cave, and a waterfall
     //peak has a map (view of the island)
     //cave has a troll (guarding treasure? but must be lucky to kill?)

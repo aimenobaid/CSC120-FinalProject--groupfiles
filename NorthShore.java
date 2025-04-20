@@ -13,59 +13,47 @@ public class NorthShore extends Island implements NorthShoreRequirements {
 
     public void collectStick() {
         System.out.println("You picked up a stick from the shore.");
-        addItem("stick");
+        collectItem("stick");
     }
 
     public void collectRock() {
         System.out.println("You picked up a rock from the shore.");
-        addItem("rock");
+        collectItem("rock");
     }
 
     public void fish() {
         System.out.println("You spear a fish from the shallows.");
-        addItem("fish");
+        collectItem("fish");
         adjustLuck(1);
     }
 
     public void drinkFromPool() {
         System.out.println("You drink fresh water from a clear tide pool.");
-        addItem("water");
-    }
-
-    public void buildShelter() {
-        if (shelterBuilt) {
-            System.out.println("You've already built a shelter here.");
-            return;
-        }
-        if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
-            System.out.println("You build a sturdy little shelter out of rocks and sticks!");
-            shelterBuilt = true;
-        } else {
-            System.out.println("Not enough materials. You need 3 rocks and 3 sticks.");
-        }
-
+        collectItem("water");
     }
 
     // Movement methods
     @Override
     public Island moveNorth() {
-        System.out.println("You can't go further north.");
+        System.out.println("You walk to the water's edge. You can't go further north.");
         return this;
     }
 
     @Override
     public Island moveSouth() {
-        return new SouthShore();
+        System.out.println("You follow a path leading into the forest. A mountain looms ahead of you.");
+        return new Mountain();
     }
 
     @Override
     public Island moveEast() {
+        System.out.println("You walk along the shore and enter the Light Forest. You see the ruins of temples in the distance");
         return new Stream();
     }
 
     @Override
     public Island moveWest() {
-        System.out.println("You enter the forest.");
+        System.out.println("You walk along the shore and enter the Dark Forest. The foliage is dense and the trees are tall. You can hear the sounds of creatures in the distance.");
         return null;
     }
 }

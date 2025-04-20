@@ -13,6 +13,8 @@ public class Main {
             System.out.print("\n> ");
             String input = scanner.nextLine().trim().toLowerCase();
 
+
+            //can we add a case to allow for collecting multiple items at once? like 'collect 3 rocks'
             switch (input) {
                 case "go north" -> player.moveTo(player.getLocation().moveNorth());
                 case "go south" -> player.moveTo(player.getLocation().moveSouth());

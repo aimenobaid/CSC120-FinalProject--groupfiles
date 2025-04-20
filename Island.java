@@ -37,6 +37,13 @@ public abstract class Island implements IslandRequirements {
         incrementActions();
     }
 
+    //overloading this to allow for collecting multiple items at once
+    public void collectItem(String item, int amount) {
+        inventory.put(item, inventory.getOrDefault(item, 0) + amount);
+        System.out.println("You collected " + amount + " " + item + "(s).");
+        incrementActions();
+    }
+
     public void fight() {
         Random rand = new Random();
         int chance = rand.nextInt(100) + 1;
@@ -53,6 +60,8 @@ public abstract class Island implements IslandRequirements {
 
     // shelter building (default version — can be overridden, to not allow building in a certain place eg.)
     public void buildShelter() {
+        //should we put an if statement here to check bool shelterBuilt? (that's how you implemented it originally in NS)
+        //a genuine question, not necessarily a suggestion
         if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
             inventory.put("rock", inventory.get("rock") - 3);
             inventory.put("stick", inventory.get("stick") - 3);
@@ -140,7 +149,5 @@ public abstract class Island implements IslandRequirements {
     
 }
 //just added stuff based on what we talked about and anything else I could think of, if anything is annoying to implement lmk.
-
-
-//i think we should put a lot of the basic action items here
-//like look around, pick up, drop, fight, build shelter, etc.
+//looks good to me! do you think it would be useful to have a moveItem() method? 
+//I wrote one in MtnCave in order to move the rock to enter the cave but thought it might be universally useful. tbd once we build out all the locs i guess
