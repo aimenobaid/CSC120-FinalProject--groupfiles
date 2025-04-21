@@ -48,13 +48,13 @@ public class LightForest extends Island implements LightForestRequirements {
 
     @Override
     public Island moveEast() {
-        System.out.println("You head down towards the Light Forest and you see a cave along the path. There appears to be an opening to the cave. Move East again to continue on to the forest.");
+        System.out.println("You head east, deeper into the forest, but find yourself getting lost. You decide to head back.");
         return this;
     }
 
     @Override
     public Island moveWest() {
-        System.out.println("You begin to head down to the Dark Forest but you reach a steep cliff! You cannot go further west from here.");
+        System.out.println("You head up towards the Mountains and you see a cave along the path. There appears to be an opening to the cave.");
         return this;
     }
 }
