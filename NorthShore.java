@@ -27,8 +27,8 @@ public class NorthShore extends Island implements NorthShoreRequirements {
         adjustLuck(1);
     }
 
-    public void drinkFromPool() {
-        System.out.println("You drink fresh water from a clear tide pool.");
+    public void collectWater() {
+        System.out.println("You collect fresh water from a clear tide pool.");
         collectItem("water");
     }
 

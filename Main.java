@@ -33,7 +33,7 @@ public class Main {
                     else if (player.getLocation() instanceof SouthShore ss) ss.collectStick();
                 }
                 case "collect water" -> {
-                    if (player.getLocation() instanceof NorthShore ns) ns.drinkFromPool();
+                    if (player.getLocation() instanceof NorthShore ns) ns.collectWater();
                     else if (player.getLocation() instanceof SouthShore ss) ss.collectWater();
                 }
                 case "collect supplies" -> {
@@ -64,6 +64,8 @@ public class Main {
                 }
                 default -> System.out.println("Unknown command. Type 'help' for options.");
             }
+
+            
         }
     }
     
