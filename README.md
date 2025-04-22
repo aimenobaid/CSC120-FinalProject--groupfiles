@@ -1,3 +1,5 @@
+Architecure Diagram: https://docs.google.com/drawings/d/1Kdz_9xdI5osGZPDPGFbb5GNC8VAh5xtsRH_oBl-vIxs/edit?usp=sharing 
+
 Mtg Notes 4/18
 
 General thoughts / questions

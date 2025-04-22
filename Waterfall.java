@@ -2,7 +2,7 @@ public class Waterfall extends Island implements WaterfallRequirements {
    
     
     public Waterfall() {
-        super("Waterdall", "You have reached a waterfall that flows into a fresh water stream headed towards the South Shore. The water is clear and you can see fish swimming in the stream. There are rocks along the shore, and a path leading to a small alcove behind the waterfall.");
+        super("Waterfall", "You have reached a waterfall that flows into a fresh water stream headed towards the South Shore. The water is clear and you can see fish swimming in the stream. There are rocks along the shore, and a path leading to a small alcove behind the waterfall.");
     }
 
     @Override
