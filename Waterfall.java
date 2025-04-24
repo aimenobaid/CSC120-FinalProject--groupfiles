@@ -10,6 +10,20 @@ public class Waterfall extends Island implements WaterfallRequirements {
         System.out.println(description);
     }
 
+    //will be @Overdride
+    public void help() {
+        System.out.println("""
+                Commands:
+                go north/south/east/west
+                collect rock/stick/water/supplies/etc
+                enter alcove
+                open chest
+                leave alcove
+                drink, eat
+                inventory, stats, help
+                """);
+    }
+
 
     public void enterAlcove() {
         System.out.println("You enter the alcove behind the waterfall. It is dark and damp, but you can see a small chest hidden in the corner.");
@@ -23,6 +37,7 @@ public class Waterfall extends Island implements WaterfallRequirements {
         System.out.println("You leave the alcove and step back out into the sunlight. The waterfall is beautiful, and you can hear the sound of the water rushing by.");
     }
 
+    ///waittt should these be under main and just be if statements instead of methods that get called just to say no?
     public void swim(){
         System.out.println("The water is rough and choppy. You should not swim here. Try farther downstream.");
     }

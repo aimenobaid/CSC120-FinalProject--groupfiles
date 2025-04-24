@@ -9,6 +9,19 @@ public class Stream extends Island {
         System.out.println(description);
     }
 
+    //will be @Overdride
+    public void help() {
+        System.out.println("""
+                Commands:
+                go north/south/east/west
+                collect rock/stick/water/supplies/etc
+                fish
+                swim
+                drink, eat
+                inventory, stats, help
+                """);
+    }
+
     public void collectWater() {
         System.out.println("You collect fresh water from the stream.");
         collectItem("water");
@@ -44,7 +57,6 @@ public class Stream extends Island {
     @Override
     public Island moveWest() {
         System.out.println("You leave the stream and enter the dense foliage of the Dark Forest. The trees are tall and the air is thick with the smell of damp earth. You can hear the sounds of creatures in the distance.");
-        return this;
-        //return new DarkForest();  Uncomment once DarkForest.java is built
+        return new DarkForest();  
     }
 }

@@ -9,6 +9,18 @@ public class MtnCave extends Island {
         System.out.println(description);
     }
 
+    public void help(){
+        System.out.println("""
+                        Commands:
+                        go north/south/east/west
+                        collect rock/stick/water/supplies/etc
+                        mine coal
+                        climb mountain
+                        drink, eat
+                        inventory, stats, help
+                        """);
+    }
+
 
     // Movement methods
     @Override

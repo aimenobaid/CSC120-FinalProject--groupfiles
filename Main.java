@@ -27,14 +27,18 @@ public class Main {
                 case "collect rock" -> {
                     if (player.getLocation() instanceof NorthShore ns) ns.collectRock();
                     else if (player.getLocation() instanceof SouthShore ss) ss.collectRock();
+<<<<<<< HEAD
                     else if (player.getLocation() instanceof  Mountain) mm.collectRock();
+=======
+                    //else Island.collectItem("rock"); //giving me an error and idky why
+>>>>>>> 2d481878424d0ebcfb1d957eb071a282bead0b3c
                 }
                 case "collect stick" -> {
                     if (player.getLocation() instanceof NorthShore ns) ns.collectStick();
                     else if (player.getLocation() instanceof SouthShore ss) ss.collectStick();
                 }
                 case "collect water" -> {
-                    if (player.getLocation() instanceof NorthShore ns) ns.drinkFromPool();
+                    if (player.getLocation() instanceof NorthShore ns) ns.collectWater();
                     else if (player.getLocation() instanceof SouthShore ss) ss.collectWater();
                 }
                 case "collect supplies" -> {
@@ -65,7 +69,10 @@ public class Main {
                 }
                 default -> System.out.println("Unknown command. Type 'help' for options.");
             }
+
+            
         }
+        //scanner.close(); //this is giving me an error and idk why
     }
     
 }
