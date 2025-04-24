@@ -13,8 +13,13 @@ public class Main {
             System.out.print("\n> ");
             String input = scanner.nextLine().trim().toLowerCase();
 
-
-            //can we add a case to allow for collecting multiple items at once? like 'collect 3 rocks'
+            //thoughts on just having this if statement before the switch case?
+            if (input.startsWith("collect ")) {
+                String item = input.substring(8);
+                player.getLocation().collectItem(item);
+            } else{ 
+    
+        
             switch (input) {
                 case "go north" -> player.moveTo(player.getLocation().moveNorth());
                 case "go south" -> player.moveTo(player.getLocation().moveSouth());
@@ -24,23 +29,22 @@ public class Main {
                 case "stats" -> player.displayStats();
                 case "drink" -> player.drink();
                 case "eat" -> player.eat();
-                case "collect rock" -> {
-                    if (player.getLocation() instanceof NorthShore ns) ns.collectRock();
-                    else if (player.getLocation() instanceof SouthShore ss) ss.collectRock();
-                    //else Island.collectItem("rock"); //giving me an error and idky why
-                }
-                case "collect stick" -> {
-                    if (player.getLocation() instanceof NorthShore ns) ns.collectStick();
-                    else if (player.getLocation() instanceof SouthShore ss) ss.collectStick();
-                }
-                case "collect water" -> {
-                    if (player.getLocation() instanceof NorthShore ns) ns.collectWater();
-                    else if (player.getLocation() instanceof SouthShore ss) ss.collectWater();
-                }
-                case "collect supplies" -> {
-                    if (player.getLocation() instanceof SouthShore ss) ss.collectSupplies();
-                    else System.out.println("There's nothing to collect here.");
-                }
+                // case "collect rock" -> {
+                //     if (player.getLocation() instanceof NorthShore ns) ns.collectRock();
+                //     else if (player.getLocation() instanceof SouthShore ss) ss.collectRock();
+                // }
+                // case "collect stick" -> {
+                //     if (player.getLocation() instanceof NorthShore ns) ns.collectStick();
+                //     else if (player.getLocation() instanceof SouthShore ss) ss.collectStick();
+                // }
+                // case "collect water" -> {
+                //     if (player.getLocation() instanceof NorthShore ns) ns.collectWater();
+                //     else if (player.getLocation() instanceof SouthShore ss) ss.collectWater();
+                // }
+                // case "collect supplies" -> {
+                //     if (player.getLocation() instanceof SouthShore ss) ss.collectSupplies();
+                //     else System.out.println("There's nothing to collect here.");
+                //}
                 case "fish" -> {
                     if (player.getLocation() instanceof NorthShore ns) ns.fish();
                     else System.out.println("You can't fish here.");
@@ -64,11 +68,12 @@ public class Main {
                     return;
                 }
                 default -> System.out.println("Unknown command. Type 'help' for options.");
-            }
-
+          
+            } //end of switch statement
+            } //end of else statement
             
-        }
-        //scanner.close(); //this is giving me an error and idk why
-    }
-    
-}
+        } //end of while loop
+        //scanner.close(); idk
+
+    } //end of main method
+} 

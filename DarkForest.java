@@ -3,6 +3,23 @@ public class DarkForest extends Island implements DarkForestRequirements{
         super("Dark Forest", "You are in the Dark Forest.");
     }
 
+    public void collectItem(String item){
+        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        incrementActions();
+        
+        switch(item.toLowerCase()) {
+            case "rock":
+                System.out.println("You collected a rock from the forest floor.");
+                break;
+            case "stick":
+                System.out.println("You gathered a sturdy stick from the forest.");
+                break;
+            //add cases for other items
+            default:
+                System.out.println("There's no such item here.");
+        }
+    }
+
     public void monkeyArmy(){
 
     }
@@ -14,6 +31,8 @@ public class DarkForest extends Island implements DarkForestRequirements{
     public void describe(){
 
     }
+
+
 
     @Override
     public Island moveNorth() {

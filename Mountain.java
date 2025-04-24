@@ -2,6 +2,7 @@ public class Mountain extends Island //implements MountainRequirements
 {
     public boolean shelterBuilt;
     public boolean atPeak;
+    public boolean inCave;
 
     public Mountain() {
         super("Mountain", "You are at the Misty Mountain. There are paths leading up to the peak with rocks and coal along the way.");
@@ -14,32 +15,48 @@ public class Mountain extends Island //implements MountainRequirements
     }
 
     //will be @Override
-    //I did NOT include pushRock() or viewMap() since these should only be available at the cave or the peak
-    //we prob should add a check to see if the player can use these but also
-    //i feel like by not having them in help and SUGGESTING them when the player gets to those locations is prob fine
     public void help(){
-        System.out.println("""
+        String help = """
                         Commands:
-                        go north/south/east/west
-                        collect rock/stick/water/supplies/etc
-                        mine coal
-                        climb mountain
-                        build shelter
-                        drink, eat
                         inventory, stats, help
-                        """);
+                        go north/south/east/west
+                        collect coal/rock/stick/water/supplies/etc
+                        drink, eat
+                        """;
+        if (!shelterBuilt) {
+            help += """
+                    build shelter
+                    """;
+        }
+        if (atPeak) {
+            help += """
+                    view map
+                    """;
+        } else {
+            help += """
+                    climb mountain to reach peak
+                    """;
+        }
+        System.out.println(help);
     }
 
-    
-    //this falls under collectItem() now doesn't it?
-    //public void mineRock() {
-    //     System.out.println("You mine a rock from the mountain.");
-    //     collectItem("rock");
-    // }
-
-    public void mineCoal() {
-        System.out.println("You mine coal from the mountain.");
-        collectItem("coal");
+    public void collectItem(String item){
+        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        incrementActions();
+        
+        switch(item.toLowerCase()) {
+            case "rock":
+                System.out.println("You pried a rock loose from the cliffside.");
+                break;
+            case "stick":
+                System.out.println("You gathered a sturdy stick near a pine tree.");
+                break;
+            case "coal":
+                System.out.println("You mined some coal from the mountain.");
+                break;
+            default:
+                System.out.println("There's no such item here.");
+        }
     }
 
     public void climbMountain() {
@@ -51,14 +68,17 @@ public class Mountain extends Island //implements MountainRequirements
     //enter the cave by pushing the rock
     //might want to restrict this to only be an option if the person is at the cave entrance 
     //but that would be annoying so as long as we never suggest pushing a rock in another context in mtn its prob fine
+    //its not in help() for this reason...
     public Island pushRock(){
         System.out.println("You push the rock blocking the cave entrance. It rolls away, revealing a dark cave.");
+        inCave = true;
         return new MtnCave();
     }
 
     public void viewMap(){
         if (atPeak) {
-            System.out.println("You pull out the map and see the entire island. You can see the North Shore, South Shore, Light Forest to the east, and Dark Forest to the west.");
+            System.out.println("You pull out the map and see the entire island.");
+            // Add code to display the map here
         } else {
             System.out.println("You need to climb to the peak to see the map view.");
         }
@@ -93,7 +113,11 @@ public class Mountain extends Island //implements MountainRequirements
     public static void main(String[] args) {
         Mountain mountain = new Mountain();
         mountain.describe();
-        mountain.mineCoal();
+        mountain.help();
+        mountain.collectItem("rock");
+        mountain.collectItem("stick");
+        mountain.collectItem("coal");
+    
         mountain.climbMountain();
         mountain.viewMap();
         mountain.moveNorth(); 

@@ -1,6 +1,5 @@
 public interface NorthShoreRequirements {
-    void collectStick();
-    void collectRock();
+    void collectItem(String item);
     void fish();
     void collectWater();
     void buildShelter();

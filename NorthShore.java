@@ -11,15 +11,33 @@ public class NorthShore extends Island implements NorthShoreRequirements {
         System.out.println(description);
     }
 
-    public void collectStick() {
-        System.out.println("You picked up a stick from the shore.");
-        collectItem("stick");
+    
+    public void collectItem(String item){
+        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        incrementActions();
+        
+        switch(item.toLowerCase()) {
+            case "rock":
+                System.out.println("You collected a rock from the shore.");
+                break;
+            case "stick":
+                System.out.println("You gathered a stick from the shore.");
+                break;
+            case "water":
+                System.out.println("You collected fresh water from a tide pool.");
+                break;
+            case "fish":
+                System.out.println("You speared a fish from the shallows.");
+                break;
+            case "supplies":
+                System.out.println("You found some supplies washed up on the shore.");
+                break;
+            default:
+                System.out.println("There's no such item here.");
+        }
     }
 
-    public void collectRock() {
-        System.out.println("You picked up a rock from the shore.");
-        collectItem("rock");
-    }
+
 
     public void fish() {
         System.out.println("You spear a fish from the shallows.");

@@ -27,12 +27,9 @@ public abstract class Island implements IslandRequirements {
         }
     }
 
-    public abstract void describe(); //what does abstract return type do?
+    public abstract void describe(); //what does abstract actually mean?
 
-    public void collectItem(String item) {
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
-        incrementActions();
-    }
+    public abstract void collectItem(String item);
 
     //should we overload collectItem() to allow for collecting multiple items at once???
     

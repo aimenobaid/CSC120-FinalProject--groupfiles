@@ -13,14 +13,39 @@ public class MtnCave extends Island {
         System.out.println("""
                         Commands:
                         go north/south/east/west
-                        collect rock/stick/water/supplies/etc
-                        mine coal
-                        climb mountain
+                        collect coal/rock/stick/water/supplies/etc
+                        leave cave
+                        fight
                         drink, eat
                         inventory, stats, help
                         """);
     }
 
+    
+    public void collectItem(String item){
+        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        incrementActions();
+        
+        switch(item.toLowerCase()) {
+            case "rock":
+                System.out.println("You collected a rock from the floor of the cave.");
+                break;
+            case "stick":
+                System.out.println("You gathered a sturdy stick from the forest.");
+                break;
+            case "coal":
+                System.out.println("You stole some of the mountain troll's coal.");
+                break;
+            default:
+                System.out.println("There's no such item here.");
+        }
+    }
+
+    //sort of a movement method so update w/ that system
+    public Island leaveCave(){
+        System.out.println("You leave the cave and step out into the light. You are on the side of the mountain. There is a path leading up to the peak or down towards the Light Forest.");
+        return new Mountain();
+    }
 
     // Movement methods
     @Override

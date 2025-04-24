@@ -14,26 +14,40 @@ public class Stream extends Island {
         System.out.println("""
                 Commands:
                 go north/south/east/west
-                collect rock/stick/water/supplies/etc
-                fish
+                collect fish/rock/stick/water/supplies/etc
                 swim
                 drink, eat
                 inventory, stats, help
                 """);
     }
 
-    public void collectWater() {
-        System.out.println("You collect fresh water from the stream.");
-        collectItem("water");
+    
+    public void collectItem(String item){
+        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        incrementActions();
+        
+        switch(item.toLowerCase()) {
+            case "rock":
+                System.out.println("You collected a rock from the forest floor.");
+                break;
+            case "stick":
+                System.out.println("You gathered a sturdy stick from the forest.");
+                break;
+            case "water":
+                System.out.println("You collected fresh water from the stream.");
+                break;
+            case "fish":
+                System.out.println("You speared a fish from the shallows.");
+                break;
+            default:
+                System.out.println("There's no such item here.");
+        }
     }
 
-    public void collectFish() {
-        System.out.println("You catch a fish from the stream.");
-        collectItem("fish");
-    }
 
     public void swim() {
         System.out.println("You swim in the stream. The water is refreshing and clear.");
+        Island.adjustLuck(1);
     }
 
     @Override

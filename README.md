@@ -24,11 +24,22 @@ To-Do For Week 2 pt 2:
     - luck points and game endings (resuce, volcano, death, etc)
     - adding cases to accept all necessary input and to call all possible methods that have been implemented in the locations
 3) eventually learn how to make pop up graphic for mtn peak map!
-4) when game starts hard code new location objects, change all move methods to return these exisitng locations not new instances
-
-***anna 4/23 8pm: I'm confused about how the case thing works in main. do we need to have overwritten methods for collecting stuff in every location class?
 
 
+
+
+
+4/24 Updated To Dos:
+
+Aimen:
+1) make help() in Island, to be overwritten in location classes, will implement in NS and SS
+2) fix movement on the map - when game starts hard code new location objects, change all move methods to return these exisitng locations not new instances
+
+
+Anna
+1) DONE overwite help() in child classes
+2) DONE!! think of something better for collecting items
+    - go through each child class and add all cases for possible items
 
 from the official final project repo
 

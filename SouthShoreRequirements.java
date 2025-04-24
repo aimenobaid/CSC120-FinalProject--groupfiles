@@ -1,8 +1,5 @@
 public interface SouthShoreRequirements {
-    void collectStick();
-    void collectRock();
-    void collectWater();
-    void collectSupplies();
+    void collectItem(String item);
     void buildShelter();
     //something to explore the shipwreck?
     //or should it be another class like cave and waterfall are

@@ -11,30 +11,38 @@ public class SouthShore extends Island implements SouthShoreRequirements {
         System.out.println(description);
     }
 
-    public void collectStick() {
-        System.out.println("You found a stick by the rocks.");
-        collectItem("stick");
-    }
-
-    public void collectRock() {
-        System.out.println("You picked up a rock.");
-        collectItem("rock");
-    }
-
-    public void collectWater() {
-        System.out.println("You collect water from the stream.");
-        collectItem("water");
-    }
-
-    public void collectSupplies() {
-        if (!suppliesCollectedToday) {
-            System.out.println("You find washed-up supplies from an old wreck.");
-            collectItem("supplies");
-            suppliesCollectedToday = true;
-        } else {
-            System.out.println("Youve already scavenged everything for today.");
+  
+    public void collectItem(String item){
+        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        incrementActions();
+        
+        switch(item.toLowerCase()) {
+            case "rock":
+                System.out.println("You found a rock by the shore.");
+                break;
+            case "stick":
+                System.out.println("You gathered a stick from the water's edge.");
+                break;
+            case "water":
+                System.out.println("You collected fresh water from the base of the stream.");
+                break;
+            case "supplies":
+                if (!suppliesCollectedToday) {
+                    System.out.println("You find washed-up supplies from an old wreck.");
+                    collectItem("supplies");
+                    suppliesCollectedToday = true;
+                } else {
+                    System.out.println("Youve already scavenged everything for today.");
+                }
+                break;
+            case "fish":
+                System.out.println("You speared a fish from the shallows.");
+                break;
+            default:
+                System.out.println("There's no such item here.");
         }
     }
+
 
     public void buildShelter() {
         try {
@@ -66,7 +74,6 @@ public class SouthShore extends Island implements SouthShoreRequirements {
     @Override
     public Island moveWest() {
         System.out.println("You enter the Dark Forest. The foliage is dense and the trees are tall. You can hear the sounds of creatures in the distance.");
-        //return new DarkForest(); uncomment once DarkForest.java is built
-        return this;
+        return new DarkForest(); 
     }
 }

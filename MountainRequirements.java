@@ -1,6 +1,6 @@
 public interface MountainRequirements {
     //void mineRock();
-    void mineCoal(); 
+    void collectItem(String item);
     void climbMountain(); 
     void viewMap();     
 
