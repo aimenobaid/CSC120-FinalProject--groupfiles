@@ -27,6 +27,7 @@ public class Main {
                 case "collect rock" -> {
                     if (player.getLocation() instanceof NorthShore ns) ns.collectRock();
                     else if (player.getLocation() instanceof SouthShore ss) ss.collectRock();
+                    //else Island.collectItem("rock"); //giving me an error and idky why
                 }
                 case "collect stick" -> {
                     if (player.getLocation() instanceof NorthShore ns) ns.collectStick();
@@ -67,6 +68,7 @@ public class Main {
 
             
         }
+        //scanner.close(); //this is giving me an error and idk why
     }
     
 }
