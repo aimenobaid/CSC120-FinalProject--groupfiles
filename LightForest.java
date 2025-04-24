@@ -21,18 +21,25 @@ public class LightForest extends Island implements LightForestRequirements {
         }
     }
     
-    public void collectStick(){
-        System.out.println("You grab a stick from the base of a tree.");
-        collectItem("stick");
-    }
-
-    public void collectRock(){
-        System.out.println("You pick up a rock from the base of a tree.");
-        collectItem("rock");
+    public void collectItem(String item){
+        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        incrementActions();
+        
+        switch(item.toLowerCase()) {
+            case "rock":
+                System.out.println("You collected a rock from the forest floor.");
+                break;
+            case "stick":
+                System.out.println("You gathered a sturdy stick from the forest.");
+                break;
+            //add cases for other items
+            default:
+                System.out.println("There's no such item here.");
+        }
     }
 
     public void petAnimal(){
-        System.out.println("You quietly wait for the animal to approach you, before patting it gently on the snout.");
+        System.out.println("You quietly wait for the animal to approach you before patting it gently on the snout.");
         adjustLuck(2);
     }
 
