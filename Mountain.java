@@ -12,11 +12,30 @@ public class Mountain extends Island //implements MountainRequirements
     public void describe() {
         System.out.println(description);
     }
-    
-    public void mineRock() {
-        System.out.println("You mine a rock from the mountain.");
-        collectItem("rock");
+
+    //will be @Override
+    //I did NOT include pushRock() or viewMap() since these should only be available at the cave or the peak
+    //we prob should add a check to see if the player can use these but also
+    //i feel like by not having them in help and SUGGESTING them when the player gets to those locations is prob fine
+    public void help(){
+        System.out.println("""
+                        Commands:
+                        go north/south/east/west
+                        collect rock/stick/water/supplies/etc
+                        mine coal
+                        climb mountain
+                        build shelter
+                        drink, eat
+                        inventory, stats, help
+                        """);
     }
+
+    
+    //this falls under collectItem() now doesn't it?
+    //public void mineRock() {
+    //     System.out.println("You mine a rock from the mountain.");
+    //     collectItem("rock");
+    // }
 
     public void mineCoal() {
         System.out.println("You mine coal from the mountain.");
@@ -74,7 +93,6 @@ public class Mountain extends Island //implements MountainRequirements
     public static void main(String[] args) {
         Mountain mountain = new Mountain();
         mountain.describe();
-        mountain.mineRock();
         mountain.mineCoal();
         mountain.climbMountain();
         mountain.viewMap();
