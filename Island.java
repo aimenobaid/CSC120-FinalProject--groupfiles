@@ -10,7 +10,7 @@ public abstract class Island implements IslandRequirements {
     
     protected static int currentDay = 1;
     protected static int actionsToday = 0;
-    protected static final int ACTIONS_PER_DAY = 5;
+    protected static final int ACTIONS_PER_DAY = 20;
     //include distance traveled? like if you move to three distinct sides of the island the day ends
     //but if you stayed in one area, you have to complete 5 tasks like fish() buildshelter() gatherberries() etc, for the day to end?
 
@@ -128,7 +128,7 @@ public abstract class Island implements IslandRequirements {
 
     public static void advanceDay() {
         currentDay++;
-        actionsToday = 5;
+        actionsToday = 0;
         System.out.println("Night falls. You survived Day " + (currentDay - 1) + ". A new day begins.");
         System.out.println("📆 Day " + currentDay);
     }

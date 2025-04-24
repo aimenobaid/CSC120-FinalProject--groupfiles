@@ -27,6 +27,7 @@ public class Main {
                 case "collect rock" -> {
                     if (player.getLocation() instanceof NorthShore ns) ns.collectRock();
                     else if (player.getLocation() instanceof SouthShore ss) ss.collectRock();
+                    else if (player.getLocation() instanceof  Mountain) mm.collectRock();
                 }
                 case "collect stick" -> {
                     if (player.getLocation() instanceof NorthShore ns) ns.collectStick();
