@@ -93,14 +93,14 @@ public class Mountain extends Island //implements MountainRequirements
 
     @Override
     public Island moveSouth() {
-        System.out.println("You are at a waterfall that flows into a fresh water stream headed towards the South Shore.");
+        System.out.println("You follow a path around the side of the mountain heading south.");
         return new Waterfall();
     }
 
     @Override
     public Island moveEast() {
         System.out.println("You head down towards the Light Forest and you see a cave along the path. There is a rock blocking what appears to be an opening to the cave. Push the rock to try to enter the cave. Move East again to continue on to the forest.");
-        return new LightForest();
+        return new Mountain();
     }
 
     @Override
