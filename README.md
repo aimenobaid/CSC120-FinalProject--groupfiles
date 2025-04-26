@@ -1,48 +1,35 @@
 Architecure Diagram: https://docs.google.com/drawings/d/1Kdz_9xdI5osGZPDPGFbb5GNC8VAh5xtsRH_oBl-vIxs/edit?usp=sharing 
 
-Mtg Notes 4/18
 
-General thoughts / questions
-1) any method that will be useful in more than one location class should be implemented in Island
-    *may require having exceptions in the child classes if certain things do not apply in one location
+# Combined/Updated TO DO (as of 4/26 9am)
+1) all child location classes should be fully built out and cases added to main so that their functionality can be used
+ALSO go through and make sure methods like fight(), buildShelter(), buildFire(), etc, are overwritten in places where they should NOT be used (or should be used differently)
 
-2) will the movement set up work? should we be creating new instances of the loc classes with each movement?
-    **ask prof
+    - ANNA: classes built **YES** 
+            added to Main **YES**
+            help overwritten **YES**
+            other Island methods overwritten **PART**
+    - SHARMILA: classes built ___ 
+                added to main ___ 
+                help overwritten ___
+                other Island methods overwritten ___
+        - also architecture diagram update
 
-3) for the purposes of getting graded we are prob gonna need a lot more comments explaining what everything does... prob javaDocs too
-
-To-Do For Week 2 pt 2:
-1) Finish action methods in Island and all child locations
-    - all shared methods in Island (Aimen)
-        - write generic help method here, change Main so that it gets called
-        - do shore overwrites
-    - finish child classes (NS, SS, M/C/W, DF, LF) (Anna, Sharmila)
-        - override help to give correct options
-        - add cases in Main so all place specific methods can be called
-2) start working on game play stuff
-    - action / movement tracking for logging days
-    - luck points and game endings (resuce, volcano, death, etc)
-    - adding cases to accept all necessary input and to call all possible methods that have been implemented in the locations
-3) eventually learn how to make pop up graphic for mtn peak map!
+    - **help is abstract in Island rn, is that good or?
 
 
+2) AIMEN: change strategy for moving between locations- hard code new location objects when game starts and change all move methods to return these exisiting locations and not new instances
+
+3) write game endings and luck-related events- resuce, volcanic eruption, other deaths, etc
+
+4) make pop up graphic for map at the mountain peak
+
+5) play game and make sure we meet all rubric requirements (see 'rubric.md' and below) ALSO address all question comments and add javadocs and other comments for the purpose of being graded
 
 
 
-4/24 Updated To Dos:
-
-Aimen:
-1) make help() in Island, to be overwritten in location classes, will implement in NS and SS
-2) fix movement on the map - when game starts hard code new location objects, change all move methods to return these exisitng locations not new instances
-
-
-Anna
-1) DONE overwite help() in child classes
-2) DONE!! think of something better for collecting items
-    - go through each child class and add all cases for possible items
 
 from the official final project repo
-
 # CSC120-FinalProject
 
 ## Deliverables:
