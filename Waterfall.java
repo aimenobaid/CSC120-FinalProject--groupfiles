@@ -51,6 +51,9 @@ public class Waterfall extends Island implements WaterfallRequirements {
                     System.out.println("You already collected the treasure from the chest.");
                 }
                 break;
+            case "fish":
+                System.out.println("The water is rough and choppy. It is difficult to fish here. Try farther downstream.");
+                break;
             default:
                 System.out.println("There's no such item here.");
         }
@@ -72,9 +75,6 @@ public class Waterfall extends Island implements WaterfallRequirements {
         System.out.println("The water is rough and choppy. You should not swim here. Try farther downstream.");
     }
 
-    public void fish() {
-        System.out.println("The water is rough and choppy. It is difficult to fish here. Try farther downstream.");
-    }
 
 
     // Movement methods --- idk what these should be returning tbh so rn theyre all this

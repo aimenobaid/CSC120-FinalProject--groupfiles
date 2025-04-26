@@ -1,5 +1,6 @@
 public class SouthShore extends Island implements SouthShoreRequirements {
     private boolean suppliesCollectedToday;
+    private boolean shelterBuilt = false; 
 
     public SouthShore() {
         super("South Shore", "You are on the South Shore. You see shipwreck debris on the shore and a stream winding down to the water from a mountain peak in the distance.");
@@ -11,6 +12,21 @@ public class SouthShore extends Island implements SouthShoreRequirements {
         System.out.println(description);
     }
 
+    public void help() {
+        String help = """
+                Commands:
+                inventory, stats, help
+                go north/south/east/west
+                collect rock/stick/water/supplies/etc
+                drink, eat
+                """;
+        if (!shelterBuilt) {
+            help += """
+                    build shelter
+                    """;
+        }
+        System.out.println(help);
+    }
   
     public void collectItem(String item){
         inventory.put(item, inventory.getOrDefault(item, 0) + 1);

@@ -31,6 +31,8 @@ public abstract class Island implements IslandRequirements {
 
     public abstract void collectItem(String item);
 
+    public abstract void help(); //placeholder for now unless we think it should be abstract?
+
     //should we overload collectItem() to allow for collecting multiple items at once???
     
 

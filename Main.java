@@ -13,7 +13,6 @@ public class Main {
             System.out.print("\n> ");
             String input = scanner.nextLine().trim().toLowerCase();
 
-            //thoughts on just having this if statement before the switch case?
             if (input.startsWith("collect ")) {
                 String item = input.substring(8);
                 player.getLocation().collectItem(item);
@@ -29,51 +28,68 @@ public class Main {
                 case "stats" -> player.displayStats();
                 case "drink" -> player.drink();
                 case "eat" -> player.eat();
-                // case "collect rock" -> {
-                //     if (player.getLocation() instanceof NorthShore ns) ns.collectRock();
-                //     else if (player.getLocation() instanceof SouthShore ss) ss.collectRock();
-                // }
-                // case "collect stick" -> {
-                //     if (player.getLocation() instanceof NorthShore ns) ns.collectStick();
-                //     else if (player.getLocation() instanceof SouthShore ss) ss.collectStick();
-                // }
-                // case "collect water" -> {
-                //     if (player.getLocation() instanceof NorthShore ns) ns.collectWater();
-                //     else if (player.getLocation() instanceof SouthShore ss) ss.collectWater();
-                // }
-                // case "collect supplies" -> {
-                //     if (player.getLocation() instanceof SouthShore ss) ss.collectSupplies();
-                //     else System.out.println("There's nothing to collect here.");
-                //}
                 case "fish" -> {
-                    if (player.getLocation() instanceof NorthShore ns) ns.fish();
-                    else System.out.println("You can't fish here.");
+                    player.getLocation().collectItem("fish");
                 }
                 case "build shelter" -> {
-                    if (player.getLocation() instanceof NorthShore ns) ns.buildShelter();
-                    else if (player.getLocation() instanceof SouthShore ss) ss.buildShelter();
-                    else System.out.println("This isn't a place you can build.");
+                    player.getLocation().buildShelter();
                 }
-                case "help" -> System.out.println("""
-                        Commands:
-                        go north/south/east/west
-                        collect rock/stick/water/supplies/etc
-                        fish
-                        build shelter
-                        drink, eat
-                        inventory, stats, help
-                        """);
+                case "rest" -> player.rest();
+                case "build fire" -> {
+                    player.getLocation().buildFire();
+                }   
+                case "look around" -> player.getLocation().describe();
+                case "help" -> 
+                    player.getLocation().help();
                 case "quit" -> {
                     System.out.println("Thanks for playing!");
+                    scanner.close();
                     return;
                 }
+                case "fight" -> {
+                    player.getLocation().fight();
+                }
+                case "swim" -> {
+                    if (player.getLocation() instanceof Waterfall w) w.swim();
+                    else if (player.getLocation() instanceof Stream s) s.swim();
+                    else System.out.println("You can't swim here, the ocean is rough and you will drown.");
+                }
+                case "climb mountain" -> {
+                    if (player.getLocation() instanceof Mountain m) m.climbMountain();
+                    else System.out.println("You must be at the Misty Mountain in order to climb to its peak.");
+                }
+                case "push rock" -> {
+                    if (player.getLocation() instanceof Mountain m) m.pushRock();
+                    else System.out.println("You must be near the cave entrance on the Misty Mountain to push the rock.");
+                }
+                case "view map" -> {
+                    if (player.getLocation() instanceof Mountain m) m.viewMap();
+                    else System.out.println("You must be at the peak of the Misty Mountain to view the map.");
+                }
+                case "leave cave" -> {
+                    if (player.getLocation() instanceof MtnCave mc) mc.leaveCave();
+                    else System.out.println("You are not in the cave.");
+                }
+                case "enter alcove" -> {
+                    if (player.getLocation() instanceof Waterfall wf) wf.enterAlcove();
+                    else System.out.println("You are not at the waterfall.");
+                }
+                case "open chest" -> {
+                    if (player.getLocation() instanceof Waterfall wf) wf.openChest();
+                    else System.out.println("There is no chest here.");
+                }
+                case "leave alcove" -> {
+                    if (player.getLocation() instanceof Waterfall wf) wf.leaveAlcove();
+                    else System.out.println("You are not in the alcove.");
+                }
+                
                 default -> System.out.println("Unknown command. Type 'help' for options.");
           
             } //end of switch statement
             } //end of else statement
             
         } //end of while loop
-        //scanner.close(); idk
+       
 
     } //end of main method
 } 

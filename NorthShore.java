@@ -11,6 +11,21 @@ public class NorthShore extends Island implements NorthShoreRequirements {
         System.out.println(description);
     }
 
+    public void help() {
+        String help = """
+                Commands:
+                inventory, stats, help
+                go north/south/east/west
+                collect rock/stick/water/fish/supplies/etc
+                drink, eat
+                """;
+        if (!shelterBuilt) {
+            help += """
+                    build shelter
+                    """;
+        }
+        System.out.println(help);
+    }
     
     public void collectItem(String item){
         inventory.put(item, inventory.getOrDefault(item, 0) + 1);
@@ -28,6 +43,7 @@ public class NorthShore extends Island implements NorthShoreRequirements {
                 break;
             case "fish":
                 System.out.println("You speared a fish from the shallows.");
+                adjustLuck(1);
                 break;
             case "supplies":
                 System.out.println("You found some supplies washed up on the shore.");
@@ -37,18 +53,6 @@ public class NorthShore extends Island implements NorthShoreRequirements {
         }
     }
 
-
-
-    public void fish() {
-        System.out.println("You spear a fish from the shallows.");
-        collectItem("fish");
-        adjustLuck(1);
-    }
-
-    public void collectWater() {
-        System.out.println("You collect fresh water from a clear tide pool.");
-        collectItem("water");
-    }
 
     // Movement methods
     @Override

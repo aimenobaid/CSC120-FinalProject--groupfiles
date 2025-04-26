@@ -127,13 +127,3 @@ public class Mountain extends Island //implements MountainRequirements
     }
     
 }
-
-// Mountain.java
-    //has a cliff, peak, a cave, and a waterfall
-    //peak has a map (view of the island)
-    //cave has a troll (guarding treasure? but must be lucky to kill?)
-    //waterfall has a hidden cave behind it with resources
-
-    //waterfall is south of mtn peak
-    //cave is east of mtn peak
-    //cliff is west of mtn peak
