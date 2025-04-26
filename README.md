@@ -16,9 +16,11 @@ ALSO go through and make sure methods like fight(), buildShelter(), buildFire(),
         - also architecture diagram update
 
     - **help is abstract in Island rn, is that good or?
+    - AIMEN: 
+            Changing strategy for moving between locations- hard code new location objects when game starts and change all move methods to return these exisiting locations and not new instances **In Progress**
+            Rewritting help() **In Progress**
+            Starting to write game ending events based on luck **In progress**
 
-
-2) AIMEN: change strategy for moving between locations- hard code new location objects when game starts and change all move methods to return these exisiting locations and not new instances
 
 3) write game endings and luck-related events- resuce, volcanic eruption, other deaths, etc
 
