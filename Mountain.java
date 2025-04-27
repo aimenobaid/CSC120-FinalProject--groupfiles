@@ -1,12 +1,12 @@
-public class Mountain extends Island //implements MountainRequirements
+public class Mountain extends Island //implements MountainRequirements 
 {
-    public boolean shelterBuilt;
     public boolean atPeak;
     public boolean inCave;
 
     public Mountain() {
         super("Mountain", "You are at the Misty Mountain. There are paths leading up to the peak with rocks and coal along the way.");
-        this.shelterBuilt = false;
+        this.atPeak = false;
+        this.inCave = false;
     }
 
     @Override
@@ -14,32 +14,7 @@ public class Mountain extends Island //implements MountainRequirements
         System.out.println(description);
     }
 
-    //will be @Override
-    public void help(){
-        String help = """
-                        Commands:
-                        inventory, stats, help
-                        go north/south/east/west
-                        collect coal/rock/stick/water/supplies/etc
-                        drink, eat
-                        """;
-        if (!shelterBuilt) {
-            help += """
-                    build shelter
-                    """;
-        }
-        if (atPeak) {
-            help += """
-                    view map
-                    """;
-        } else {
-            help += """
-                    climb mountain to reach peak
-                    """;
-        }
-        System.out.println(help);
-    }
-
+    @Override
     public void collectItem(String item){
         inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
@@ -57,6 +32,29 @@ public class Mountain extends Island //implements MountainRequirements
             default:
                 System.out.println("There's no such item here.");
         }
+    }
+
+    @Override
+    public void buildShelter() {
+        if (shelterBuilt) {
+            System.out.println("You already have a shelter on the mountain.");
+            return;
+        }
+        if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
+            inventory.put("rock", inventory.get("rock") - 3);
+            inventory.put("stick", inventory.get("stick") - 3);
+
+            if (luckPoints >= 50) {
+                System.out.println("You managed to build a sturdy shelter on the mountain slope.");
+                shelterBuilt = true;
+            } else {
+                System.out.println("You built a shelter... but it collapses over the edge. You lose 5 luck points :(");
+                adjustLuck(-5); // temporary will replace with a gameover sich
+            }
+        } else {
+            System.out.println("You need 3 rocks and 3 sticks to build a shelter.");
+        }
+        incrementActions();
     }
 
     public void climbMountain() {
@@ -83,24 +81,49 @@ public class Mountain extends Island //implements MountainRequirements
             System.out.println("You need to climb to the peak to see the map view.");
         }
     }
-
+    
+    @Override
+    public void help(){
+        String help = """
+            Commands:
+            inventory, stats, help
+            go north/south/east/west
+            collect coal/rock/stick/water/supplies/etc
+            drink, eat
+            """;
+        if (!shelterBuilt) {
+            help += """
+            build shelter
+            """;
+        }
+        if (atPeak) {
+            help += """
+            view map
+            """;
+        } else {
+            help += """
+            climb mountain to reach peak
+            """;
+        }
+        System.out.println(help);
+    }
     // Movement methods
     @Override
     public Island moveNorth() {
         System.out.println("You head downwards and arrive at the North Shore");
-        return new NorthShore();
+        return northExit;
     }
 
     @Override
     public Island moveSouth() {
         System.out.println("You follow a path around the side of the mountain heading south.");
-        return new Waterfall();
+        return southExit;
     }
 
     @Override
     public Island moveEast() {
         System.out.println("You head down towards the Light Forest and you see a cave along the path. There is a rock blocking what appears to be an opening to the cave. Push the rock to try to enter the cave. Move East again to continue on to the forest.");
-        return new Mountain();
+        return eastExit;
     }
 
     @Override

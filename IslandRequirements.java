@@ -10,7 +10,6 @@ public interface IslandRequirements {
     void buildShelter();
     void buildFire();
     void lookAround();
-    void rest();
 }
     
 

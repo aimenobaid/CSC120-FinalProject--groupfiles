@@ -17,9 +17,20 @@ ALSO go through and make sure methods like fight(), buildShelter(), buildFire(),
 
     - **help is abstract in Island rn, is that good or?
     - AIMEN: 
-            Changing strategy for moving between locations- hard code new location objects when game starts and change all move methods to return these exisiting locations and not new instances **In Progress**
-            Rewritting help() **In Progress**
-            Starting to write game ending events based on luck **In progress**
+        -Consistent help() in every child class **YES**
+        -New strategy for moving around, consistent for all child classes completed **YES**
+                --> note to Sharmila and Anna: we should double check that all the moving methods 
+                    //are taking you where you need to go based on the map. 
+        -Fix the shelter building logic in island and player, consistent in all child classes. **YES**
+                --> NorthShore and LightForest simply allow shelters. 
+                --> Mountain and Dark Forest allow shelters too but success depends on luck. 
+                --> Stream, Waterfall, Cave and SouthShore do not allow building a shelter by default. 
+        -Fix rest in Player **YES**
+                --> Works consistently with buildshelter logic and gives specific messages for different locations
+        -Fix eat and drink in Player **YES** 
+                --> Now it increments actions and deducts from inventory.
+                --> Can eat all types of food not just fish.
+        -Starting to write game ending events based on luck **In progress**
 
 
 3) write game endings and luck-related events- resuce, volcanic eruption, other deaths, etc

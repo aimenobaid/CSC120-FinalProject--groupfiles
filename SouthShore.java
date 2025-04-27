@@ -1,6 +1,5 @@
 public class SouthShore extends Island implements SouthShoreRequirements {
     private boolean suppliesCollectedToday;
-    private boolean shelterBuilt = false; 
 
     public SouthShore() {
         super("South Shore", "You are on the South Shore. You see shipwreck debris on the shore and a stream winding down to the water from a mountain peak in the distance.");
@@ -14,17 +13,16 @@ public class SouthShore extends Island implements SouthShoreRequirements {
 
     public void help() {
         String help = """
-                Commands:
-                inventory, stats, help
-                go north/south/east/west
-                collect rock/stick/water/supplies/etc
-                drink, eat
-                """;
-        if (!shelterBuilt) {
-            help += """
-                    build shelter
-                    """;
-        }
+        📍 You are on the South Shore.
+        Available Commands:
+        - go north / south / east / west
+        - collect rock / stick / water / supplies / fish
+        - drink, eat
+        - build fire
+        - look around
+        - fight
+        - inventory, stats, help, quit
+            """;
         System.out.println(help);
     }
   
@@ -58,7 +56,15 @@ public class SouthShore extends Island implements SouthShoreRequirements {
                 System.out.println("There's no such item here.");
         }
     }
-
+    /* this will be needed for later when we need to reset supplies on the south shore daily 
+    but it'll require making advance day not static and changing a few other things too so i'm 
+    putting a pin in it for now and we can discusss how to do it together
+    */
+    // @Override
+    // public void advanceDay() {
+    // super.advanceDay();
+    // suppliesCollectedToday = false;
+    // } 
 
     public void buildShelter() {
         try {
@@ -72,7 +78,7 @@ public class SouthShore extends Island implements SouthShoreRequirements {
     @Override
     public Island moveNorth() {
         System.out.println("You follow the stream up towards the Misty Mountain. There is a waterfall up ahead. Move north again to reach the waterfall.");
-        return new Stream();
+        return northExit;
     }
 
     @Override
@@ -84,12 +90,12 @@ public class SouthShore extends Island implements SouthShoreRequirements {
     @Override
     public Island moveEast() {
         System.out.println("You walk along the shore and enter the Light Forest. You see the ruins of temples in the distance.");
-        return new LightForest();
+        return eastExit;
     }
 
     @Override
     public Island moveWest() {
         System.out.println("You enter the Dark Forest. The foliage is dense and the trees are tall. You can hear the sounds of creatures in the distance.");
-        return new DarkForest(); 
+        return westExit; 
     }
 }

@@ -2,12 +2,34 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Island start = new NorthShore();
-        Player player = new Player("Explorer", start);
+        // Hardcoded locations
+        NorthShore northShore = new NorthShore();
+        SouthShore southShore = new SouthShore();
+        Mountain mountain = new Mountain();
+        MtnCave mtnCave = new MtnCave();
+        LightForest lightForest = new LightForest();
+        DarkForest darkForest = new DarkForest();
+        LightTemple lightTemple = new LightTemple();
+        Stream stream = new Stream();
+        Waterfall waterfall = new Waterfall();
 
+        // Setting up all the connections
+
+        northShore.setExits(null, mountain, lightForest, darkForest);
+        southShore.setExits(stream, null, lightForest, darkForest);
+        mountain.setExits(northShore, waterfall, lightForest, darkForest);
+        mtnCave.setExits(mountain, waterfall, lightForest, mountain);
+        lightForest.setExits(lightTemple, stream, null, mountain);
+        darkForest.setExits(northShore, stream, mountain, null);
+        lightTemple.setExits(northShore, stream, lightForest, darkForest);
+        stream.setExits(waterfall, southShore, lightForest, darkForest);
+        waterfall.setExits(mountain, stream, lightForest, darkForest);
+
+        // Start game
+        Player player = new Player("Explorer", northShore);
         System.out.println("🌴 Welcome to the Island Survival Game 🌴");
-        start.describe();
+        northShore.describe();
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.print("\n> ");
@@ -87,9 +109,7 @@ public class Main {
           
             } //end of switch statement
             } //end of else statement
-            
+            scanner.close();
         } //end of while loop
-       
-
     } //end of main method
 } 

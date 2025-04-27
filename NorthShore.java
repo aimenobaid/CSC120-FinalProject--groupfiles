@@ -1,9 +1,25 @@
+
 public class NorthShore extends Island implements NorthShoreRequirements {
-    protected boolean shelterBuilt;
 
     public NorthShore() {
         super("North Shore", "You are on the North Shore. There are rocks, sticks, fresh pools, and fish.");
-        this.shelterBuilt = false;
+    }
+
+    @Override
+    protected boolean canBuildShelter() {
+        return true;  // North Shore supports shelter building
+    }
+
+    @Override
+    public void buildShelter() {
+    if (!shelterBuilt) {
+        super.buildShelter();  // Use standard recipe and logic
+        if (shelterBuilt) {
+            System.out.println("You built a sturdy shelter overlooking the ocean, with the sound of waves to keep you company.");
+        }
+    } else {
+        System.out.println("Your shelter stands firm on the shore, ready for another night.");
+    }
     }
 
     @Override
@@ -11,14 +27,21 @@ public class NorthShore extends Island implements NorthShoreRequirements {
         System.out.println(description);
     }
 
+    @Override
     public void help() {
         String help = """
-                Commands:
-                inventory, stats, help
-                go north/south/east/west
-                collect rock/stick/water/fish/supplies/etc
-                drink, eat
-                """;
+
+            📍 You are on the North Shore.
+            Available Commands:
+            - go north / south / east / west
+            - collect rock / stick / water / fish / supplies
+            - drink, eat
+            - build fire
+            - look around
+            - fight
+            - rest
+            - inventory, stats, help, quit
+            """;
         if (!shelterBuilt) {
             help += """
                     build shelter
@@ -26,7 +49,8 @@ public class NorthShore extends Island implements NorthShoreRequirements {
         }
         System.out.println(help);
     }
-    
+
+    @Override
     public void collectItem(String item){
         inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
@@ -64,18 +88,18 @@ public class NorthShore extends Island implements NorthShoreRequirements {
     @Override
     public Island moveSouth() {
         System.out.println("You follow a path leading into the forest. A mountain looms ahead of you.");
-        return new Mountain();
+        return southExit;
     }
 
     @Override
     public Island moveEast() {
         System.out.println("You walk along the shore and enter the Light Forest. You see the ruins of temples in the distance");
-        return new Stream();
+        return eastExit;
     }
 
     @Override
     public Island moveWest() {
         System.out.println("You walk along the shore and enter the Dark Forest. The foliage is dense and the trees are tall. You can hear the sounds of creatures in the distance.");
-        return null;
+        return westExit;
     }
 }

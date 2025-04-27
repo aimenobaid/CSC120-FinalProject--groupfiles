@@ -10,15 +10,17 @@ public class MtnCave extends Island {
     }
 
     public void help(){
-        System.out.println("""
-                        Commands:
-                        go north/south/east/west
-                        collect coal/rock/stick/water/supplies/etc
-                        leave cave
-                        fight
-                        drink, eat
-                        inventory, stats, help
-                        """);
+        String help = """
+        📍 You are inside the Mountain Cave.
+        Available Commands:
+        go north / south / east / west
+        collect coal / rock / stick / water / supplies
+        leave cave
+        fight
+        drink, eat
+        inventory, stats, help
+        """;
+        System.out.println(help);
     }
 
     
@@ -44,33 +46,31 @@ public class MtnCave extends Island {
     //sort of a movement method so update w/ that system
     public Island leaveCave(){
         System.out.println("You leave the cave and step out into the light. You are on the side of the mountain. There is a path leading up to the peak or down towards the Light Forest.");
-        return new Mountain();
+        return northExit;
     }
 
     // Movement methods
     @Override
     public Island moveNorth() {
         System.out.println("You skirt around the side of the mountain towards the North Shore. Move North again to reach the shore.");
-        return new Mountain();
+        return northExit;
     }
 
     @Override
     public Island moveSouth() {
         System.out.println("You walk around the side of the mountain and reach a waterfall. It flows into a fresh water stream headed towards the South Shore.");
-        return new Waterfall();
+        return southExit;
     }
 
     @Override
     public Island moveEast() {
         System.out.println("You head down into the Light Forest. Through the trees you can see the ruins of a temple. Move East again to continue further into the forest.");
-        return new LightForest();
+        return eastExit;
     }
 
     @Override
     public Island moveWest() {
         System.out.println("You climb west towards the top of the mountain. The path is steep and rocky. Move West again to continue climbing and reach the peak.");
-        return new Mountain();
+        return westExit;
     }
-
-
 }

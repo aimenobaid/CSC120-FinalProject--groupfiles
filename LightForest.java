@@ -6,6 +6,20 @@ public class LightForest extends Island implements LightForestRequirements {
         this.shelterBuilt = false;
     }
 
+    @Override
+    protected boolean canBuildShelter() {
+        return true;  // Shelter building allowed here
+    }
+
+    @Override
+    public void buildShelter() {
+    super.buildShelter();  // Use parent logic
+    if (shelterBuilt) {
+        System.out.println("Your shelter blends perfectly among the tall trees.");
+    }   
+    }
+
+    @Override
     public void describe(){
         System.out.println(description);
     }
@@ -20,7 +34,8 @@ public class LightForest extends Island implements LightForestRequirements {
             System.out.println("You didn't find anything in the bush.");
         }
     }
-    
+
+    @Override
     public void collectItem(String item){
         inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
@@ -38,25 +53,43 @@ public class LightForest extends Island implements LightForestRequirements {
         }
     }
 
+
     public void petAnimal(){
         System.out.println("You quietly wait for the animal to approach you before patting it gently on the snout.");
         adjustLuck(2);
     }
 
-    public void buildShelter(){
-        this.shelterBuilt = true;
+    @Override
+    public void help() {
+    String help = """
+        📍 You are in the Light Forest.
+        Available Commands:
+        - go north / south / east / west
+        - collect rock / stick / berries
+        - forage
+        - pet animal
+        - build fire
+        - look around
+        - fight
+        - rest
+        - inventory, stats, help, quit
+    """;
+    if (!shelterBuilt) {
+        help += "- build shelter\n";
+    }
+    System.out.println(help);   
     }
 
     @Override
     public Island moveNorth() {
         System.out.println("You head down towards the North Shore. Before you reach the forest edge, you find a white structure with pillars and small statues. Move North again to go into the temple.");
-        return this;
+        return northExit;
     }
 
     @Override
     public Island moveSouth() {
         System.out.println("You are at a waterfall that flows into a fresh water stream headed towards the South Shore.");
-        return this;
+        return southExit;
     }
 
     @Override
@@ -68,6 +101,6 @@ public class LightForest extends Island implements LightForestRequirements {
     @Override
     public Island moveWest() {
         System.out.println("You head up towards the Mountains and you see a cave along the path. There appears to be an opening to the cave.");
-        return this;
+        return westExit;
     }
 }

@@ -14,16 +14,21 @@ public class Waterfall extends Island implements WaterfallRequirements {
 
     //will be @Overdride
     public void help() {
-        System.out.println("""
-                Commands:
-                go north/south/east/west
-                collect rock/stick/water/supplies/etc
-                enter alcove
-                open chest
-                leave alcove
-                drink, eat
-                inventory, stats, help
-                """);
+        String help = """
+        📍 You are at the Waterfall.
+        Available Commands:
+        - go north / south / east / west
+        - collect rock / stick / water / treasure
+        - enter alcove
+        - open chest
+        - leave alcove
+        - build fire
+        - look around
+        - fight
+        - rest
+        - inventory, stats, help, quit
+        """;
+    System.out.println(help);
     }
 
     
@@ -59,6 +64,8 @@ public class Waterfall extends Island implements WaterfallRequirements {
         }
     }
 
+    // aimen: i dont think these are doing anything? i'm not too sure, 
+        //reminder: talk to anna about these.
     public void enterAlcove() {
         System.out.println("You enter the alcove behind the waterfall. It is dark and damp, but you can see a small chest hidden in the corner.");
     }
@@ -75,32 +82,29 @@ public class Waterfall extends Island implements WaterfallRequirements {
         System.out.println("The water is rough and choppy. You should not swim here. Try farther downstream.");
     }
 
-
-
-    // Movement methods --- idk what these should be returning tbh so rn theyre all this
+    // aimen: these need to be consolidated with the void methods above, see: exits defined in main and island to see how we should do that i dont wanna change too mcuh without talking about.
     @Override
     public Island moveNorth() {
         System.out.println("You return to the mountain path and begin climbing towards Misty Mountain peak. Move North again to continue the climb.");
-        return new Mountain();
+        return northExit;
     }
 
     @Override
     public Island moveSouth() {
         System.out.println("You follow the stream south towards the South Shore. Move south again to reach the beach.");
-        return new Stream();
+        return southExit;
     }
 
     @Override
     public Island moveEast() {
         System.out.println("You walk into the woods and enter the Light Forest. Through the trees you can see the ruins of a temple. A path going east leads deeper into the forest. You can hear birds and other animals chirping in the distance.");
-        return new LightForest();
+        return eastExit;
     }
 
     @Override
     public Island moveWest() {
         System.out.println("You walk into the woods and enter the Dark Forest. The trees are thick and the air is heavy with the smell of damp earth. A path going west leads deeper into the forest. You notice large paw prints in the mud.");
-        //return this;
-        return new DarkForest();
+        return westExit;
     }
 
 }

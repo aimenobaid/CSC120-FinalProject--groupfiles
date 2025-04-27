@@ -3,6 +3,13 @@ public class DarkForest extends Island implements DarkForestRequirements{
         super("Dark Forest", "You are in the Dark Forest.");
     }
 
+    @Override
+    protected boolean canBuildShelter() {
+        return true;  // Shelter is possible, but risky
+    }
+
+
+    @Override
     public void collectItem(String item){
         inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
@@ -18,6 +25,50 @@ public class DarkForest extends Island implements DarkForestRequirements{
             default:
                 System.out.println("There's no such item here.");
         }
+    }
+
+    @Override
+    public void buildShelter() {
+        if (shelterBuilt) {
+            System.out.println("A crude shelter already stands here, blending into the shadows.");
+            return;
+        }
+        if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
+            inventory.put("rock", inventory.get("rock") - 3);
+            inventory.put("stick", inventory.get("stick") - 3);
+
+            if (luckPoints >= 60) {
+                System.out.println("You carefully construct a hidden shelter, safe from the lurking creatures.");
+                shelterBuilt = true;
+            } else {
+                System.out.println("As night falls, your fragile shelter collapses and you're ambushed by forest creatures! You lose 10 luck points.");
+                adjustLuck(-10);
+            }
+        } else {
+            System.out.println("You need 3 rocks and 3 sticks to build a shelter.");
+        }
+        incrementActions();
+    }
+
+    @Override
+    public void help() {
+        String help = """
+            📍 You are in the Dark Forest.
+            Available Commands:
+            - go north / south / east / west
+            - collect rock / stick
+            - monkey army
+            - volcanic eruption
+            - build fire
+            - look around
+            - fight
+            - rest
+            - inventory, stats, help, quit
+        """;
+        if (!shelterBuilt) {
+            help += "- build shelter\n";
+        }
+        System.out.println(help);
     }
 
     public void monkeyArmy(){
@@ -37,13 +88,13 @@ public class DarkForest extends Island implements DarkForestRequirements{
     @Override
     public Island moveNorth() {
         System.out.println("You head down towards the North Shore. Move North again to reach the shore.");
-        return this;
+        return northExit;
     }
 
     @Override
     public Island moveSouth() {
         System.out.println("You are at a waterfall that flows into a fresh water stream headed towards the South Shore.");
-        return this;
+        return southExit;
     }
 
     @Override
@@ -55,6 +106,6 @@ public class DarkForest extends Island implements DarkForestRequirements{
     @Override
     public Island moveEast() {
         System.out.println("You head up towards the Mountains.");
-        return this;
+        return eastExit;
     }
 }

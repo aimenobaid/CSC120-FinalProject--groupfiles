@@ -58,26 +58,45 @@ public class LightTemple extends Island implements LightForestRequirements {
     }
 
     @Override
+    public void help() {
+    String help = """
+        📍 You are in the Light Temple.
+        Available Commands:
+        - go north / south / east / west
+        - collect rock / stick / berries
+        - forage
+        - pray
+        - pet animal
+        - build fire
+        - look around
+        - fight
+        - rest
+        - inventory, stats, help, quit
+        """;
+    System.out.println(help);
+    }
+
+    @Override
     public Island moveNorth() {
         System.out.println("You head down towards the North Shore. Move North again to reach the shore.");
-        return this;
+        return northExit;
     }
 
     @Override
     public Island moveSouth() {
         System.out.println("You are at a waterfall that flows into a fresh water stream headed towards the South Shore.");
-        return this;
+        return southExit;
     }
 
     @Override
     public Island moveEast() {
         System.out.println("You head down towards the Light Forest and you see a cave along the path. There appears to be an opening to the cave. Move East again to continue on to the forest.");
-        return this;
+        return eastExit;
     }
 
     @Override
     public Island moveWest() {
         System.out.println("You begin to head down to the Dark Forest but you reach a steep cliff! You cannot go further west from here.");
-        return this;
+        return westExit;
     }
 }

@@ -9,16 +9,21 @@ public class Stream extends Island {
         System.out.println(description);
     }
 
-    //will be @Overdride
+    @Override
     public void help() {
-        System.out.println("""
-                Commands:
-                go north/south/east/west
-                collect fish/rock/stick/water/supplies/etc
-                swim
-                drink, eat
-                inventory, stats, help
-                """);
+        String help = """
+            📍 You are at the Stream.
+            Available Commands:
+            - go north / south / east / west
+            - collect rock / stick / water / fish
+            - swim
+            - build fire
+            - look around
+            - fight
+            - rest
+            - inventory, stats, help, quit
+            """;
+        System.out.println(help);
     }
 
     
@@ -28,10 +33,10 @@ public class Stream extends Island {
         
         switch(item.toLowerCase()) {
             case "rock":
-                System.out.println("You collected a rock from the forest floor.");
+                System.out.println("You collected a rock from the banks of the stream");
                 break;
             case "stick":
-                System.out.println("You gathered a sturdy stick from the forest.");
+                System.out.println("You gathered a little stick from the forest.");
                 break;
             case "water":
                 System.out.println("You collected fresh water from the stream.");
@@ -53,24 +58,24 @@ public class Stream extends Island {
     @Override
     public Island moveNorth() {
         System.out.println("You follow the stream up towards the Misty Mountain. You find yourself in front of a beautiful waterfall. There is a path leading to a small alcove behind the water.");
-        return new Waterfall();
+        return northExit;
     }
 
     @Override
     public Island moveSouth() {
         System.out.println("You follow the stream down towards the South Shore.");
-        return new SouthShore();
+        return southExit;
     }
 
     @Override
     public Island moveEast() {
         System.out.println("You leave the stream and enter the Light Forest. You see temple ruins up ahead.");
-        return new LightForest();
+        return eastExit;
     }
 
     @Override
     public Island moveWest() {
         System.out.println("You leave the stream and enter the dense foliage of the Dark Forest. The trees are tall and the air is thick with the smell of damp earth. You can hear the sounds of creatures in the distance.");
-        return new DarkForest();  
+        return westExit;  
     }
 }
