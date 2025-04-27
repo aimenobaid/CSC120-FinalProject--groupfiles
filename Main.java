@@ -109,7 +109,7 @@ public class Main {
           
             } //end of switch statement
             } //end of else statement
-            scanner.close();
+            // scanner.close();
         } //end of while loop
     } //end of main method
 } 

@@ -61,7 +61,6 @@ public class DarkForest extends Island implements DarkForestRequirements{
             - volcanic eruption
             - build fire
             - look around
-            - fight
             - rest
             - inventory, stats, help, quit
         """;

@@ -38,7 +38,6 @@ public class NorthShore extends Island implements NorthShoreRequirements {
             - drink, eat
             - build fire
             - look around
-            - fight
             - rest
             - inventory, stats, help, quit
             """;

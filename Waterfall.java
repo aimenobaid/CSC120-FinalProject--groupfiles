@@ -24,7 +24,6 @@ public class Waterfall extends Island implements WaterfallRequirements {
         - leave alcove
         - build fire
         - look around
-        - fight
         - rest
         - inventory, stats, help, quit
         """;
@@ -64,8 +63,6 @@ public class Waterfall extends Island implements WaterfallRequirements {
         }
     }
 
-    // aimen: i dont think these are doing anything? i'm not too sure, 
-        //reminder: talk to anna about these.
     public void enterAlcove() {
         System.out.println("You enter the alcove behind the waterfall. It is dark and damp, but you can see a small chest hidden in the corner.");
     }
@@ -82,7 +79,6 @@ public class Waterfall extends Island implements WaterfallRequirements {
         System.out.println("The water is rough and choppy. You should not swim here. Try farther downstream.");
     }
 
-    // aimen: these need to be consolidated with the void methods above, see: exits defined in main and island to see how we should do that i dont wanna change too mcuh without talking about.
     @Override
     public Island moveNorth() {
         System.out.println("You return to the mountain path and begin climbing towards Misty Mountain peak. Move North again to continue the climb.");

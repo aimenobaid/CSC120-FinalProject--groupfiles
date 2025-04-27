@@ -14,8 +14,6 @@ ALSO go through and make sure methods like fight(), buildShelter(), buildFire(),
                 help overwritten ___
                 other Island methods overwritten ___
         - also architecture diagram update
-
-    - **help is abstract in Island rn, is that good or?
     - AIMEN: 
         -Consistent help() in every child class **YES**
         -New strategy for moving around, consistent for all child classes completed **YES**
@@ -30,17 +28,22 @@ ALSO go through and make sure methods like fight(), buildShelter(), buildFire(),
         -Fix eat and drink in Player **YES** 
                 --> Now it increments actions and deducts from inventory.
                 --> Can eat all types of food not just fish.
-        -Starting to write game ending events based on luck **In progress**
 
+2) Starting to write game ending events/Death:
+        --> Rescue depending on number of days survived.
+        --> Volcanic eruption based on luck and trying to build a shelter in the wrong place
+        --> In Player:
+            - Health below 10 kills you
+            -Hunger below 10 kills you
+            -Thirst below 10 kills you
+            -Losing a fight decreases Health by 70 ish.
+        --> Fixing the advance day and stats logic to be consistent.
+            -Advancing a day should decrease your hunger and thirst but increase your health.
+            -South shore supply collection should rest every day, should not be able to collect infinite supplies on one day.
 
-3) write game endings and luck-related events- resuce, volcanic eruption, other deaths, etc
+3) make pop up graphic for map at the mountain peak
 
-4) make pop up graphic for map at the mountain peak
-
-5) play game and make sure we meet all rubric requirements (see 'rubric.md' and below) ALSO address all question comments and add javadocs and other comments for the purpose of being graded
-
-
-
+4) play game and make sure we meet all rubric requirements (see 'rubric.md' and below) ALSO address all question comments and add javadocs and other comments for the purpose of being graded
 
 from the official final project repo
 # CSC120-FinalProject

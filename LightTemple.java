@@ -69,7 +69,6 @@ public class LightTemple extends Island implements LightForestRequirements {
         - pet animal
         - build fire
         - look around
-        - fight
         - rest
         - inventory, stats, help, quit
         """;

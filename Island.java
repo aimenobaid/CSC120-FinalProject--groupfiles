@@ -99,6 +99,7 @@ public abstract class Island implements IslandRequirements {
         actionsToday = 0;
         System.out.println("Night falls. You survived Day " + (currentDay - 1) + ". A new day begins.");
         System.out.println("📆 Day " + currentDay);
+
     }
     public static int getCurrentDay() {
         return currentDay;
