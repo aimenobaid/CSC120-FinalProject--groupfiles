@@ -7,7 +7,8 @@ ALSO go through and make sure methods like fight(), buildShelter(), buildFire(),
 
     - ANNA: classes built **YES** 
             added to Main **YES**
-            help overwritten **YES**
+            help overwritten **YES** 
+            ----- DOUBLE CHECK THAT ALL CONDITIONALS ARE IN THERE
             other Island methods overwritten **PART**
     - SHARMILA: classes built ___ 
                 added to main ___ 

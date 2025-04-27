@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.*;
+
 public class Mountain extends Island //implements MountainRequirements 
 {
     public boolean atPeak;
@@ -75,8 +78,27 @@ public class Mountain extends Island //implements MountainRequirements
 
     public void viewMap(){
         if (atPeak) {
-            System.out.println("You pull out the map and see the entire island.");
-            // Add code to display the map here
+            System.out.println("You arrive at the peak and can look over the entire island from here! The view is breathtaking!");
+            
+            // Create a JFrame to display the map
+            JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(600, 600);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(false);
+
+            JDialog dialog = new JDialog(frame, "Island Map", true);
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            
+            ImageIcon mapIcon = new ImageIcon("path/to/your/map/image.png"); // Replace with your image path
+            JLabel mapLabel = new JLabel(mapIcon);
+
+            dialog.getContentPane().add(mapLabel, BorderLayout.CENTER);
+            dialog.pack();
+            dialog.setLocationRelativeTo(null);
+
+            dialog.setVisible(atPeak); // Show the map if at peak
+
         } else {
             System.out.println("You need to climb to the peak to see the map view.");
         }
@@ -95,6 +117,10 @@ public class Mountain extends Island //implements MountainRequirements
             help += """
             build shelter
             """;
+        } else{
+            help += """
+            rest
+            """;
         }
         if (atPeak) {
             help += """
@@ -103,7 +129,7 @@ public class Mountain extends Island //implements MountainRequirements
         } else {
             help += """
             climb mountain to reach peak
-            """;
+            """; 
         }
         System.out.println(help);
     }
