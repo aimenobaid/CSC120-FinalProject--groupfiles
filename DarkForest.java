@@ -58,7 +58,6 @@ public class DarkForest extends Island implements DarkForestRequirements{
             - go north / south / east / west
             - collect rock / stick
             - monkey army
-            - volcanic eruption
             - build fire
             - look around
             - rest
@@ -75,13 +74,12 @@ public class DarkForest extends Island implements DarkForestRequirements{
     }
 
     public void volcanicEruption(){
-
-    }
-
-    public void describe(){
         
     }
 
+    public void describe(){
+        System.out.println(description);
+    }
 
 
     @Override
