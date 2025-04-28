@@ -82,10 +82,10 @@ public class Mountain extends Island //implements MountainRequirements
             
             // Create a JFrame to display the map
             JFrame frame = new JFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             frame.setSize(600, 600);
             frame.setLocationRelativeTo(null);
-            frame.setVisible(false);
+            frame.setVisible(true);
 
             JDialog dialog = new JDialog(frame, "Island Map", true);
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
