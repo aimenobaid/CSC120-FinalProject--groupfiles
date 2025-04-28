@@ -90,7 +90,7 @@ public class Mountain extends Island //implements MountainRequirements
             JDialog dialog = new JDialog(frame, "Island Map", true);
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             
-            ImageIcon mapIcon = new ImageIcon("path/to/your/map/image.png"); // Replace with your image path
+            ImageIcon mapIcon = new ImageIcon("islandMap.png.png"); // Replace with your image path
             JLabel mapLabel = new JLabel(mapIcon);
 
             dialog.getContentPane().add(mapLabel, BorderLayout.CENTER);
