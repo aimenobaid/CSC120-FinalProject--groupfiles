@@ -11,6 +11,7 @@ public class SouthShore extends Island implements SouthShoreRequirements {
         System.out.println(description);
     }
 
+    @Override
     public void help() {
         String help = """
         📍 You are on the South Shore.
@@ -20,12 +21,12 @@ public class SouthShore extends Island implements SouthShoreRequirements {
         - drink, eat
         - build fire
         - look around
-        - fight
         - inventory, stats, help, quit
             """;
         System.out.println(help);
     }
-  
+
+    @Override
     public void collectItem(String item){
         inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
@@ -65,7 +66,8 @@ public class SouthShore extends Island implements SouthShoreRequirements {
     // super.advanceDay();
     // suppliesCollectedToday = false;
     // } 
-
+     
+    @Override
     public void buildShelter() {
         try {
             throw new Exception("The south shore is not a good place to build a shelter. It is windy and exposed. Try somewhere else.");

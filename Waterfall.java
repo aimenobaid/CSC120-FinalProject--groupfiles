@@ -24,7 +24,6 @@ public class Waterfall extends Island implements WaterfallRequirements {
         - leave alcove
         - build fire
         - look around
-        - fight
         - rest
         - inventory, stats, help, quit
         """;
