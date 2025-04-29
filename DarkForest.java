@@ -9,10 +9,9 @@ public class DarkForest extends Island implements DarkForestRequirements{
     }
 
     public void forage(){
-        System.out.println("You forage in a small bush.");
+        System.out.println("You forage in a small bush, and find a few berries. But they have suspicious dark spots and you don't see any animals nearby. You leave them on the bush and wipe their juices on your pants.");
         if(luckPoints >= 50){
-            collectItem("berry");
-            adjustLuck(1);
+            adjustLuck(-1);
         }
         if(luckPoints < 50){
             System.out.println("You didn't find anything in the bush.");
@@ -107,8 +106,8 @@ public class DarkForest extends Island implements DarkForestRequirements{
 
     @Override
     public Island moveWest() {
-        System.out.println("You head east, deeper into the forest, but find yourself getting lost. You decide to head back.");
-        return this;
+        System.out.println("");
+        return westExit;
     }
 
     @Override

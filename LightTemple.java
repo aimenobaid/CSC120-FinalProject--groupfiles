@@ -1,7 +1,7 @@
 public class LightTemple extends Island implements LightForestRequirements {
 
     public LightTemple(){
-        super("Light Temple", "You are in the Light Temple. Move North again to continue to the North Shore.");
+        super("Light Temple", "You are in the Light Temple. The white marble walls are solid and strong. Against one is a collection of strange humanoid figures.");
     }
 
     
@@ -27,18 +27,18 @@ public class LightTemple extends Island implements LightForestRequirements {
     }
 
     public void pray(){
-        System.out.println("You take a moment to pray at the temple's altar.");
+        System.out.println("You take a moment to pray at the temple's altar. You wasted about an hour of your time.");
         adjustLuck(-2);
     }
 
     public void forage(){
-        System.out.println("You forage in a small bush.");
+        System.out.println("You forage in a small bush near the temple.");
         if(luckPoints >= 50){
             collectItem("berry");
             adjustLuck(1);
         }
         if(luckPoints < 50){
-            System.out.println("You didn't find anything in the bush.");
+            System.out.println("You didn't find anything in the bushes near the temple.");
         }
     }
 
@@ -52,11 +52,6 @@ public class LightTemple extends Island implements LightForestRequirements {
         collectItem("rock");
     }
 
-    public void petAnimal(){
-        System.out.println("You quietly wait for the animal to approach you, before patting it gently on the snout.");
-        adjustLuck(2);
-    }
-
     @Override
     public void help() {
     String help = """
@@ -66,7 +61,6 @@ public class LightTemple extends Island implements LightForestRequirements {
         - collect rock / stick / berries
         - forage
         - pray
-        - pet animal
         - build fire
         - look around
         - rest
@@ -77,25 +71,25 @@ public class LightTemple extends Island implements LightForestRequirements {
 
     @Override
     public Island moveNorth() {
-        System.out.println("You head down towards the North Shore. Move North again to reach the shore.");
+        System.out.println("");
         return northExit;
     }
 
     @Override
     public Island moveSouth() {
-        System.out.println("You are at a waterfall that flows into a fresh water stream headed towards the South Shore.");
+        System.out.println("");
         return southExit;
     }
 
     @Override
     public Island moveEast() {
-        System.out.println("You head down towards the Light Forest and you see a cave along the path. There appears to be an opening to the cave. Move East again to continue on to the forest.");
+        System.out.println("");
         return eastExit;
     }
 
     @Override
     public Island moveWest() {
-        System.out.println("You begin to head down to the Dark Forest but you reach a steep cliff! You cannot go further west from here.");
+        System.out.println("");
         return westExit;
     }
 }

@@ -1,5 +1,6 @@
 public class LightForest extends Island implements LightForestRequirements {
     protected boolean shelterBuilt;
+    private boolean animal;
 
     public LightForest() {
         super("Light Forest", "You are in the Light Forest. There are tall trees whose leaves are high above you. The forest extends for miles around.");
@@ -33,6 +34,19 @@ public class LightForest extends Island implements LightForestRequirements {
         if(luckPoints < 50){
             System.out.println("You didn't find anything in the bush.");
         }
+
+        if(luckPoints%7 == 0){
+            animal = true;
+            System.out.println("A strange, small animal approaches you. It makes a short noise out of its pig-like snout. Its fur looks soft.");
+        }
+    }
+
+    public boolean getAnimal(){
+        return animal;
+    }
+
+    public void setAnimal(boolean b){
+        animal = b;
     }
 
     @Override
@@ -74,6 +88,9 @@ public class LightForest extends Island implements LightForestRequirements {
     """;
     if (!shelterBuilt) {
         help += "- build shelter\n";
+    }
+    if(animal){
+        help += "- pet animal";
     }
     System.out.println(help);   
     }

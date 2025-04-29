@@ -108,12 +108,18 @@ public class Main {
                 //Light Forest
                 case "forage" -> {
                     if(player.getLocation() instanceof LightForest lf) lf.forage();
-                    if(player.getLocation() instanceof DarkForest df) df.forage();
+                    if(player.getLocation() instanceof DarkForest df){
+                        df.forage();
+                        System.out.println("");
+                    }
                     else System.out.println("You cannot forage here.");
                 }
 
                 case "pet" -> {
-                    if(player.getLocation() instanceof LightForest lf) lf.petAnimal();
+                    if(player.getLocation() instanceof LightForest lf && lf.getAnimal()){
+                        lf.petAnimal();
+                        lf.setAnimal(false);
+                    }
                     else System.out.println("You pet an imaginary animal. How long has it been since you slept?");
                 }
                 
