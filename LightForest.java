@@ -67,7 +67,6 @@ public class LightForest extends Island implements LightForestRequirements {
         - go north / south / east / west
         - collect rock / stick / berries
         - forage
-        - pet animal
         - build fire
         - look around
         - rest

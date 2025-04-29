@@ -104,6 +104,18 @@ public class Main {
                     if (player.getLocation() instanceof Waterfall wf) wf.leaveAlcove();
                     else System.out.println("You are not in the alcove.");
                 }
+
+                //Light Forest
+                case "forage" -> {
+                    if(player.getLocation() instanceof LightForest lf) lf.forage();
+                    if(player.getLocation() instanceof DarkForest df) df.forage();
+                    else System.out.println("You cannot forage here.");
+                }
+
+                case "pet" -> {
+                    if(player.getLocation() instanceof LightForest lf) lf.petAnimal();
+                    else System.out.println("You pet an imaginary animal. How long has it been since you slept?");
+                }
                 
                 default -> System.out.println("Unknown command. Type 'help' for options.");
           

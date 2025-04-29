@@ -8,6 +8,17 @@ public class DarkForest extends Island implements DarkForestRequirements{
         return true;  // Shelter is possible, but risky
     }
 
+    public void forage(){
+        System.out.println("You forage in a small bush.");
+        if(luckPoints >= 50){
+            collectItem("berry");
+            adjustLuck(1);
+        }
+        if(luckPoints < 50){
+            System.out.println("You didn't find anything in the bush.");
+        }
+    }
+
 
     @Override
     public void collectItem(String item){
