@@ -13,6 +13,10 @@ public class Player {
         this.currentLocation = startingLocation;
     }
 
+    public void changeHealth(int x){
+        hunger += x;
+    }
+
     public String getName() {
         return name;
     }

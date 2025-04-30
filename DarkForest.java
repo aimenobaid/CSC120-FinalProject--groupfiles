@@ -67,7 +67,6 @@ public class DarkForest extends Island implements DarkForestRequirements{
             Available Commands:
             - go north / south / east / west
             - collect rock / stick
-            - monkey army
             - build fire
             - look around
             - rest
@@ -106,7 +105,9 @@ public class DarkForest extends Island implements DarkForestRequirements{
 
     @Override
     public Island moveWest() {
-        System.out.println("");
+        System.out.println("You move deeper into the forest. As the vegetation grows denser and darker, you hear a rumble to your left. You crouch down quickly into the bush.");
+        System.out.println("A strange creature emerges out of the bushes. It walks upright, with a snout like a monkey's and strong gorilla arms. It has orange and black fur like a tiger's. It moves west through the bushes, dragging its long tail behind. You decide to follow.");
+        System.out.println("The Tiger Monkey is approaching a brown structure, where it remains for a moment. You hear it rustle around before leaving the structure again, and moves into the forest. Move West again to go into the Tiger Monkey's Hut.");
         return westExit;
     }
 
