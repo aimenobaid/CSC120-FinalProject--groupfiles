@@ -73,7 +73,7 @@ public class Main {
                 case "fight" -> {
                     player.getLocation().fight();
                     if(!player.getLocation().fight()){
-                        //player.changeHealth(-60);
+                        player.changeHealth(-70);
                     }
                 }
                 case "swim" -> {
@@ -132,7 +132,7 @@ public class Main {
           
             } //end of switch statement
             } //end of else statement
-            // scanner.close();
+            scanner.close();
             if(player.getLocation() instanceof DarkForest df){
                 if(df.volcanicEruption()){
                     player.changeHealth(-101);
