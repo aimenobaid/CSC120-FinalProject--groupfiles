@@ -8,6 +8,16 @@ public class DarkForest extends Island implements DarkForestRequirements{
         return true;  // Shelter is possible, but risky
     }
 
+    public void forage(){
+        System.out.println("You forage in a small bush, and find a few berries. But they have suspicious dark spots and you don't see any animals nearby. You leave them on the bush and wipe their juices on your pants.");
+        if(luckPoints >= 50){
+            adjustLuck(-1);
+        }
+        if(luckPoints < 50){
+            System.out.println("You didn't find anything in the bush.");
+        }
+    }
+
 
     @Override
     public void collectItem(String item){
@@ -57,7 +67,6 @@ public class DarkForest extends Island implements DarkForestRequirements{
             Available Commands:
             - go north / south / east / west
             - collect rock / stick
-            - monkey army
             - build fire
             - look around
             - rest
@@ -69,14 +78,15 @@ public class DarkForest extends Island implements DarkForestRequirements{
         System.out.println(help);
     }
 
-    public void monkeyArmy(){
-
+    public boolean volcanicEruption(){
+        if(luckPoints < 20){
+            System.out.println("You feel a sudden rumbling of the ground, and turn towards the Mountain. The top of the mountain shakes, before exploding into a cloud of black dust and ash. You're frozen for a moment, before you see hot lava and pyroclastic flow begin to rush down the side of the mountain. You have no chance of running.");
+            return true;
+        }
+        return false;
     }
 
-    public void volcanicEruption(){
-        
-    }
-
+    @Override
     public void describe(){
         System.out.println(description);
     }
@@ -96,8 +106,10 @@ public class DarkForest extends Island implements DarkForestRequirements{
 
     @Override
     public Island moveWest() {
-        System.out.println("You head east, deeper into the forest, but find yourself getting lost. You decide to head back.");
-        return this;
+        System.out.println("You move deeper into the forest. As the vegetation grows denser and darker, you hear a rumble to your left. You crouch down quickly into the bush.");
+        System.out.println("A strange creature emerges out of the bushes. It walks upright, with a snout like a monkey's and strong gorilla arms. It has orange and black fur like a tiger's. It moves west through the bushes, dragging its long tail behind. You decide to follow.");
+        System.out.println("The Tiger Monkey is approaching a brown structure, where it remains for a moment. You hear it rustle around before leaving the structure again, and moves into the forest. You go inside the structure.");
+        return westExit;
     }
 
     @Override

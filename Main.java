@@ -12,6 +12,7 @@ public class Main {
         LightTemple lightTemple = new LightTemple();
         Stream stream = new Stream();
         Waterfall waterfall = new Waterfall();
+        TigerMonkeyHut tigerMonkeyHut = new TigerMonkeyHut();
 
         // Setting up all the connections
 
@@ -20,10 +21,11 @@ public class Main {
         mountain.setExits(northShore, waterfall, lightForest, darkForest);
         mtnCave.setExits(mountain, waterfall, lightForest, mountain);
         lightForest.setExits(lightTemple, stream, null, mountain);
-        darkForest.setExits(northShore, stream, mountain, null);
+        darkForest.setExits(northShore, stream, mountain, tigerMonkeyHut);
         lightTemple.setExits(northShore, stream, lightForest, darkForest);
         stream.setExits(waterfall, southShore, lightForest, darkForest);
         waterfall.setExits(mountain, stream, lightForest, darkForest);
+        tigerMonkeyHut.setExits(darkForest, waterfall, mountain, null);
 
         // Start game
         Player player = new Player("Explorer", northShore);
@@ -107,12 +109,41 @@ public class Main {
                     if (player.getLocation() instanceof Waterfall wf) wf.leaveAlcove();
                     else System.out.println("You are not in the alcove.");
                 }
+
+                //Light Forest
+                case "forage" -> {
+                    if(player.getLocation() instanceof LightForest lf) lf.forage();
+                    if(player.getLocation() instanceof DarkForest df){
+                        df.forage();
+                        System.out.println("");
+                    }
+                    else System.out.println("You cannot forage here.");
+                }
+
+                case "pet" -> {
+                    if(player.getLocation() instanceof LightForest lf && lf.getAnimal()){
+                        lf.petAnimal();
+                        lf.setAnimal(false);
+                    }
+                    else System.out.println("You pet an imaginary animal. How long has it been since you slept?");
+                }
                 
                 default -> System.out.println("Unknown command. Type 'help' for options.");
           
             } //end of switch statement
             } //end of else statement
             // scanner.close();
+            if(player.getLocation() instanceof DarkForest df){
+                if(df.volcanicEruption()){
+                    player.changeHealth(-101);
+                    player.die();
+                }
+            }
+            if(player.die()){
+                System.out.println("You have died! You lived until Day " + Island.getCurrentDay() + ". Your stats were: ");
+                player.displayStats();
+                break;
+            }
         } //end of while loop
     } //end of main method
 } 

@@ -13,6 +13,14 @@ public class Player {
         this.currentLocation = startingLocation;
     }
 
+    public void changeHealth(int x){
+        health += x;
+    }
+
+    public int getHealth(){
+        return health;
+    }
+
     public String getName() {
         return name;
     }
@@ -77,5 +85,12 @@ public class Player {
         } else {
             System.out.println("You can't rest here. You need to find or build a shelter first.");
         }
+    }
+
+    public boolean die(){
+        if(health < 0){
+            return true;
+        }
+        return false;
     }
 }
