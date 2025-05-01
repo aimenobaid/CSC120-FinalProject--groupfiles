@@ -1,4 +1,3 @@
 public interface DarkForestRequirements {
-    void monkeyArmy();
-    void volcanicEruption();
+    boolean volcanicEruption();
 }

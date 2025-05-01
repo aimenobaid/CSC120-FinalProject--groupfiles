@@ -1,3 +1,5 @@
+import javax.sql.rowset.serial.SQLOutputImpl;
+
 public class TigerMonkeyHut extends Island{
     private boolean suppliesCollectedToday;
 
@@ -66,12 +68,13 @@ public class TigerMonkeyHut extends Island{
     }
 
     public void collectSupplies(){
-
+        System.out.println("You collect the supplies from the chest.");
+        suppliesCollectedToday = true;
     }
 
     public void FightMonkey(){
         if(luckPoints < 50){
-
+            
         }
         if(luckPoints >= 50){
             
@@ -80,13 +83,13 @@ public class TigerMonkeyHut extends Island{
 
     public void help() {
         String help = """
-            📍 You are in the Dark Forest.
-            Available Commands:
-            - go north / south / east / west
-            - collect rock / stick
-            - look around
-            - rest
-            - inventory, stats, help, quit
+        📍 You are inside the Tiger Monkey Hut.
+        Available Commands:
+        go north / south / east / west
+        collect rock / stick
+        leave hut
+        drink, eat
+        inventory, stats, help
         """;
         System.out.println(help);
     }

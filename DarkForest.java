@@ -78,12 +78,12 @@ public class DarkForest extends Island implements DarkForestRequirements{
         System.out.println(help);
     }
 
-    public void monkeyArmy(){
-
-    }
-
-    public void volcanicEruption(){
-        
+    public boolean volcanicEruption(){
+        if(luckPoints < 20){
+            System.out.println("You feel a sudden rumbling of the ground, and turn towards the Mountain. The top of the mountain shakes, before exploding into a cloud of black dust and ash. You're frozen for a moment, before you see hot lava and pyroclastic flow begin to rush down the side of the mountain. You have no chance of running.");
+            return true;
+        }
+        return false;
     }
 
     public void describe(){

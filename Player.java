@@ -14,7 +14,11 @@ public class Player {
     }
 
     public void changeHealth(int x){
-        hunger += x;
+        health += x;
+    }
+
+    public int getHealth(){
+        return health;
     }
 
     public String getName() {
@@ -81,5 +85,12 @@ public class Player {
         } else {
             System.out.println("You can't rest here. You need to find or build a shelter first.");
         }
+    }
+
+    public boolean die(){
+        if(health < 0){
+            return true;
+        }
+        return false;
     }
 }

@@ -128,6 +128,17 @@ public class Main {
             } //end of switch statement
             } //end of else statement
             // scanner.close();
+            if(player.getLocation() instanceof DarkForest df){
+                if(df.volcanicEruption()){
+                    player.changeHealth(-101);
+                    player.die();
+                }
+            }
+            if(player.die()){
+                System.out.println("You have died! You lived until Day " + Island.getCurrentDay() + ". Your stats were: ");
+                player.displayStats();
+                break;
+            }
         } //end of while loop
     } //end of main method
 } 
