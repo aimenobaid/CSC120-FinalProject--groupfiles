@@ -153,18 +153,21 @@ public abstract class Island implements IslandRequirements {
         incrementActions();
     }
     /** Combat */
-    public void fight() {
+    public boolean fight() {
         Random rand = new Random();
         int chance = rand.nextInt(100) + 1;
+        incrementActions(); //moved this up (it was after the else) bc it said it was unreachable
+
         System.out.println("You engage in a fight...");
         if (chance <= luckPoints) {
             System.out.println("You win the fight!");
             adjustLuck(5);
+            return true; 
         } else {
             System.out.println("You lost the fight...idiot");
             adjustLuck(-10);
+            return false;
         }
-        incrementActions();
     }
     /** Exploring */
     public void lookAround() {

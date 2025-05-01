@@ -72,6 +72,9 @@ public class Main {
                 }
                 case "fight" -> {
                     player.getLocation().fight();
+                    if(!player.getLocation().fight()){
+                        //player.changeHealth(-60);
+                    }
                 }
                 case "swim" -> {
                     if (player.getLocation() instanceof Waterfall w) w.swim();
