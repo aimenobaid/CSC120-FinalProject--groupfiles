@@ -39,6 +39,7 @@ public class TigerMonkeyHut extends Island{
         System.out.println("You move deeper into the Dark Forest, but slowly find the vegetation too dense to walk through.");
         return this;
     }
+    @Override
     // Common actions across all islands
     public void collectItem(String item){
         inventory.put(item, inventory.getOrDefault(item, 0) + 1);
@@ -80,6 +81,7 @@ public class TigerMonkeyHut extends Island{
         }
     }
 
+    @Override
     public void help() {
         String help = """
         📍 You are inside the Tiger Monkey Hut.

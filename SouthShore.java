@@ -66,7 +66,6 @@ public class SouthShore extends Island implements SouthShoreRequirements {
     // super.advanceDay();
     // suppliesCollectedToday = false;
     // } 
-     
     @Override
     public void buildShelter() {
         try {

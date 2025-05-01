@@ -20,7 +20,7 @@ public class Main {
         southShore.setExits(stream, null, lightForest, darkForest);
         mountain.setExits(northShore, waterfall, lightForest, darkForest);
         mtnCave.setExits(mountain, waterfall, lightForest, mountain);
-        lightForest.setExits(lightTemple, stream, null, mountain);
+        lightForest.setExits(lightTemple, stream, lightForest, mountain);
         darkForest.setExits(northShore, stream, mountain, tigerMonkeyHut);
         lightTemple.setExits(northShore, stream, lightForest, darkForest);
         stream.setExits(waterfall, southShore, lightForest, darkForest);
@@ -132,7 +132,6 @@ public class Main {
           
             } //end of switch statement
             } //end of else statement
-            // scanner.close();
             if(player.getLocation() instanceof DarkForest df){
                 if(df.volcanicEruption()){
                     player.changeHealth(-101);
@@ -144,6 +143,6 @@ public class Main {
                 player.displayStats();
                 break;
             }
-        } //end of while loop
+        } scanner.close();
     } //end of main method
 } 
