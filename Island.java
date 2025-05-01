@@ -5,7 +5,7 @@ public abstract class Island implements IslandRequirements {
     protected String name;
     protected String description;
 
-    protected static int luckPoints = 10; // example starting value
+    protected static int luckPoints = 50; // example starting value
     protected static HashMap<String, Integer> inventory = new HashMap<>();
     
     protected static int currentDay = 1;

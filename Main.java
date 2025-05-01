@@ -12,6 +12,7 @@ public class Main {
         LightTemple lightTemple = new LightTemple();
         Stream stream = new Stream();
         Waterfall waterfall = new Waterfall();
+        TigerMonkeyHut tigerMonkeyHut = new TigerMonkeyHut();
 
         // Setting up all the connections
 
@@ -20,10 +21,11 @@ public class Main {
         mountain.setExits(northShore, waterfall, lightForest, darkForest);
         mtnCave.setExits(mountain, waterfall, lightForest, mountain);
         lightForest.setExits(lightTemple, stream, null, mountain);
-        darkForest.setExits(northShore, stream, mountain, null);
+        darkForest.setExits(northShore, stream, mountain, tigerMonkeyHut);
         lightTemple.setExits(northShore, stream, lightForest, darkForest);
         stream.setExits(waterfall, southShore, lightForest, darkForest);
         waterfall.setExits(mountain, stream, lightForest, darkForest);
+        tigerMonkeyHut.setExits(darkForest, waterfall, mountain, null);
 
         // Start game
         Player player = new Player("Explorer", northShore);
