@@ -44,7 +44,6 @@ public class SouthShore extends Island implements SouthShoreRequirements {
             case "supplies":
                 if (!suppliesCollectedToday) {
                     System.out.println("You find washed-up supplies from an old wreck.");
-                    collectItem("supplies");
                     suppliesCollectedToday = true;
                 } else {
                     System.out.println("Youve already scavenged everything for today.");

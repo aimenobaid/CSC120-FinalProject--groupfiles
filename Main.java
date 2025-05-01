@@ -71,7 +71,7 @@ public class Main {
                     return;
                 }
                 case "fight" -> {
-                    player.getLocation().fight();
+                    //player.getLocation().fight();
                     if(!player.getLocation().fight()){
                         player.changeHealth(-70);
                     }
