@@ -97,7 +97,7 @@ public class LightForest extends Island implements LightForestRequirements {
 
     @Override
     public Island moveNorth() {
-        System.out.println("You head down towards the North Shore. Before you reach the forest edge, you find a white structure with pillars and small statues. Move North again to go into the temple.");
+        System.out.println("You head down towards the North Shore. Before you reach the forest edge, you find a white structure with pillars and small statues. You decide to go inside.");
         return northExit;
     }
 

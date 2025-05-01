@@ -52,6 +52,12 @@ public class TigerMonkeyHut extends Island{
             case "stick":
                 System.out.println("You gathered a sturdy stick from the forest.");
                 break;
+            case "supplies":
+                if(suppliesCollectedToday){
+                    System.out.println("You already collected supplies from the hut today.");
+                } else {
+                    System.out.println("You creep inside and collect supplies from the tiger-monkey's hut.");
+                }
             default:
                 System.out.println("There's no such item here.");
         }
