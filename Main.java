@@ -18,7 +18,7 @@ public class Main {
 
         northShore.setExits(null, mountain, lightForest, darkForest);
         southShore.setExits(stream, null, lightForest, darkForest);
-        mountain.setExits(northShore, waterfall, lightForest, darkForest);
+        mountain.setExits(northShore, waterfall, mtnCave, darkForest);
         mtnCave.setExits(mountain, waterfall, lightForest, mountain);
         lightForest.setExits(lightTemple, stream, null, mountain);
         darkForest.setExits(northShore, stream, mountain, tigerMonkeyHut);

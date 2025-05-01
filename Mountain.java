@@ -63,7 +63,6 @@ public class Mountain extends Island //implements MountainRequirements
     public void climbMountain() {
         System.out.println("You climb to the peak of the mountain. The view is breathtaking! You can see the entire island from here.");
         atPeak = true;
-        //add pop up map here
     }
 
     //enter the cave by pushing the rock
@@ -128,7 +127,7 @@ public class Mountain extends Island //implements MountainRequirements
             """;
         } else {
             help += """
-            climb mountain to reach peak
+            climb mountain
             """; 
         }
         System.out.println(help);
