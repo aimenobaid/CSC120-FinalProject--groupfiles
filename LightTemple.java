@@ -22,6 +22,7 @@ public class LightTemple extends Island implements LightForestRequirements {
         }
     }
     
+    @Override
     public void describe(){
         System.out.println(description);
     }
@@ -40,16 +41,6 @@ public class LightTemple extends Island implements LightForestRequirements {
         if(luckPoints < 50){
             System.out.println("You didn't find anything in the bushes near the temple.");
         }
-    }
-
-    public void collectStick(){
-        System.out.println("You grab a stick from the base of a tree.");
-        collectItem("stick");
-    }
-
-    public void collectRock(){
-        System.out.println("You pick up a rock from the base of a tree.");
-        collectItem("rock");
     }
 
     @Override
