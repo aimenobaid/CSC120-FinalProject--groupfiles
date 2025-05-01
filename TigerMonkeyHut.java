@@ -1,5 +1,3 @@
-import javax.sql.rowset.serial.SQLOutputImpl;
-
 public class TigerMonkeyHut extends Island{
     private boolean suppliesCollectedToday;
 
