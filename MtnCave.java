@@ -1,7 +1,7 @@
 public class MtnCave extends Island {
 
     public MtnCave() {
-        super("Mountain Cave", "You have entered a cave in the Misty Mountain. It is dark and damp. You cannot see more than a few inches in front of you. The air is mostly still except for a faint breeze that almost feels like a creature breathing softly.");
+        super("Mountain Cave", "You have entered a cave in the Misty Mountain. It is dark and damp. You cannot see more than a few inches in front of you. Suddenly a mountain troll comes out of the darkness. You must leave immediately or fight him.");
     }
 
     @Override
@@ -45,7 +45,7 @@ public class MtnCave extends Island {
 
     //sort of a movement method so update w/ that system
     public Island leaveCave(){
-        System.out.println("You leave the cave and step out into the light. You are on the side of the mountain. There is a path leading up to the peak or down towards the Light Forest.");
+        System.out.println("You quickly run out of the cave and step out into the light. The mountain troll cannot get you here. You are on the side of the mountain. There is a path leading up to the peak or down towards the Light Forest.");
         return northExit;
     }
 
