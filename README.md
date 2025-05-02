@@ -42,7 +42,7 @@ ALSO go through and make sure methods like fight(), buildShelter(), buildFire(),
             -Advancing a day should decrease your hunger and thirst but increase your health.
             -South shore supply collection should rest every day, should not be able to collect infinite supplies on one day.
 
-3) make pop up graphic for map at the mountain peak
+3) make pop up graphic for map at the mountain peak - **YES** but could be better?
 
 4) play game and make sure we meet all rubric requirements (see 'rubric.md' and below) ALSO address all question comments and add javadocs and other comments for the purpose of being graded
 

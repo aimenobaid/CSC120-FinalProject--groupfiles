@@ -7,7 +7,7 @@ public class Mountain extends Island //implements MountainRequirements
     public boolean inCave;
 
     public Mountain() {
-        super("Mountain", "You are at the Misty Mountain. There are paths leading up to the peak with rocks and coal along the way.");
+        super("Mountain", "You've arrived at the Misty Mountain. There are paths leading up to the peak with rocks and coal along the way.");
         this.atPeak = false;
         this.inCave = false;
     }
@@ -51,7 +51,7 @@ public class Mountain extends Island //implements MountainRequirements
                 System.out.println("You managed to build a sturdy shelter on the mountain slope.");
                 shelterBuilt = true;
             } else {
-                System.out.println("You built a shelter... but it collapses over the edge. You lose 5 luck points :(");
+                System.out.println("You built a shelter... but it collapses. You lose 5 luck points :(");
                 adjustLuck(-5); // temporary will replace with a gameover sich
             }
         } else {
@@ -65,15 +65,6 @@ public class Mountain extends Island //implements MountainRequirements
         atPeak = true;
     }
 
-    //enter the cave by pushing the rock
-    //might want to restrict this to only be an option if the person is at the cave entrance 
-    //but that would be annoying so as long as we never suggest pushing a rock in another context in mtn its prob fine
-    //its not in help() for this reason...
-    public Island pushRock(){
-        System.out.println("You push the rock blocking the cave entrance. It rolls away, revealing a dark cave.");
-        inCave = true;
-        return new MtnCave();
-    }
 
     public void viewMap(){
         if (atPeak) {

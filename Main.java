@@ -85,10 +85,6 @@ public class Main {
                     if (player.getLocation() instanceof Mountain m) m.climbMountain();
                     else System.out.println("You must be at the Misty Mountain in order to climb to its peak.");
                 }
-                case "push rock" -> {
-                    if (player.getLocation() instanceof Mountain m) m.pushRock();
-                    else System.out.println("You must be near the cave entrance on the Misty Mountain to push the rock.");
-                }
                 case "view map" -> {
                     if (player.getLocation() instanceof Mountain m) m.viewMap();
                     else System.out.println("You must be at the peak of the Misty Mountain to view the map.");

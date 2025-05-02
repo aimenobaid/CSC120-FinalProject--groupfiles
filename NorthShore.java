@@ -86,7 +86,7 @@ public class NorthShore extends Island implements NorthShoreRequirements {
 
     @Override
     public Island moveSouth() {
-        System.out.println("You follow a path leading into the forest. A mountain looms ahead of you.");
+        System.out.println("You follow a path leading south into the forest.");
         return southExit;
     }
 
