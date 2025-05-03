@@ -1,6 +1,13 @@
 import java.util.Scanner;
 
 public class Main {
+
+    /**
+     * Main method to run the game. 
+     * This method initializes the game world, sets up the player, and starts the game loop.
+     * It handles user input and processes commands to interact with the game world.
+     * @param args
+     */
     public static void main(String[] args) {
         // Hardcoded locations
         NorthShore northShore = new NorthShore();
@@ -10,7 +17,6 @@ public class Main {
         MtnCave mtnCave = new MtnCave();
         LightForest lightForest = new LightForest();
         DarkForest darkForest = new DarkForest();
-        DarkForest darkForestInstance = darkForest;
         LightTemple lightTemple = new LightTemple();
         Stream stream = new Stream();
         Waterfall waterfall = new Waterfall();
