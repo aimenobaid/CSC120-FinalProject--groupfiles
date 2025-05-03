@@ -99,7 +99,7 @@ public class TigerMonkeyHut extends Island{
         if(luckPoints <= 50 && suppliesCollectedToday){
             System.out.println("As you rummage around in the hut, the Tiger Monkey appears in the doorway. He lets out a horrible roar, and begins barrelling towards you.");
             opponent = true;
-            if(fight()){
+            if(!fight()){
                 System.out.println("You lost your fight with the Tiger Monkey!");
                 return false;
             }
