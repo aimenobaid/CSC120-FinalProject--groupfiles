@@ -106,6 +106,13 @@ public abstract class Island implements IslandRequirements {
         if (actionsToday >= ACTIONS_PER_DAY) {
             advanceDay();
         }
+
+        if(actionsToday%5==0){
+            Player globalPlayer = Player.getInstance();
+            globalPlayer.increaseHunger(5);
+            globalPlayer.increaseThirst(5);
+        }
+        System.out.println("You are getting tired. Your hunger and thirst are increasing.");
     }
 
     public void newDay() {
@@ -127,8 +134,8 @@ public abstract class Island implements IslandRequirements {
         }
         // === DAILY PLAYER STATUS CHANGES ===
         Player globalPlayer = Player.getInstance();
-        globalPlayer.decreaseHunger(10);
-        globalPlayer.decreaseThirst(10);
+        globalPlayer.increaseHunger(10);
+        globalPlayer.increaseThirst(10);
         globalPlayer.heal(5); // Recover small amount of health overnight
 
         // === RESET LOCATIONS THAT NEED DAILY RESET ===
