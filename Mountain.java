@@ -1,5 +1,11 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.JDialog;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import java.awt.Frame;
+
 
 public class Mountain extends Island //implements MountainRequirements 
 {
@@ -73,24 +79,18 @@ public class Mountain extends Island //implements MountainRequirements
         if (atPeak) {
             System.out.println("You arrive at the peak and can look over the entire island from here! The view is breathtaking!");
             
-            // Create a JFrame to display the map
-            JFrame frame = new JFrame();
-            frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            frame.setSize(600, 600);
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-
-            JDialog dialog = new JDialog(frame, "Island Map", true);
-            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            // Create a JDialog with no parent so you can't continue play until closing the map
+            JDialog map = new JDialog((Frame)null, "Island Map", true);
             
-            ImageIcon mapIcon = new ImageIcon("islandMap.png"); // Replace with your image path
+
+            ImageIcon mapIcon = new ImageIcon("islandMap.png");
             JLabel mapLabel = new JLabel(mapIcon);
-
-            dialog.getContentPane().add(mapLabel, BorderLayout.CENTER);
-            dialog.pack();
-            dialog.setLocationRelativeTo(null);
-
-            dialog.setVisible(atPeak); // Show the map if at peak
+            map.getContentPane().add(mapLabel, BorderLayout.CENTER);
+            
+            map.pack();
+            map.setLocationRelativeTo(null);
+            map.setAlwaysOnTop(true);
+            map.setVisible(atPeak); // Show the map if at peak
 
         } else {
             System.out.println("You need to climb to the peak to see the map view.");
