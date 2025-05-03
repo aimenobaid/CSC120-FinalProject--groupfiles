@@ -14,7 +14,7 @@ Architecure Diagram: https://docs.google.com/drawings/d/1Kdz_9xdI5osGZPDPGFbb5GN
             -Losing a fight decreases Health by 70 ish. 
         --> Fixing the advance day and stats logic to be consistent.  Aimen: **YES** // also hopefully should be working
             -Advancing a day should decrease your hunger and thirst but increase your health.
-            -South shore supply collection should rest every day, should not be able to collect infinite supplies on one day.
+            -South shore supply collection should reset every day, should not be able to collect infinite supplies on one day.
         --> TigerMonkeyHut fun treasure (flare that lets you be rescued) **YES** // I hope this stuff works
 
 
