@@ -9,8 +9,8 @@ Architecure Diagram: https://docs.google.com/drawings/d/1Kdz_9xdI5osGZPDPGFbb5GN
         --> Volcanic eruption based on luck and trying to build a shelter in the wrong place **YES**
         --> In Player: **YES** // also hopefully should be working
             -Health below 10 kills you
-            -Hunger below 10 kills you
-            -Thirst below 10 kills you
+            -Hunger above 100 kills you
+            -Thirst above 100 kills you
             -Losing a fight decreases Health by 70 ish. 
         --> Fixing the advance day and stats logic to be consistent. **YES** // also hopefully should be working
             -Advancing a day should decrease your hunger and thirst but increase your health.
