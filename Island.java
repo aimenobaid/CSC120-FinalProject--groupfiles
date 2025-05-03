@@ -3,6 +3,13 @@ import java.util.Random;
 
 public abstract class Island implements IslandRequirements {
 
+    public static Waterfall getWaterfallInstance() {
+        return waterfallInstance;
+    }
+
+    public static void setWaterfallInstance(Waterfall waterfallInstance) {
+        Island.waterfallInstance = waterfallInstance;
+    }
     protected String name;
     protected String description;
     protected boolean opponent = false;
@@ -138,6 +145,9 @@ public abstract class Island implements IslandRequirements {
         }
         if (waterfallInstance != null) {
             waterfallInstance.newDay();
+        }
+        if (darkForestInstance != null) {
+            darkForestInstance.newDay();
         }
     }
 

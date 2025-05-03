@@ -10,6 +10,7 @@ public class Main {
         MtnCave mtnCave = new MtnCave();
         LightForest lightForest = new LightForest();
         DarkForest darkForest = new DarkForest();
+        DarkForest darkForestInstance = darkForest;
         LightTemple lightTemple = new LightTemple();
         Stream stream = new Stream();
         Waterfall waterfall = new Waterfall();
