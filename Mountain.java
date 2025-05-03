@@ -1,5 +1,4 @@
-import java.awt.*;
-import javax.swing.*;
+
 import javax.swing.JDialog;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -61,6 +60,11 @@ public class Mountain extends Island //implements MountainRequirements
         incrementActions();
     }
 
+    /**
+     * Allows player to collect items from the mountain and prints a collection message.
+     * Increments the action count and adds item to inventory. Prints error message if item is not recognized.
+     * @param item The item to be collected (rock, stick, coal).
+     */
     @Override
     public void collectItem(String item){
         incrementActions();
