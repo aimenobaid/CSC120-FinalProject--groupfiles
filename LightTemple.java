@@ -1,7 +1,7 @@
 public class LightTemple extends Island implements LightForestRequirements {
 
     public LightTemple(){
-        super("Light Temple", "You are in the Light Temple. The white marble walls are solid and strong. Against one is a collection of strange humanoid figures.");
+        super("You are in the Light Temple. The white marble walls are solid and strong. Against one is a collection of strange humanoid figures.");
     }
 
     @Override

@@ -2,7 +2,7 @@
 public class NorthShore extends Island implements NorthShoreRequirements {
 
     public NorthShore() {
-        super("North Shore", "You are on the North Shore. There are rocks, sticks, fresh pools, and fish.");
+        super("You are on the North Shore. There are rocks, sticks, fresh pools, and fish.");
     }
 
     @Override

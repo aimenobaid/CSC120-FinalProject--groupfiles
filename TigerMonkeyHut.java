@@ -2,7 +2,7 @@ public class TigerMonkeyHut extends Island{
     private boolean suppliesCollectedToday;
 
     public TigerMonkeyHut(){
-        super("Tiger Monkey Hut", "You are inside the Hut of the Tiger Monkey. It's a small lean-to shelter, carefully woven out of dried leaves and sticks. You wonder how such a creature could build an elaborate structure like this. In the corner is a small chest.");
+        super("You are inside the Hut of the Tiger Monkey. It's a small lean-to shelter, carefully woven out of dried leaves and sticks. You wonder how such a creature could build an elaborate structure like this. In the corner is a small chest.");
     }
 
     @Override

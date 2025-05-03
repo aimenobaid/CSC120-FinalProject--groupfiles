@@ -2,7 +2,7 @@ public class SouthShore extends Island implements SouthShoreRequirements {
     private boolean suppliesCollectedToday;
 
     public SouthShore() {
-        super("South Shore", "You are on the South Shore. You see shipwreck debris on the shore and a stream winding down to the water from a mountain peak in the distance.");
+        super("You are on the South Shore. You see shipwreck debris on the shore and a stream winding down to the water from a mountain peak in the distance.");
         this.suppliesCollectedToday = false;
     }
 

@@ -3,7 +3,7 @@ public class LightForest extends Island implements LightForestRequirements {
     private boolean animal;
 
     public LightForest() {
-        super("Light Forest", "You are in the Light Forest. There are tall trees whose leaves are high above you. The forest extends for miles around.");
+        super("You are in the Light Forest. There are tall trees whose leaves are high above you. The forest extends for miles around.");
         this.shelterBuilt = false;
     }
 

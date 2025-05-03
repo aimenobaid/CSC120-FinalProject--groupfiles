@@ -1,5 +1,3 @@
-import java.awt.*;
-import javax.swing.*;
 import javax.swing.JDialog;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -12,17 +10,33 @@ public class Mountain extends Island //implements MountainRequirements
     public boolean atPeak;
     public boolean inCave;
 
+    /**
+     * Constructor for the Mountain class.
+     * Initializes the mountain with a name and description.
+     * Sets the initial state of atPeak and inCave to false.
+     * @param name The name of the mountain.
+     * @param description The description of the mountain.
+     */
     public Mountain() {
-        super("Mountain", "You've arrived at the Misty Mountain. There are paths leading up to the peak with rocks and coal along the way.");
+        super("You've arrived at the Misty Mountain. There are paths leading up to the peak with rocks and coal along the way.");
         this.atPeak = false;
         this.inCave = false;
     }
 
+    /**
+     * Prints description of the mountain to the player.
+     */
     @Override
     public void describe() {
         System.out.println(description);
     }
 
+    /**
+     * Allows player to collect various items.
+     * Prints collection message, adds item to inventory, and increments action counter.
+     * If item isn't recognized, prints an error message.
+     * @param item The item to be collected (rock, stick, coal).
+     */
     @Override
     public void collectItem(String item){
         incrementActions();
@@ -46,6 +60,12 @@ public class Mountain extends Island //implements MountainRequirements
         }
 }
 
+    /**
+     * Allows player to build a shelter if they have enough resources.
+     * If shelter is already built, prints a message and returns.
+     * If player has enough rocks and sticks, deducts them from inventory and builds the shelter.
+     * If luck points are sufficient, prints success message; otherwise, prints failure message and deducts luck points.
+     */
     @Override
     public void buildShelter() {
         if (shelterBuilt) {
@@ -61,7 +81,7 @@ public class Mountain extends Island //implements MountainRequirements
                 shelterBuilt = true;
             } else {
                 System.out.println("You built a shelter... but it collapses. You lose 5 luck points :(");
-                adjustLuck(-5); // temporary will replace with a gameover sich
+                adjustLuck(-25);
             }
         } else {
             System.out.println("You need 3 rocks and 3 sticks to build a shelter.");
@@ -69,12 +89,20 @@ public class Mountain extends Island //implements MountainRequirements
         incrementActions();
     }
 
+    /**
+     * Allows player to reach the peak of the mountain. Prints a message to prompt them to view the map.
+     * Sets the atPeak variable to true.
+     */
     public void climbMountain() {
         System.out.println("You climb to the peak of the mountain. The view is breathtaking! You can see the entire island from here.");
         atPeak = true;
     }
 
 
+    /**
+     * Displays a map of the island if the player is at the peak.
+     * If not at the peak, prints a message indicating that they need to climb to the peak first.
+     */
     public void viewMap(){
         if (atPeak) {
             System.out.println("You arrive at the peak and can look over the entire island from here! The view is breathtaking!");
@@ -97,6 +125,9 @@ public class Mountain extends Island //implements MountainRequirements
         }
     }
     
+    /**
+     * Displays possible commands for the player specific to the location and several conditions.
+     */
     @Override
     public void help(){
         String help = """
@@ -126,46 +157,46 @@ public class Mountain extends Island //implements MountainRequirements
         }
         System.out.println(help);
     }
-    // Movement methods
+    // ======  Movement methods  ====== //
+    
+    /**
+     * Moves the player to the North Shore and prints a message about their path.
+     * @return Their new location (North Shore).
+     */
     @Override
     public Island moveNorth() {
         System.out.println("You head downwards and arrive at the North Shore");
         return northExit;
     }
 
+    /**
+     * Moves the player to the South Shore and prints a message about their path.
+     * @return Their new location (South Shore).
+     */
     @Override
     public Island moveSouth() {
         System.out.println("You follow a path around the side of the mountain heading south.");
         return southExit;
     }
 
+    /**
+     * Moves the player to the Light Forest and prints a message about their path.
+     * @return Their new location (Light Forest).
+     */
     @Override
     public Island moveEast() {
         System.out.println("You head down towards the Light Forest and you encounter cave along the path.");
         return eastExit;
     }
 
+    /**
+     * Attempts to move the player west but prints a message indicating that they cannot go further west.
+     * @return The current location (Mountain).
+     */
     @Override
     public Island moveWest() {
         System.out.println("You begin to head down to the Dark Forest but you reach a steep cliff! You cannot go further west from here.");
         return this;
-    }
-
-
-    public static void main(String[] args) {
-        Mountain mountain = new Mountain();
-        mountain.describe();
-        mountain.help();
-        mountain.collectItem("rock");
-        mountain.collectItem("stick");
-        mountain.collectItem("coal");
-    
-        mountain.climbMountain();
-        mountain.viewMap();
-        mountain.moveNorth(); 
-        mountain.moveSouth(); 
-        mountain.moveEast(); 
-        mountain.moveWest(); 
     }
     
 }
