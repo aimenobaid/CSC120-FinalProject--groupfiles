@@ -206,7 +206,7 @@ public abstract class Island implements IslandRequirements {
                 return true; 
             } else {
                 System.out.println("You lost the fight...idiot");
-                adjustLuck(-10);
+                adjustLuck(-30);
                 return false;
             }
         } else {
