@@ -131,12 +131,17 @@ public class Mountain extends Island //implements MountainRequirements
     @Override
     public void help(){
         String help = """
-            Commands:
-            inventory, stats, help
-            go north/south/east/west
-            collect coal/rock/stick/water/supplies/etc
-            drink, eat
-            """;
+
+        📍 You are on the misty Mountain.
+        Available Commands:
+        inventory, stats, help
+        look around
+        go north / south / east / west
+        collect coal / rock / stick / supplies
+        drink, eat
+        build fire
+        """;
+        
         if (!shelterBuilt) {
             help += """
             build shelter
