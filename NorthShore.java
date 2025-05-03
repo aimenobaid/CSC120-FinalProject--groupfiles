@@ -6,6 +6,11 @@ public class NorthShore extends Island implements NorthShoreRequirements {
     }
 
     @Override
+    public void describe() {
+        System.out.println(description);
+    }
+
+    @Override
     protected boolean canBuildShelter() {
         return true;  // North Shore supports shelter building
     }
@@ -20,33 +25,6 @@ public class NorthShore extends Island implements NorthShoreRequirements {
     } else {
         System.out.println("Your shelter stands firm on the shore, ready for another night.");
     }
-    }
-
-    @Override
-    public void describe() {
-        System.out.println(description);
-    }
-
-    @Override
-    public void help() {
-        String help = """
-
-            📍 You are on the North Shore.
-            Available Commands:
-            - go north / south / east / west
-            - collect rock / stick / water / fish / supplies
-            - drink, eat
-            - build fire
-            - look around
-            - rest
-            - inventory, stats, help, quit
-            """;
-        if (!shelterBuilt) {
-            help += """
-                    build shelter
-                    """;
-        }
-        System.out.println(help);
     }
 
     @Override
@@ -80,6 +58,29 @@ public class NorthShore extends Island implements NorthShoreRequirements {
                 System.out.println("There's no such item here to collect.");
         }
     }
+
+    @Override
+    public void help() {
+        String help = """
+
+            📍 You are on the North Shore.
+            Available Commands:
+            - go north / south / east / west
+            - collect rock / stick / water / fish / supplies
+            - drink, eat
+            - build fire
+            - look around
+            - rest
+            - inventory, stats, help, quit
+            """;
+        if (!shelterBuilt) {
+            help += """
+                    build shelter
+                    """;
+        }
+        System.out.println(help);
+    }
+
 
 
     // Movement methods
