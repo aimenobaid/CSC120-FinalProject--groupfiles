@@ -19,10 +19,6 @@ public class Player {
         health += x;
     }
 
-    public int getHealth(){
-        return health;
-    }
-
     public String getName() {
         return name;
     }
@@ -31,12 +27,12 @@ public class Player {
         return instance;  // <<< This allows global access to the player
     }
     
-    public void decreaseHunger(int amount) {
+    public void increaseHunger(int amount) {
         hunger -= amount;
         if (hunger < 0) hunger = 0;
     }
     
-    public void decreaseThirst(int amount) {
+    public void increaseThirst(int amount) {
         thirst -= amount;
         if (thirst < 0) thirst = 0;
     }
@@ -61,7 +57,7 @@ public class Player {
     public void drink() {
         if (Island.getItemCount("water") > 0) {
             Island.inventory.put("water", Island.getItemCount("water") - 1);
-            thirst = Math.min(thirst + 20, 100);
+            thirst = Math.min(thirst - 20, 100);
             System.out.println("You drank some water.");
             Island.incrementActions();
         } else {
@@ -72,15 +68,15 @@ public class Player {
     public void eat() {
         if (Island.getItemCount("fish") > 0) {
             Island.inventory.put("fish", Island.getItemCount("fish") - 1);
-            hunger = Math.min(hunger + 20, 100);
+            hunger = Math.min(hunger - 20, 100);
             System.out.println("You ate a fish.");
         } else if (Island.getItemCount("bread") > 0) {
             Island.inventory.put("bread", Island.getItemCount("bread") - 1);
-            hunger = Math.min(hunger + 15, 100);
+            hunger = Math.min(hunger - 15, 100);
             System.out.println("You ate a piece of bread.");
         } else if (Island.getItemCount("berries") > 0) {
             Island.inventory.put("berries", Island.getItemCount("berries") - 1);
-            hunger = Math.min(hunger + 10, 100);
+            hunger = Math.min(hunger - 10, 100);
             System.out.println("You snacked on some berries.");
         } else {
             System.out.println("You don't have any food.");
@@ -112,11 +108,11 @@ public class Player {
             System.out.println("Your injuries were too much. You collapse and die...");
             return true;
         } 
-        if (hunger <= 0) {
+        if (hunger >= 100) {
             System.out.println("You starved to death. Survival on this island was brutal. RIP 🪦");
             return true;
         }
-        if (thirst <= 0) {
+        if (thirst >= 100) {
             System.out.println("You died of thirst. You should have searched for water sooner. RIP 🪦");
             return true;
         }

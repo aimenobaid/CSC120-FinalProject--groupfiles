@@ -5,14 +5,14 @@ Architecure Diagram: https://docs.google.com/drawings/d/1Kdz_9xdI5osGZPDPGFbb5GN
 1) Fix inventory Bug, Aimen: **YESs** //I thought it was working before, now its acc working
 
 2) Starting to write game ending events/Death:
-        --> Rescue depending on number of days survived. Aimen: **YES** //hopefully should be working
+        --> Rescue depending on number of days survived.**YES** //hopefully should be working
         --> Volcanic eruption based on luck and trying to build a shelter in the wrong place **YES**
-        --> In Player: Aimen: **YES** // also hopefully should be working
-            - Health below 10 kills you
+        --> In Player: **YES** // also hopefully should be working
+            -Health below 10 kills you
             -Hunger below 10 kills you
             -Thirst below 10 kills you
             -Losing a fight decreases Health by 70 ish. 
-        --> Fixing the advance day and stats logic to be consistent.  Aimen: **YES** // also hopefully should be working
+        --> Fixing the advance day and stats logic to be consistent. **YES** // also hopefully should be working
             -Advancing a day should decrease your hunger and thirst but increase your health.
             -South shore supply collection should reset every day, should not be able to collect infinite supplies on one day.
         --> TigerMonkeyHut fun treasure (flare that lets you be rescued) **YES** // I hope this stuff works
