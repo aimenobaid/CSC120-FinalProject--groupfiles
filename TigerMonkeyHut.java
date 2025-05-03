@@ -2,7 +2,7 @@ public class TigerMonkeyHut extends Island{
     private boolean suppliesCollectedToday;
 
     public TigerMonkeyHut(){
-        super("Tiger Monkey Hut", "You are inside the Hut of the Tiger Monkey. It's a small lean-to shelter, carefully woven out of dried leaves and sticks. You wonder how such a creature could build an elaborate structure like this. In the corner is a small chest.");
+        super("You are inside the Hut of the Tiger Monkey. It's a small lean-to shelter, carefully woven out of dried leaves and sticks. You wonder how such a creature could build an elaborate structure like this. In the corner is a small chest.");
         this.suppliesCollectedToday = false;
     }
 
@@ -120,11 +120,8 @@ public class TigerMonkeyHut extends Island{
     @Override
     public void help() {
 
-        String help = "";
-
-        if(opponent == false){
-            help += """
-                📍 You are inside the Tiger Monkey Hut.
+        String help = """
+               📍 You are inside the Tiger Monkey Hut.
                 Available Commands:
                 - go north / south / east / west
                 - collect rock / stick / supplies
@@ -136,15 +133,6 @@ public class TigerMonkeyHut extends Island{
                 if (inventory.getOrDefault("flare", 0) > 0) {
                     help += "- use flare\n";
                 }
-        }
-        else{
-            help += """
-                📍 You are in a fight with the Tiger Monkey
-                - fight
-                - run
-                - inventory, stats, help, quit
-                """;
-        }
 
         System.out.println(help);
     }

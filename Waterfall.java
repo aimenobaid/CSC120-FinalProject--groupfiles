@@ -12,24 +12,6 @@ public class Waterfall extends Island implements WaterfallRequirements {
         System.out.println(description);
     }
 
-    //will be @Overdride
-    public void help() {
-        String help = """
-        📍 You are at the Waterfall.
-        Available Commands:
-        - go north / south / east / west
-        - collect rock / stick / water / treasure
-        - enter alcove
-        - open chest
-        - leave alcove
-        - build fire
-        - look around
-        - rest
-        - inventory, stats, help, quit
-        """;
-    System.out.println(help);
-    }
-
     @Override
     public void collectItem(String item){
         incrementActions();
@@ -82,6 +64,25 @@ public class Waterfall extends Island implements WaterfallRequirements {
 
     public void swim(){
         System.out.println("The water is rough and choppy. You should not swim here. Try farther downstream.");
+    }
+
+
+    @Override
+    public void help() {
+        String help = """
+        📍 You are at the Waterfall.
+        Available Commands:
+        - go north / south / east / west
+        - collect rock / stick / water / treasure
+        - enter alcove
+        - open chest
+        - leave alcove
+        - build fire
+        - look around
+        - rest
+        - inventory, stats, help, quit
+        """;
+    System.out.println(help);
     }
 
     @Override

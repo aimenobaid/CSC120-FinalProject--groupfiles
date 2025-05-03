@@ -10,24 +10,7 @@ public class Stream extends Island {
     }
 
     @Override
-    public void help() {
-        String help = """
-            📍 You are in the Tiger Monkey Hut.
-            Available Commands:
-            - go north / south / east / west
-            - collect rock / stick / water / fish
-            - swim
-            - build fire
-            - look around
-            - rest
-            - inventory, stats, help, quit
-            """;
-        System.out.println(help);
-    }
-
-    
-    @Override
-public void collectItem(String item){
+    public void collectItem(String item){
     incrementActions();
 
     switch(item.toLowerCase()) {
@@ -53,11 +36,25 @@ public void collectItem(String item){
             return;
     }
 }
-
-
     public void swim() {
         System.out.println("You swim in the stream. The water is refreshing and clear.");
         Island.adjustLuck(1);
+    }
+
+    @Override
+    public void help() {
+        String help = """
+            📍 You are in the Tiger Monkey Hut.
+            Available Commands:
+            - go north / south / east / west
+            - collect rock / stick / water / fish
+            - swim
+            - build fire
+            - look around
+            - rest
+            - inventory, stats, help, quit
+            """;
+        System.out.println(help);
     }
 
     @Override
