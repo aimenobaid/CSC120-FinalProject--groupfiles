@@ -1,44 +1,19 @@
 public class DarkForest extends Island implements DarkForestRequirements{
+
     public DarkForest() {
         super("Dark Forest", "You are in the Dark Forest.");
         super.opponent = true;
     }
 
     @Override
+    public void describe(){
+        System.out.println(description);
+    }
+
+    @Override
     protected boolean canBuildShelter() {
         return true;  // Shelter is possible, but risky
     }
-
-    public void forage(){
-        System.out.println("You forage in a small bush, and find a few berries. But they have suspicious dark spots and you don't see any animals nearby. You leave them on the bush and wipe their juices on your pants.");
-        if(luckPoints >= 50){
-            adjustLuck(-1);
-        }
-        if(luckPoints < 50){
-            System.out.println("You didn't find anything in the bush.");
-        }
-    }
-
-
-    @Override
-    public void collectItem(String item){
-        incrementActions();
-    
-        switch(item.toLowerCase()) {
-            case "rock":
-                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
-                System.out.println("You collected a rock from the forest floor.");
-                break;
-            case "stick":
-                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
-                System.out.println("You gathered a sturdy stick from the forest.");
-                break;
-            default:
-                System.out.println("There's no such item here to collect.");
-                return;
-        }
-    }
-    
 
     @Override
     public void buildShelter() {
@@ -71,6 +46,35 @@ public class DarkForest extends Island implements DarkForestRequirements{
     }
 
     @Override
+    public void collectItem(String item){
+        incrementActions();
+    
+        switch(item.toLowerCase()) {
+            case "rock":
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
+                System.out.println("You collected a rock from the forest floor.");
+                break;
+            case "stick":
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
+                System.out.println("You gathered a sturdy stick from the forest.");
+                break;
+            default:
+                System.out.println("There's no such item here to collect.");
+                return;
+        }
+    }
+
+    public void forage(){
+        System.out.println("You forage in a small bush, and find a few berries. But they have suspicious dark spots and you don't see any animals nearby. You leave them on the bush and wipe their juices on your pants.");
+        if(luckPoints >= 50){
+            adjustLuck(-1);
+        }
+        if(luckPoints < 50){
+            System.out.println("You didn't find anything in the bush.");
+        }
+    }
+
+    @Override
     public boolean volcanicEruption(){
         if(luckPoints < 40){
             System.out.println("You feel a sudden rumbling of the ground, and turn towards the Mountain. The top of the mountain shakes, before exploding into a cloud of black dust and ash. You're frozen for a moment, before you see hot lava and pyroclastic flow begin to rush down the side of the mountain. You have no chance of running.");
@@ -95,11 +99,6 @@ public class DarkForest extends Island implements DarkForestRequirements{
             help += "- build shelter\n";
         }
         System.out.println(help);
-    }
-
-    @Override
-    public void describe(){
-        System.out.println(description);
     }
 
 

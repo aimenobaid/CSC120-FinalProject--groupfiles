@@ -1,10 +1,8 @@
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.JDialog;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Frame;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 
 
 public class Mountain extends Island //implements MountainRequirements 
@@ -21,6 +19,29 @@ public class Mountain extends Island //implements MountainRequirements
     @Override
     public void describe() {
         System.out.println(description);
+    }
+
+    @Override
+    public void buildShelter() {
+        if (shelterBuilt) {
+            System.out.println("You already have a shelter on the mountain.");
+            return;
+        }
+        if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
+            inventory.put("rock", inventory.get("rock") - 3);
+            inventory.put("stick", inventory.get("stick") - 3);
+
+            if (luckPoints >= 50) {
+                System.out.println("You managed to build a sturdy shelter on the mountain slope.");
+                shelterBuilt = true;
+            } else {
+                System.out.println("You built a shelter... but it collapses. You lose 5 luck points :(");
+                adjustLuck(-5); // temporary will replace with a gameover sich
+            }
+        } else {
+            System.out.println("You need 3 rocks and 3 sticks to build a shelter.");
+        }
+        incrementActions();
     }
 
     @Override
@@ -45,29 +66,6 @@ public class Mountain extends Island //implements MountainRequirements
                 return;
         }
 }
-
-    @Override
-    public void buildShelter() {
-        if (shelterBuilt) {
-            System.out.println("You already have a shelter on the mountain.");
-            return;
-        }
-        if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
-            inventory.put("rock", inventory.get("rock") - 3);
-            inventory.put("stick", inventory.get("stick") - 3);
-
-            if (luckPoints >= 50) {
-                System.out.println("You managed to build a sturdy shelter on the mountain slope.");
-                shelterBuilt = true;
-            } else {
-                System.out.println("You built a shelter... but it collapses. You lose 5 luck points :(");
-                adjustLuck(-5); // temporary will replace with a gameover sich
-            }
-        } else {
-            System.out.println("You need 3 rocks and 3 sticks to build a shelter.");
-        }
-        incrementActions();
-    }
 
     public void climbMountain() {
         System.out.println("You climb to the peak of the mountain. The view is breathtaking! You can see the entire island from here.");
@@ -126,6 +124,7 @@ public class Mountain extends Island //implements MountainRequirements
         }
         System.out.println(help);
     }
+    
     // Movement methods
     @Override
     public Island moveNorth() {

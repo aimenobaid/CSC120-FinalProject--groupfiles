@@ -11,20 +11,6 @@ public class MtnCave extends Island {
         System.out.println(description);
     }
 
-    public void help(){
-        String help = """
-        📍 You are inside the Mountain Cave.
-        Available Commands:
-        go north / south / east / west
-        collect coal / rock / stick / water / supplies
-        leave cave
-        fight
-        drink, eat
-        inventory, stats, help
-        """;
-        System.out.println(help);
-    }
-
     
     @Override
     public void collectItem(String item){
@@ -54,6 +40,20 @@ public class MtnCave extends Island {
         return northExit;
     }
 
+    public void help(){
+        String help = """
+        📍 You are inside the Mountain Cave.
+        Available Commands:
+        go north / south / east / west
+        collect coal / rock / stick / water / supplies
+        leave cave
+        fight
+        drink, eat
+        inventory, stats, help
+        """;
+        System.out.println(help);
+    }
+    
     // Movement methods
     @Override
     public Island moveNorth() {
@@ -79,3 +79,4 @@ public class MtnCave extends Island {
         return westExit;
     }
 }
+ 
