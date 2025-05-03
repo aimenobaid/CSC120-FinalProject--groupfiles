@@ -17,7 +17,11 @@ public class MtnCave extends Island {
         System.out.println(description);
     }
 
-    
+    /**
+     * Allows player to collect items from the cave and prints a collection message.
+     * Increments the action count and adds item to inventory. Prints error message if item is not recognized.
+     * @param item The item to be collected (rock, stick, coal).
+     */
     @Override
     public void collectItem(String item){
         incrementActions();
