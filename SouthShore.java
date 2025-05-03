@@ -69,6 +69,7 @@ public class SouthShore extends Island implements SouthShoreRequirements {
     public void newDay() {
         suppliesCollectedToday = false;
     }
+    
     @Override
     public void buildShelter() {
         try {
