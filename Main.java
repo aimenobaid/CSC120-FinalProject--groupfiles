@@ -10,12 +10,12 @@ public class Main {
         MtnCave mtnCave = new MtnCave();
         LightForest lightForest = new LightForest();
         DarkForest darkForest = new DarkForest();
+        DarkForest darkForestInstance = darkForest;
         LightTemple lightTemple = new LightTemple();
         Stream stream = new Stream();
         Waterfall waterfall = new Waterfall();
         Island.waterfallInstance = waterfall;
         TigerMonkeyHut tigerMonkeyHut = new TigerMonkeyHut();
-        Island.tigerMonkeyHutInstance = tigerMonkeyHut;
 
 
         // Setting up all the connections
@@ -159,6 +159,14 @@ public class Main {
                 case "pray" -> {
                     if(player.getLocation() instanceof LightTemple lt) lt.pray();
                     else System.out.println("You cannot pray here.");
+                }
+
+                case "run" ->{
+                    if(player.getLocation() instanceof TigerMonkeyHut tmh){
+                        tmh.run();
+                        player.increaseHunger(10);
+                    }
+                    else System.out.println("What are you running from?");
                 }
                 
                 default -> System.out.println("Unknown command. Type 'help' for options.");
