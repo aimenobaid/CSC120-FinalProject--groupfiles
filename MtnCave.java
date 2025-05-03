@@ -72,25 +72,40 @@ public class MtnCave extends Island {
         System.out.println(help);
     }
     
-    // Movement methods
+    /**
+     * Moves the player back to the mountain and prints a message about their path.
+     * @return Their new location (Mountain).
+     */
     @Override
     public Island moveNorth() {
         System.out.println("You skirt around the side of the mountain towards the North Shore. Move North again to reach the shore.");
         return northExit;
     }
 
+    /**
+     * Moves the player to the waterfall and prints a message about their path.
+     * @return Their new location (Waterfall).
+     */
     @Override
     public Island moveSouth() {
         System.out.println("You walk around the side of the mountain and reach a waterfall. It flows into a fresh water stream headed towards the South Shore.");
         return southExit;
     }
 
+    /**
+     * Moves the player to the Light Forest and prints a message about their path.
+     * @return Their new location (Light Forest).
+     */
     @Override
     public Island moveEast() {
         System.out.println("You head down into the Light Forest. Through the trees you can see the ruins of a temple. Move East again to continue further into the forest.");
         return eastExit;
     }
 
+    /**
+     * Moves the player back to the mountain and prints a message about their path.
+     * @return Their new location (Mountain).
+     */
     @Override
     public Island moveWest() {
         System.out.println("You climb west towards the top of the mountain. The path is steep and rocky. Move West again to continue climbing and reach the peak.");
