@@ -51,7 +51,7 @@ ALSO go through and make sure methods like fight(), buildShelter(), buildFire(),
                 --> Now it increments actions and deducts from inventory.
                 --> Can eat all types of food not just fish.
 
-3) make pop up graphic for map at the mountain peak - **YES** but could be better?
+3) make pop up graphic for map at the mountain peak - **YES** but could be better? **FIXED!**
 
 From the official final project repo:
 ## Deliverables:

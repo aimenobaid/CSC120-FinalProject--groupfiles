@@ -18,7 +18,6 @@ public class Main {
 
 
         // Setting up all the connections
-
         northShore.setExits(null, mountain, lightForest, darkForest);
         southShore.setExits(stream, null, lightForest, darkForest);
         mountain.setExits(northShore, waterfall, mtnCave, darkForest);
@@ -33,8 +32,12 @@ public class Main {
         // Start game
         Player player = new Player("Explorer", northShore);
         System.out.println("🌴 Welcome to the Island Survival Game 🌴");
+        System.out.println("You have just washed ashore on a deserted island. Your goal is to survive as long as possible in order to be rescued. \n" +
+                "You can collect items, build shelters, and explore the island. \n" +
+                "Type 'help' for a list of commands.\n" +
+                "Your luck begins at 50/100. You will need to keep your luck above 0 in order to survive, and achieve a luck score of 100 to be automatically rescued.\n");
         northShore.describe();
-        Scanner scanner = new Scanner(System.in);
+                Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.print("\n> ");
@@ -140,6 +143,11 @@ public class Main {
                         lf.setAnimal(false);
                     }
                     else System.out.println("You pet an imaginary animal. How long has it been since you slept?");
+                }
+
+                case "pray" -> {
+                    if(player.getLocation() instanceof LightTemple lt) lt.pray();
+                    else System.out.println("You cannot pray here.");
                 }
                 
                 default -> System.out.println("Unknown command. Type 'help' for options.");

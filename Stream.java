@@ -46,6 +46,7 @@ public void collectItem(String item){
         case "fish":
             inventory.put("fish", inventory.getOrDefault("fish", 0) + 1);
             System.out.println("You caught a fish from the stream.");
+            adjustLuck(2);
             break;
         default:
             System.out.println("There's no such item here to collect.");

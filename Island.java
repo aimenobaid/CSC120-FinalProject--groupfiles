@@ -120,7 +120,7 @@ public abstract class Island implements IslandRequirements {
     
         // === RESCUE CHECK === //
         if (currentDay >= RESCUE_DAY) {
-            System.out.println("You hear a distant rumble... a rescue boat appears on the horizon!");
+            System.out.println("You hear a distant rumble... a boat appears on the horizon!");
             System.out.println("You wave frantically, and they spot you. You're rescued!");
             System.out.println("🏆 YOU WIN! You survived " + currentDay + " days.");
             System.exit(0);
@@ -223,6 +223,13 @@ public abstract class Island implements IslandRequirements {
 
     // ====== LUCK SYSTEM ==== //
     public static void adjustLuck(int change) {
+        if (luckPoints >= 100) {
+            System.out.println("You hear a distant rumble... a boat appears on the horizon!");
+            System.out.println("You wave frantically, and they spot you. You're rescued!");
+            System.out.println("🏆 YOU WIN! You survived " + currentDay + " days.");
+            System.exit(0);
+        }
+        
         luckPoints += change;
         System.out.println("Luck is now: " + luckPoints);
     }
@@ -246,6 +253,3 @@ public abstract class Island implements IslandRequirements {
     }
     
 }
-//just added stuff based on what we talked about and anything else I could think of, if anything is annoying to implement lmk.
-//looks good to me! do you think it would be useful to have a moveItem() method? 
-//I wrote one in MtnCave in order to move the rock to enter the cave but thought it might be universally useful. tbd once we build out all the locs i guess

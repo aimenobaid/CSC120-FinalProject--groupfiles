@@ -48,6 +48,8 @@ public class SouthShore extends Island implements SouthShoreRequirements {
                     System.out.println("You find washed-up supplies from an old wreck.");
                     inventory.put("supplies", inventory.getOrDefault("supplies", 0) + 1);
                     suppliesCollectedToday = true;
+                    adjustLuck(2);
+
                 } else {
                     System.out.println("You've already scavenged everything for today.");
                 }
@@ -55,6 +57,7 @@ public class SouthShore extends Island implements SouthShoreRequirements {
             case "fish":
                 inventory.put("fish", inventory.getOrDefault("fish", 0) + 1);
                 System.out.println("You speared a fish from the shallows.");
+                adjustLuck(2);
                 break;
             default:
                 System.out.println("There's no such item here to collect.");
