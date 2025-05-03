@@ -5,10 +5,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Frame;
-import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-
 
 public class Mountain extends Island //implements MountainRequirements 
 {
@@ -35,29 +31,6 @@ public class Mountain extends Island //implements MountainRequirements
     public void describe() {
         System.out.println(description);
     }
-
-    @Override
-    public void collectItem(String item){
-        incrementActions();
-
-        switch(item.toLowerCase()) {
-            case "rock":
-                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
-                System.out.println("You pried a rock loose from the cliffside.");
-                break;
-            case "stick":
-                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
-                System.out.println("You gathered a sturdy stick near a pine tree.");
-                break;
-            case "coal":
-                inventory.put("coal", inventory.getOrDefault("coal", 0) + 1);
-                System.out.println("You mined some coal from the mountain.");
-                break;
-            default:
-                System.out.println("There's no such item here to collect.");
-                return;
-        }
-}
 
     /**
      * Allows player to build a shelter if they have enough resources.
