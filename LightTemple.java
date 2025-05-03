@@ -5,6 +5,11 @@ public class LightTemple extends Island implements LightForestRequirements {
     }
 
     @Override
+    public void describe(){
+        System.out.println(description);
+    }
+
+    @Override
     public void collectItem(String item){
         incrementActions();
     
@@ -25,11 +30,6 @@ public class LightTemple extends Island implements LightForestRequirements {
                 System.out.println("There's no such item here to collect.");
                 return;
         }
-    }
-    
-    @Override
-    public void describe(){
-        System.out.println(description);
     }
 
     public void pray(){
