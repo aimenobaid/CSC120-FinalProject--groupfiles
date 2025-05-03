@@ -1,20 +1,39 @@
 public class DarkForest extends Island implements DarkForestRequirements{
 
+
+    /**
+     * Constructor for the Dark Forest class.
+     * Initializes the dark forest with a description and sets the initial state of opponent to true.
+     * @param description The description of the dark forest.
+     */
     public DarkForest() {
         super("You are in the Dark Forest.");
         super.opponent = true;
     }
 
+    /**
+     * Prints description of the dark forest.
+     */
     @Override
     public void describe(){
         System.out.println(description);
     }
 
+    /**
+     * Checks if a shelter can be built in the dark forest.
+     * @return boolean indicating if a shelter can be built.
+     */
     @Override
     protected boolean canBuildShelter() {
-        return true;  // Shelter is possible, but risky
+        return true;
     }
 
+    /**
+     * Allows player to build a shelter if they have enough resources.
+     * If shelter is already built, prints a message and returns.
+     * If player has enough rocks and sticks, deducts them from inventory and builds the shelter.
+     * If luck points are sufficient, prints success message; otherwise, prints failure message and either volcano errupts or luck points decrease.
+     */
     @Override
     public void buildShelter() {
         if (shelterBuilt) {
@@ -45,6 +64,12 @@ public class DarkForest extends Island implements DarkForestRequirements{
         incrementActions();
     }
 
+
+    /**
+     * Allows player to collect items from the dark forest and prints a collection message.
+     * Increments the action count and adds item to inventory. Prints error message if item is not recognized.
+     * @param item The item to be collected (rock, stick).
+     */
     @Override
     public void collectItem(String item){
         incrementActions();
@@ -64,6 +89,12 @@ public class DarkForest extends Island implements DarkForestRequirements{
         }
     }
 
+
+    /**
+     * Allows player to forsge for berries in the dark forest. 
+     * If luck points are sufficient they are not poisoned, otherwise they are poisoned and lose health.
+     * Prints a message about the berries found. 
+     */
     public void forage(){
         System.out.println("You forage in a small bush, and find a few berries. But they have suspicious dark spots and you don't see any animals nearby. You leave them on the bush and wipe their juices on your pants.");
         if(luckPoints >= 50){
@@ -74,6 +105,11 @@ public class DarkForest extends Island implements DarkForestRequirements{
         }
     }
 
+    /**
+     * Checks if a volcanic eruption occurs based on luck points.
+     * If luck points are less than 40, prints a message about the eruption.
+     * @return boolean indicating if a volcanic eruption occurs.
+     */
     @Override
     public boolean volcanicEruption(){
         if(luckPoints < 40){
@@ -83,6 +119,9 @@ public class DarkForest extends Island implements DarkForestRequirements{
         return false;
     }
 
+    /**
+     * Displays possible commands for the player specific to the location and several conditions.
+     */
     @Override
     public void help() {
         String help = """
@@ -101,19 +140,31 @@ public class DarkForest extends Island implements DarkForestRequirements{
         System.out.println(help);
     }
 
-
+    /**
+     * Moves the player to the North Shore and prints a message about their path.
+     * @return Their new location (North Shore).
+     */
     @Override
     public Island moveNorth() {
         System.out.println("You head down towards the North Shore. Move North again to reach the shore.");
         return northExit;
     }
 
+    /**
+     * Moves the player to the South Shore and prints a message about their path.
+     * @return Their new location (South Shore).
+     */
     @Override
     public Island moveSouth() {
         System.out.println("You are at a waterfall that flows into a fresh water stream headed towards the South Shore.");
         return southExit;
     }
 
+
+    /**
+     * Attempts to move the player further west but prints a message indicating that they cannot go further west.
+     * @return Their current location.
+     */
     @Override
     public Island moveWest() {
         System.out.println("You move deeper into the forest. As the vegetation grows denser and darker, you hear a rumble to your left. You crouch down quickly into the bush.");
@@ -122,6 +173,10 @@ public class DarkForest extends Island implements DarkForestRequirements{
         return westExit;
     }
 
+    /**
+     * Moves the player east to the Mountain and prints a message about their path.
+     * @return Their new location (Mountain).
+     */
     @Override
     public Island moveEast() {
         System.out.println("You head up towards the Mountains.");
