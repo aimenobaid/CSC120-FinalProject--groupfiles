@@ -25,8 +25,7 @@ public abstract class Island implements IslandRequirements {
     public static Waterfall waterfallInstance;
     public static TigerMonkeyHut tigerMonkeyHutInstance; 
 
-    public Island(String name, String description) {
-        this.name = name;
+    public Island(String description) {
         this.description = description;
         if (inventory.isEmpty()) {
             inventory.put("rock", 0);

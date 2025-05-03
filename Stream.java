@@ -1,7 +1,7 @@
 public class Stream extends Island {
 
     public Stream() {
-        super("Stream", "You arrive at a freshwater stream connecting the mountain to the shore.");
+        super("You arrive at a freshwater stream connecting the mountain to the shore.");
     }
 
     @Override

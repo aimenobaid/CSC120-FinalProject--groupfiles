@@ -1,14 +1,34 @@
 public class MtnCave extends Island {
 
-
+    /**
+     * * Constructor for the MtnCave class. Initializes the cave description and sets the opponent flag.
+     * * @param description The description of the cave.
+     */
     public MtnCave() {
-        super("Mountain Cave", "You have entered a cave in the Misty Mountain. It is dark and damp. You cannot see more than a few inches in front of you. Suddenly a mountain troll comes out of the darkness. You must leave immediately or fight him.");
+        super("You have entered a cave in the Misty Mountain. It is dark and damp. You cannot see more than a few inches in front of you. Suddenly a mountain troll comes out of the darkness. You must leave immediately or fight him.");
         super.opponent = true;
     }
 
+    /**
+     * Prints description of the cave.
+     */
     @Override
     public void describe() {
         System.out.println(description);
+    }
+
+    public void help(){
+        String help = """
+        📍 You are inside the Mountain Cave.
+        Available Commands:
+        go north / south / east / west
+        collect coal / rock / stick / water / supplies
+        leave cave
+        fight
+        drink, eat
+        inventory, stats, help
+        """;
+        System.out.println(help);
     }
 
     
