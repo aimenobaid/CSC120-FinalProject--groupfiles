@@ -8,6 +8,11 @@ public class LightForest extends Island implements LightForestRequirements {
     }
 
     @Override
+    public void describe(){
+        System.out.println(description);
+    }
+
+    @Override
     protected boolean canBuildShelter() {
         return true;  // Shelter building allowed here
     }
@@ -20,9 +25,28 @@ public class LightForest extends Island implements LightForestRequirements {
     }   
     }
 
+
     @Override
-    public void describe(){
-        System.out.println(description);
+    public void collectItem(String item){
+        incrementActions();
+    
+        switch(item.toLowerCase()) {
+            case "rock":
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
+                System.out.println("You collected a rock from the forest floor.");
+                break;
+            case "stick":
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
+                System.out.println("You gathered a sturdy stick from the forest.");
+                break;
+            case "berries":
+                inventory.put("berries", inventory.getOrDefault("berries", 0) + 1);
+                System.out.println("You collected some berries.");
+                break;
+            default:
+                System.out.println("There's no such item here to collect.");
+                return;
+        }
     }
 
     public void forage(){
@@ -48,31 +72,6 @@ public class LightForest extends Island implements LightForestRequirements {
     public void setAnimal(boolean b){
         animal = b;
     }
-
-    @Override
-    public void collectItem(String item){
-        incrementActions();
-    
-        switch(item.toLowerCase()) {
-            case "rock":
-                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
-                System.out.println("You collected a rock from the forest floor.");
-                break;
-            case "stick":
-                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
-                System.out.println("You gathered a sturdy stick from the forest.");
-                break;
-            case "berries":
-                inventory.put("berries", inventory.getOrDefault("berries", 0) + 1);
-                System.out.println("You collected some berries.");
-                break;
-            default:
-                System.out.println("There's no such item here to collect.");
-                return;
-        }
-    }
-    
-
 
     public void petAnimal(){
         System.out.println("You quietly wait for the animal to approach you before patting it gently on the snout.");

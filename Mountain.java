@@ -1,8 +1,13 @@
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.JDialog;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Frame;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 
 
 public class Mountain extends Island //implements MountainRequirements 
@@ -31,12 +36,6 @@ public class Mountain extends Island //implements MountainRequirements
         System.out.println(description);
     }
 
-    /**
-     * Allows player to collect various items.
-     * Prints collection message, adds item to inventory, and increments action counter.
-     * If item isn't recognized, prints an error message.
-     * @param item The item to be collected (rock, stick, coal).
-     */
     @Override
     public void collectItem(String item){
         incrementActions();
@@ -88,6 +87,29 @@ public class Mountain extends Island //implements MountainRequirements
         }
         incrementActions();
     }
+
+    @Override
+    public void collectItem(String item){
+        incrementActions();
+
+        switch(item.toLowerCase()) {
+            case "rock":
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
+                System.out.println("You pried a rock loose from the cliffside.");
+                break;
+            case "stick":
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
+                System.out.println("You gathered a sturdy stick near a pine tree.");
+                break;
+            case "coal":
+                inventory.put("coal", inventory.getOrDefault("coal", 0) + 1);
+                System.out.println("You mined some coal from the mountain.");
+                break;
+            default:
+                System.out.println("There's no such item here to collect.");
+                return;
+        }
+}
 
     /**
      * Allows player to reach the peak of the mountain. Prints a message to prompt them to view the map.
@@ -162,12 +184,7 @@ public class Mountain extends Island //implements MountainRequirements
         }
         System.out.println(help);
     }
-    // ======  Movement methods  ====== //
-    
-    /**
-     * Moves the player to the North Shore and prints a message about their path.
-     * @return Their new location (North Shore).
-     */
+    // Movement methods
     @Override
     public Island moveNorth() {
         System.out.println("You head downwards and arrive at the North Shore");

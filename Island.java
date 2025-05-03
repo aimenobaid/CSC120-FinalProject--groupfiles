@@ -3,13 +3,6 @@ import java.util.Random;
 
 public abstract class Island implements IslandRequirements {
 
-    public static Waterfall getWaterfallInstance() {
-        return waterfallInstance;
-    }
-
-    public static void setWaterfallInstance(Waterfall waterfallInstance) {
-        Island.waterfallInstance = waterfallInstance;
-    }
     protected String name;
     protected String description;
     protected boolean opponent = false;
@@ -30,6 +23,7 @@ public abstract class Island implements IslandRequirements {
 
     public static SouthShore southShoreInstance; 
     public static Waterfall waterfallInstance;
+    public static TigerMonkeyHut tigerMonkeyHutInstance; 
 
     public Island(String description) {
         this.description = description;
@@ -137,16 +131,15 @@ public abstract class Island implements IslandRequirements {
         globalPlayer.increaseThirst(10);
         globalPlayer.heal(5); // Recover small amount of health overnight
 
-        // === RESET LOCATIONS THAT NEED DAILY RESET ===
-        // South Shore supplies
+        // === RESET LOCATIONS THAT NEED DAILY RESET === //
         if (southShoreInstance != null) {
             southShoreInstance.newDay();
         }
         if (waterfallInstance != null) {
             waterfallInstance.newDay();
         }
-        if (darkForestInstance != null) {
-            darkForestInstance.newDay();
+        if (tigerMonkeyHutInstance != null) {
+            tigerMonkeyHutInstance.newDay();
         }
     }
 
