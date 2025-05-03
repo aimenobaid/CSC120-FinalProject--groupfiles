@@ -4,6 +4,7 @@ import java.util.Random;
 public abstract class Island implements IslandRequirements {
     protected String name;
     protected String description;
+    protected boolean opponent = false;
 
     protected static int luckPoints = 50; // example starting value
     protected static HashMap<String, Integer> inventory = new HashMap<>();
@@ -158,16 +159,22 @@ public abstract class Island implements IslandRequirements {
         int chance = rand.nextInt(100) + 1;
         incrementActions(); //moved this up (it was after the else) bc it said it was unreachable
 
-        System.out.println("You engage in a fight...");
-        if (chance <= luckPoints) {
-            System.out.println("You win the fight!");
-            adjustLuck(5);
-            return true; 
+        if (opponent) {
+            System.out.println("You engage in a fight...");
+            if (chance <= luckPoints) {
+                System.out.println("You win the fight!");
+                adjustLuck(5);
+                return true; 
+            } else {
+                System.out.println("You lost the fight...idiot");
+                adjustLuck(-10);
+                return false;
+            }
         } else {
-            System.out.println("You lost the fight...idiot");
-            adjustLuck(-10);
+            System.out.println("Who are you fighting? There is no threat here.");
             return false;
         }
+            
     }
     /** Exploring */
     public void lookAround() {

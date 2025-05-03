@@ -1,6 +1,7 @@
 public class DarkForest extends Island implements DarkForestRequirements{
     public DarkForest() {
         super("Dark Forest", "You are in the Dark Forest.");
+        super.opponent = true;
     }
 
     @Override
