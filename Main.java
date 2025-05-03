@@ -103,6 +103,12 @@ public class Main {
                     if (player.getLocation() instanceof Waterfall wf) wf.enterAlcove();
                     else System.out.println("You are not at the waterfall.");
                 }
+                case "leave hut" ->{
+                    if(player.getLocation() instanceof TigerMonkeyHut tmh){
+                        System.out.println("You sneak out of the Monkey's hut and back into the woods.");
+                        tmh.moveEast();
+                    }
+                }
                 case "open chest" -> {
                     if (player.getLocation() instanceof Waterfall wf) {
                         wf.openChest();
