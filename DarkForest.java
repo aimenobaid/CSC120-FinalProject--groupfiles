@@ -54,7 +54,7 @@ public class DarkForest extends Island implements DarkForestRequirements{
                 System.out.println("You carefully construct a hidden shelter, safe from the lurking creatures.");
                 shelterBuilt = true;
             } else {
-                // Instead of just collapsing → TRIGGER VOLCANIC EXPLOSION
+                // TRIGGER VOLCANIC EXPLOSION
                 if (volcanicEruption()) {
                     Player globalPlayer = Player.getInstance();
                     globalPlayer.changeHealth(-101);
@@ -72,7 +72,7 @@ public class DarkForest extends Island implements DarkForestRequirements{
 
     @Override
     public boolean volcanicEruption(){
-        if(luckPoints < 60){
+        if(luckPoints < 40){
             System.out.println("You feel a sudden rumbling of the ground, and turn towards the Mountain. The top of the mountain shakes, before exploding into a cloud of black dust and ash. You're frozen for a moment, before you see hot lava and pyroclastic flow begin to rush down the side of the mountain. You have no chance of running.");
             return true;
         }
