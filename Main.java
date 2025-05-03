@@ -167,14 +167,6 @@ public class Main {
                     else System.out.println("You cannot pray here.");
                 }
 
-                case "run" ->{
-                    if(player.getLocation() instanceof TigerMonkeyHut tmh){
-                        tmh.run();
-                        player.increaseHunger(10);
-                    }
-                    else System.out.println("What are you running from?");
-                }
-                
                 default -> System.out.println("Unknown command. Type 'help' for options.");
           
             } //end of switch statement
