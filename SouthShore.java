@@ -12,18 +12,12 @@ public class SouthShore extends Island implements SouthShoreRequirements {
     }
 
     @Override
-    public void help() {
-        String help = """
-        📍 You are on the South Shore.
-        Available Commands:
-        - go north / south / east / west
-        - collect rock / stick / water / supplies / fish
-        - drink, eat
-        - build fire
-        - look around
-        - inventory, stats, help, quit
-            """;
-        System.out.println(help);
+    public void buildShelter() {
+        try {
+            throw new Exception("The south shore is not a good place to build a shelter. It is windy and exposed. Try somewhere else.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -64,20 +58,27 @@ public class SouthShore extends Island implements SouthShoreRequirements {
                 return;
         }
     }
-    
+
     @Override
     public void newDay() {
         suppliesCollectedToday = false;
     }
-    
+
     @Override
-    public void buildShelter() {
-        try {
-            throw new Exception("The south shore is not a good place to build a shelter. It is windy and exposed. Try somewhere else.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void help() {
+        String help = """
+        📍 You are on the South Shore.
+        Available Commands:
+        - go north / south / east / west
+        - collect rock / stick / water / supplies / fish
+        - drink, eat
+        - build fire
+        - look around
+        - inventory, stats, help, quit
+            """;
+        System.out.println(help);
     }
+
 
     // Movement methods
     @Override
