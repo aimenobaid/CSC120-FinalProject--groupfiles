@@ -22,22 +22,23 @@ public class DarkForest extends Island implements DarkForestRequirements{
 
     @Override
     public void collectItem(String item){
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
-        
+    
         switch(item.toLowerCase()) {
             case "rock":
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
                 System.out.println("You collected a rock from the forest floor.");
                 break;
             case "stick":
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
                 System.out.println("You gathered a sturdy stick from the forest.");
                 break;
-            //add cases for other items
             default:
-                System.out.println("There's no such item here.");
+                System.out.println("There's no such item here to collect.");
                 return;
         }
     }
+    
 
     @Override
     public void buildShelter() {
@@ -48,18 +49,34 @@ public class DarkForest extends Island implements DarkForestRequirements{
         if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
             inventory.put("rock", inventory.get("rock") - 3);
             inventory.put("stick", inventory.get("stick") - 3);
-
-            if (luckPoints >= 60) {
+        
+            if (luckPoints >= 80) {
                 System.out.println("You carefully construct a hidden shelter, safe from the lurking creatures.");
                 shelterBuilt = true;
             } else {
-                System.out.println("As night falls, your fragile shelter collapses and you're ambushed by forest creatures! You lose 10 luck points.");
-                adjustLuck(-10);
+                // Instead of just collapsing → TRIGGER VOLCANIC EXPLOSION
+                if (volcanicEruption()) {
+                    Player globalPlayer = Player.getInstance();
+                    globalPlayer.changeHealth(-101);
+                    globalPlayer.die();
+                } else {
+                    System.out.println("As night falls, your fragile shelter collapses and you're ambushed by forest creatures! You lose 10 luck points.");
+                    adjustLuck(-10);
+                }
             }
         } else {
             System.out.println("You need 3 rocks and 3 sticks to build a shelter.");
         }
         incrementActions();
+    }
+
+    @Override
+    public boolean volcanicEruption(){
+        if(luckPoints < 60){
+            System.out.println("You feel a sudden rumbling of the ground, and turn towards the Mountain. The top of the mountain shakes, before exploding into a cloud of black dust and ash. You're frozen for a moment, before you see hot lava and pyroclastic flow begin to rush down the side of the mountain. You have no chance of running.");
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -78,14 +95,6 @@ public class DarkForest extends Island implements DarkForestRequirements{
             help += "- build shelter\n";
         }
         System.out.println(help);
-    }
-
-    public boolean volcanicEruption(){
-        if(luckPoints < 20){
-            System.out.println("You feel a sudden rumbling of the ground, and turn towards the Mountain. The top of the mountain shakes, before exploding into a cloud of black dust and ash. You're frozen for a moment, before you see hot lava and pyroclastic flow begin to rush down the side of the mountain. You have no chance of running.");
-            return true;
-        }
-        return false;
     }
 
     @Override

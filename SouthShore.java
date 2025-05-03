@@ -28,44 +28,44 @@ public class SouthShore extends Island implements SouthShoreRequirements {
 
     @Override
     public void collectItem(String item){
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
-        
+
         switch(item.toLowerCase()) {
             case "rock":
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
                 System.out.println("You found a rock by the shore.");
                 break;
             case "stick":
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
                 System.out.println("You gathered a stick from the water's edge.");
                 break;
             case "water":
+                inventory.put("water", inventory.getOrDefault("water", 0) + 1);
                 System.out.println("You collected fresh water from the base of the stream.");
                 break;
             case "supplies":
                 if (!suppliesCollectedToday) {
                     System.out.println("You find washed-up supplies from an old wreck.");
+                    inventory.put("supplies", inventory.getOrDefault("supplies", 0) + 1);
                     suppliesCollectedToday = true;
                 } else {
-                    System.out.println("Youve already scavenged everything for today.");
+                    System.out.println("You've already scavenged everything for today.");
                 }
                 break;
             case "fish":
+                inventory.put("fish", inventory.getOrDefault("fish", 0) + 1);
                 System.out.println("You speared a fish from the shallows.");
                 break;
             default:
-                System.out.println("There's no such item here.");
+                System.out.println("There's no such item here to collect.");
                 return;
         }
     }
-    /* this will be needed for later when we need to reset supplies on the south shore daily 
-    but it'll require making advance day not static and changing a few other things too so i'm 
-    putting a pin in it for now and we can discusss how to do it together
-    */
-    // @Override
-    // public void advanceDay() {
-    // super.advanceDay();
-    // suppliesCollectedToday = false;
-    // } 
+    
+    @Override
+    public void newDay() {
+        suppliesCollectedToday = false;
+    }
     @Override
     public void buildShelter() {
         try {

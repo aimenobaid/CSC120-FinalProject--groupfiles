@@ -4,6 +4,7 @@ public class Player {
     private int thirst;
     private int hunger;
     private Island currentLocation;
+    private static Player instance;
 
     public Player(String name, Island startingLocation) {
         this.name = name;
@@ -11,6 +12,7 @@ public class Player {
         this.thirst = 50;
         this.hunger = 50;
         this.currentLocation = startingLocation;
+        instance = this;
     }
 
     public void changeHealth(int x){
@@ -23,6 +25,24 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public static Player getInstance() {
+        return instance;  // <<< This allows global access to the player
+    }
+    
+    public void decreaseHunger(int amount) {
+        hunger -= amount;
+        if (hunger < 0) hunger = 0;
+    }
+    
+    public void decreaseThirst(int amount) {
+        thirst -= amount;
+        if (thirst < 0) thirst = 0;
+    }
+    
+    public void heal(int amount) {
+        health = Math.min(100, health + amount);
     }
 
     public void moveTo(Island newLocation) {
@@ -87,8 +107,17 @@ public class Player {
         }
     }
 
-    public boolean die(){
-        if(health < 0){
+    public boolean die() {
+        if (health <= 0) {
+            System.out.println("Your injuries were too much. You collapse and die...");
+            return true;
+        } 
+        if (hunger <= 0) {
+            System.out.println("You starved to death. Survival on this island was brutal. RIP 🪦");
+            return true;
+        }
+        if (thirst <= 0) {
+            System.out.println("You died of thirst. You should have searched for water sooner. RIP 🪦");
             return true;
         }
         return false;

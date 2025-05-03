@@ -30,38 +30,41 @@ public class Waterfall extends Island implements WaterfallRequirements {
     System.out.println(help);
     }
 
-    
+    @Override
     public void collectItem(String item){
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
-        
+    
         switch(item.toLowerCase()) {
             case "rock":
-                System.out.println("You collected a rock from the forest floor.");
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
+                System.out.println("You collected a rock near the waterfall.");
                 break;
             case "stick":
-                System.out.println("You gathered a sturdy stick from the forest.");
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
+                System.out.println("You gathered a stick near the waterfall.");
                 break;
             case "water":
-                System.out.println("You collected fresh water from the base of the waterfall.");
+                inventory.put("water", inventory.getOrDefault("water", 0) + 1);
+                System.out.println("You collected fresh water from the waterfall.");
                 break;
             case "treasure":
                 if (!treasureFound) {
-
                     System.out.println("You collect the treasure from the chest. Your luck increases by 5!");
                     Island.adjustLuck(5);
                     treasureFound = true;
                 } else {
-                    System.out.println("You already collected the treasure from the chest.");
+                    System.out.println("You already collected the treasure.");
                 }
                 break;
-            case "fish":
-                System.out.println("The water is rough and choppy. It is difficult to fish here. Try farther downstream.");
-                break;
             default:
-                System.out.println("There's no such item here.");
+                System.out.println("There's no such item here to collect.");
                 return;
         }
+    }
+
+    @Override
+    public void newDay() {
+        treasureFound = false;
     }
 
     

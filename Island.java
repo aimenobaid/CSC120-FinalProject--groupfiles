@@ -2,6 +2,14 @@ import java.util.HashMap;
 import java.util.Random;
 
 public abstract class Island implements IslandRequirements {
+
+    public static Waterfall getWaterfallInstance() {
+        return waterfallInstance;
+    }
+
+    public static void setWaterfallInstance(Waterfall waterfallInstance) {
+        Island.waterfallInstance = waterfallInstance;
+    }
     protected String name;
     protected String description;
     protected boolean opponent = false;
@@ -12,12 +20,16 @@ public abstract class Island implements IslandRequirements {
     protected static int currentDay = 1;
     protected static int actionsToday = 0;
     protected static final int ACTIONS_PER_DAY = 20;
+    protected static final int RESCUE_DAY = 10;
 
     // New movement references
     protected Island northExit;
     protected Island southExit;
     protected Island eastExit;
     protected Island westExit;
+
+    public static SouthShore southShoreInstance; 
+    public static Waterfall waterfallInstance;
 
     public Island(String name, String description) {
         this.name = name;
@@ -95,13 +107,40 @@ public abstract class Island implements IslandRequirements {
             advanceDay();
         }
     }
+
+    public void newDay() {
+    }
+
     public static void advanceDay() {
         currentDay++;
         actionsToday = 0;
+    
         System.out.println("Night falls. You survived Day " + (currentDay - 1) + ". A new day begins.");
         System.out.println("📆 Day " + currentDay);
+    
+        // === RESCUE CHECK === //
+        if (currentDay >= RESCUE_DAY) {
+            System.out.println("You hear a distant rumble... a rescue boat appears on the horizon!");
+            System.out.println("You wave frantically, and they spot you. You're rescued!");
+            System.out.println("🏆 YOU WIN! You survived " + currentDay + " days.");
+            System.exit(0);
+        }
+        // === DAILY PLAYER STATUS CHANGES ===
+        Player globalPlayer = Player.getInstance();
+        globalPlayer.decreaseHunger(10);
+        globalPlayer.decreaseThirst(10);
+        globalPlayer.heal(5); // Recover small amount of health overnight
 
+        // === RESET LOCATIONS THAT NEED DAILY RESET ===
+        // South Shore supplies
+        if (southShoreInstance != null) {
+            southShoreInstance.newDay();
+        }
+        if (waterfallInstance != null) {
+            waterfallInstance.newDay();
+        }
     }
+
     public static int getCurrentDay() {
         return currentDay;
     }

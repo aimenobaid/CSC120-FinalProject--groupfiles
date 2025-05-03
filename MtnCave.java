@@ -26,26 +26,28 @@ public class MtnCave extends Island {
     }
 
     
+    @Override
     public void collectItem(String item){
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
-        
+
         switch(item.toLowerCase()) {
             case "rock":
-                System.out.println("You collected a rock from the floor of the cave.");
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
+                System.out.println("You collected a rock from the cave floor.");
                 break;
             case "stick":
-                System.out.println("You gathered a sturdy stick from the forest.");
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
+                System.out.println("You gathered a stick from inside the cave.");
                 break;
             case "coal":
-                System.out.println("You stole some of the mountain troll's coal.");
+                inventory.put("coal", inventory.getOrDefault("coal", 0) + 1);
+                System.out.println("You stole some coal from the mountain troll's stash.");
                 break;
             default:
-                System.out.println("There's no such item here.");
+                System.out.println("There's no such item here to collect.");
                 return;
-        }
     }
-
+}
     //sort of a movement method so update w/ that system
     public Island leaveCave(){
         System.out.println("You quickly run out of the cave and step out into the light. The mountain troll cannot get you here. You are on the side of the mountain. There is a path leading up to the peak or down towards the Light Forest.");

@@ -51,29 +51,32 @@ public class NorthShore extends Island implements NorthShoreRequirements {
 
     @Override
     public void collectItem(String item){
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
-        
+
         switch(item.toLowerCase()) {
             case "rock":
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
                 System.out.println("You collected a rock from the shore.");
                 break;
             case "stick":
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
                 System.out.println("You gathered a stick from the shore.");
                 break;
             case "water":
+                inventory.put("water", inventory.getOrDefault("water", 0) + 1);
                 System.out.println("You collected fresh water from a tide pool.");
                 break;
             case "fish":
+                inventory.put("fish", inventory.getOrDefault("fish", 0) + 1);
                 System.out.println("You speared a fish from the shallows.");
                 adjustLuck(1);
                 break;
             case "supplies":
+                inventory.put("supplies", inventory.getOrDefault("supplies", 0) + 1);
                 System.out.println("You found some supplies washed up on the shore.");
                 break;
             default:
-                System.out.println("There's no such item here.");
-                return;
+                System.out.println("There's no such item here to collect.");
         }
     }
 

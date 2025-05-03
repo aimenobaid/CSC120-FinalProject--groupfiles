@@ -26,28 +26,32 @@ public class Stream extends Island {
     }
 
     
-    public void collectItem(String item){
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
-        incrementActions();
-        
-        switch(item.toLowerCase()) {
-            case "rock":
-                System.out.println("You collected a rock from the banks of the stream");
-                break;
-            case "stick":
-                System.out.println("You gathered a little stick from the forest.");
-                break;
-            case "water":
-                System.out.println("You collected fresh water from the stream.");
-                break;
-            case "fish":
-                System.out.println("You speared a fish from the shallows.");
-                break;
-            default:
-                System.out.println("There's no such item here.");
-                return;
-        }
+    @Override
+public void collectItem(String item){
+    incrementActions();
+
+    switch(item.toLowerCase()) {
+        case "rock":
+            inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
+            System.out.println("You collected a rock from the banks of the stream.");
+            break;
+        case "stick":
+            inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
+            System.out.println("You gathered a stick near the stream.");
+            break;
+        case "water":
+            inventory.put("water", inventory.getOrDefault("water", 0) + 1);
+            System.out.println("You collected fresh water from the stream.");
+            break;
+        case "fish":
+            inventory.put("fish", inventory.getOrDefault("fish", 0) + 1);
+            System.out.println("You caught a fish from the stream.");
+            break;
+        default:
+            System.out.println("There's no such item here to collect.");
+            return;
     }
+}
 
 
     public void swim() {

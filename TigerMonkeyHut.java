@@ -6,6 +6,11 @@ public class TigerMonkeyHut extends Island{
     }
 
     @Override
+    public void newDay() {
+        suppliesCollectedToday = false;
+    }
+    
+    @Override
     public void describe(){
         System.out.println(description);
     }
@@ -40,16 +45,16 @@ public class TigerMonkeyHut extends Island{
         return this;
     }
     @Override
-    // Common actions across all islands
     public void collectItem(String item){
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
-        
+
         switch(item.toLowerCase()) {
             case "rock":
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
                 System.out.println("You collect a rock from the Hut.");
                 break;
             case "stick":
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
                 System.out.println("You gathered a sturdy stick from the forest.");
                 break;
             case "supplies":
@@ -57,19 +62,25 @@ public class TigerMonkeyHut extends Island{
                     System.out.println("You already collected supplies from the hut today.");
                 } else {
                     System.out.println("You creep inside and collect supplies from the tiger-monkey's hut.");
+                    inventory.put("supplies", inventory.getOrDefault("supplies", 0) + 1);
+                    suppliesCollectedToday = true;
                 }
+                break;
             default:
-                System.out.println("There's no such item here.");
+                System.out.println("There's no such item here to collect.");
+                return;
         }
     }
 
     public void openChest(){
         System.out.println("You move over to the chest and carefully open it. The lid creaks slightly.");
-        if(luckPoints < 70){
 
-        }
-        if(luckPoints >= 70){
-
+        if (luckPoints < 70) {
+            System.out.println("You find some strange trinkets... but nothing useful.");
+        } else {
+            System.out.println("You find a FLARE GUN and a single FLARE inside!");
+            inventory.put("flare", inventory.getOrDefault("flare", 0) + 1);
+            System.out.println("You carefully take the flare gun and flare. This could save your life.");
         }
     }
 
@@ -92,12 +103,18 @@ public class TigerMonkeyHut extends Island{
         String help = """
         📍 You are inside the Tiger Monkey Hut.
         Available Commands:
-        go north / south / east / west
-        collect rock / stick
-        leave hut
-        drink, eat
-        inventory, stats, help
+        - go north / south / east / west
+        - collect rock / stick / supplies
+        - leave hut
+        - open chest
+        - drink, eat
+        - inventory, stats, help, quit
         """;
+        
+        if (inventory.getOrDefault("flare", 0) > 0) {
+            help += "- use flare\n";
+        }
+
         System.out.println(help);
     }
 

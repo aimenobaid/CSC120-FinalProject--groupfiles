@@ -4,21 +4,25 @@ public class LightTemple extends Island implements LightForestRequirements {
         super("Light Temple", "You are in the Light Temple. The white marble walls are solid and strong. Against one is a collection of strange humanoid figures.");
     }
 
-    
+    @Override
     public void collectItem(String item){
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
-        
+    
         switch(item.toLowerCase()) {
             case "rock":
-                System.out.println("You collected a rock from the forest floor.");
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
+                System.out.println("You collected a rock from the temple floor.");
                 break;
             case "stick":
-                System.out.println("You gathered a sturdy stick from the forest.");
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
+                System.out.println("You gathered a sturdy stick near the temple.");
                 break;
-            //add cases for other items
+            case "berries":
+                inventory.put("berries", inventory.getOrDefault("berries", 0) + 1);
+                System.out.println("You collected berries near the temple.");
+                break;
             default:
-                System.out.println("There's no such item here.");
+                System.out.println("There's no such item here to collect.");
                 return;
         }
     }

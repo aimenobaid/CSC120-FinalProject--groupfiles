@@ -5,6 +5,7 @@ public class Main {
         // Hardcoded locations
         NorthShore northShore = new NorthShore();
         SouthShore southShore = new SouthShore();
+        Island.southShoreInstance = southShore;
         Mountain mountain = new Mountain();
         MtnCave mtnCave = new MtnCave();
         LightForest lightForest = new LightForest();
@@ -12,7 +13,9 @@ public class Main {
         LightTemple lightTemple = new LightTemple();
         Stream stream = new Stream();
         Waterfall waterfall = new Waterfall();
+        Island.waterfallInstance = waterfall;
         TigerMonkeyHut tigerMonkeyHut = new TigerMonkeyHut();
+
 
         // Setting up all the connections
 
@@ -98,8 +101,23 @@ public class Main {
                     else System.out.println("You are not at the waterfall.");
                 }
                 case "open chest" -> {
-                    if (player.getLocation() instanceof Waterfall wf) wf.openChest();
-                    else System.out.println("There is no chest here.");
+                    if (player.getLocation() instanceof Waterfall wf) {
+                        wf.openChest();
+                    } else if (player.getLocation() instanceof TigerMonkeyHut tmh) {
+                        tmh.openChest();
+                    } else {
+                        System.out.println("There is no chest here.");
+                    }
+                }
+                case "use flare" -> {
+                    if (Island.getItemCount("flare") > 0) {
+                        System.out.println("You fire the flare into the sky. A brilliant red light arcs high above the island...");
+                        System.out.println("Moments later, you hear the sound of rotors. A helicopter appears, circling and then descending towards you!");
+                        System.out.println("🏆 YOU WIN! You were rescued thanks to the flare.");
+                        System.exit(0);
+                    } else {
+                        System.out.println("You don't have a flare to use.");
+                    }
                 }
                 case "leave alcove" -> {
                     if (player.getLocation() instanceof Waterfall wf) wf.leaveAlcove();

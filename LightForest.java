@@ -51,22 +51,27 @@ public class LightForest extends Island implements LightForestRequirements {
 
     @Override
     public void collectItem(String item){
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         incrementActions();
-        
+    
         switch(item.toLowerCase()) {
             case "rock":
+                inventory.put("rock", inventory.getOrDefault("rock", 0) + 1);
                 System.out.println("You collected a rock from the forest floor.");
                 break;
             case "stick":
+                inventory.put("stick", inventory.getOrDefault("stick", 0) + 1);
                 System.out.println("You gathered a sturdy stick from the forest.");
                 break;
-            //add cases for other items
+            case "berries":
+                inventory.put("berries", inventory.getOrDefault("berries", 0) + 1);
+                System.out.println("You collected some berries.");
+                break;
             default:
-                System.out.println("There's no such item here.");
+                System.out.println("There's no such item here to collect.");
                 return;
         }
     }
+    
 
 
     public void petAnimal(){
