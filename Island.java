@@ -295,12 +295,13 @@ public abstract class Island implements IslandRequirements {
      * @param change the amount to change luck points by
      */
     public static void adjustLuck(int change) {
+    //THIS ISN'T WORKING, IT DOENS't SAY YOU WIN WHEN YOU GET 100 LUCK POINTS !!!
         if (luckPoints >= 100) {
             System.out.println("You hear a distant rumble... a boat appears on the horizon!");
             System.out.println("You wave frantically, and they spot you. You're rescued!");
             System.out.println("🏆 YOU WIN! You survived " + currentDay + " days.");
             System.exit(0);
-        }
+        } 
         
         luckPoints += change;
         System.out.println("Luck is now: " + luckPoints);

@@ -204,4 +204,8 @@ public class Mountain extends Island implements MountainRequirements
         return this;
     }
     
+
+
+    //mountain isn't letting you rest even if you have a shelter built
+    //also in some locations rest isn't always on the help menu (should be conditional on shelter built)
 }
