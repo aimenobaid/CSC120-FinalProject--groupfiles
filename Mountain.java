@@ -1,9 +1,9 @@
 
-import javax.swing.JDialog;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Frame;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 
 public class Mountain extends Island implements MountainRequirements 
 {
@@ -27,6 +27,11 @@ public class Mountain extends Island implements MountainRequirements
     @Override
     public void describe() {
         System.out.println(description);
+    }
+
+    @Override
+    protected boolean canBuildShelter() {
+        return true;  // Shelter is possible, but risky
     }
 
     /**

@@ -1,16 +1,27 @@
 public class SouthShore extends Island implements SouthShoreRequirements {
     private boolean suppliesCollectedToday;
 
+    /**
+     * Constructor for the SouthShore class.
+     * Initializes the south shore with a description and sets initial state of suppliesCollectToday to false.
+     * @param description The description of the south shore.
+     */
     public SouthShore() {
         super("You are on the South Shore. You see shipwreck debris on the shore and a stream winding down to the water from a mountain peak in the distance.");
         this.suppliesCollectedToday = false;
     }
 
+    /**
+     * Prints description of the South Shore.
+     */
     @Override
     public void describe() {
         System.out.println(description);
     }
 
+    /**
+     * Does not allow player to build a shelter on the south shore.
+     */
     @Override
     public void buildShelter() {
         try {
@@ -20,6 +31,11 @@ public class SouthShore extends Island implements SouthShoreRequirements {
         }
     }
 
+    /**
+     * Allows player to collect items from the south shore and prints a collection message.
+     * Increments the action count and adds item to inventory. Prints error message if item is not recognized.
+     * @param item The item to be collected (rock, stick, coal).
+     */
     @Override
     public void collectItem(String item){
         incrementActions();
@@ -59,11 +75,17 @@ public class SouthShore extends Island implements SouthShoreRequirements {
         }
     }
 
+    /**
+     * Sets suppliesCollectToday to false for a new day
+     */
     @Override
     public void newDay() {
         suppliesCollectedToday = false;
     }
 
+    /**
+     * Displays possible commands for the player specific to the location and several conditions.
+     */
     @Override
     public void help() {
         String help = """
@@ -80,25 +102,40 @@ public class SouthShore extends Island implements SouthShoreRequirements {
     }
 
 
-    // Movement methods
+    /**
+     * Moves the player to the stream and prints a message about their path.
+     * @return Their new location (Stream).
+     */
     @Override
     public Island moveNorth() {
         System.out.println("You follow the stream up towards the Misty Mountain. There is a waterfall up ahead. Move north again to reach the waterfall.");
         return northExit;
     }
 
+    /**
+     * Attempts to move the player south but prints a message indicating that they cannot go further south.
+     * @return The current location (SouthShore).
+     */
     @Override
     public Island moveSouth() {
         System.out.println("You walk to the water's edge. You can't go further south. You will drown.");
         return this;
     }
 
+    /**
+     * Moves the player to the Light Forest and prints a message about their path.
+     * @return Their new location (Light Forest).
+     */
     @Override
     public Island moveEast() {
         System.out.println("You walk along the shore and enter the Light Forest. You see the ruins of temples in the distance.");
         return eastExit;
     }
 
+    /**
+     * Moves the player to the Dark Forest and prints a message about their path.
+     * @return Their new location (Dark Forest).
+     */
     @Override
     public Island moveWest() {
         System.out.println("You enter the Dark Forest. The foliage is dense and the trees are tall. You can hear the sounds of creatures in the distance.");

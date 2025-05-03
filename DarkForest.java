@@ -160,7 +160,16 @@ public class DarkForest extends Island implements DarkForestRequirements{
         return southExit;
     }
 
-
+    /**
+     * Moves the player east to the Mountain and prints a message about their path.
+     * @return Their new location (Mountain).
+     */
+    @Override
+    public Island moveEast() {
+        System.out.println("You head up towards the Mountains.");
+        return eastExit;
+    }
+    
     /**
      * Attempts to move the player further west but prints a message indicating that they cannot go further west.
      * @return Their current location.
@@ -173,13 +182,4 @@ public class DarkForest extends Island implements DarkForestRequirements{
         return westExit;
     }
 
-    /**
-     * Moves the player east to the Mountain and prints a message about their path.
-     * @return Their new location (Mountain).
-     */
-    @Override
-    public Island moveEast() {
-        System.out.println("You head up towards the Mountains.");
-        return eastExit;
-    }
 }
