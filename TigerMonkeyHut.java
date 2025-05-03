@@ -16,8 +16,14 @@ public class TigerMonkeyHut extends Island{
     }
 
     public Island leaveHut(){
-        System.out.println("You quietly exit the hut and step back into the forest.");
-        return northExit;
+        if(opponent == true){
+            System.out.println("You can't leave now, you're in the middle of a fight!");
+            return null;
+        }
+        else{
+            System.out.println("You quietly exit the hut and step back into the forest.");
+            return northExit;
+        }
     }
 
     // Movement methods
@@ -101,22 +107,40 @@ public class TigerMonkeyHut extends Island{
 
     @Override
     public void help() {
-        String help = """
-        📍 You are inside the Tiger Monkey Hut.
-        Available Commands:
-        - go north / south / east / west
-        - collect rock / stick / supplies
-        - leave hut
-        - open chest
-        - drink, eat
-        - inventory, stats, help, quit
-        """;
-        
-        if (inventory.getOrDefault("flare", 0) > 0) {
-            help += "- use flare\n";
+
+        String help = "";
+
+        if(opponent == false){
+            help += """
+                📍 You are inside the Tiger Monkey Hut.
+                Available Commands:
+                - go north / south / east / west
+                - collect rock / stick / supplies
+                - leave hut
+                - open chest
+                - drink, eat
+                - inventory, stats, help, quit
+                """;
+                if (inventory.getOrDefault("flare", 0) > 0) {
+                    help += "- use flare\n";
+                }
+        }
+        else{
+            help += """
+                📍 You are in a fight with the Tiger Monkey
+                - fight
+                - run
+                - inventory, stats, help, quit
+                """;
         }
 
         System.out.println(help);
+    }
+
+    public void run(){
+        System.out.println("You run away from the Monkey. But you drop some things on the way out.");
+
+        adjustLuck(-10);
     }
 
 }

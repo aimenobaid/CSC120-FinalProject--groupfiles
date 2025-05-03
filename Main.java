@@ -106,8 +106,7 @@ public class Main {
                 }
                 case "leave hut" ->{
                     if(player.getLocation() instanceof TigerMonkeyHut tmh){
-                        System.out.println("You sneak out of the Monkey's hut and back into the woods.");
-                        tmh.moveEast();
+                        tmh.leaveHut();
                     }
                 }
                 case "open chest" -> {
