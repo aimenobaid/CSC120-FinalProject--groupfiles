@@ -42,6 +42,7 @@ public class MtnCave extends Island {
                 break;
             default:
                 System.out.println("There's no such item here.");
+                return;
         }
     }
 

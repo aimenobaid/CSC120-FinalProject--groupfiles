@@ -45,6 +45,7 @@ public class Stream extends Island {
                 break;
             default:
                 System.out.println("There's no such item here.");
+                return;
         }
     }
 

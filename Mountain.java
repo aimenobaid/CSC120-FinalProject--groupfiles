@@ -1,5 +1,5 @@
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class Mountain extends Island //implements MountainRequirements 
 {
@@ -34,6 +34,7 @@ public class Mountain extends Island //implements MountainRequirements
                 break;
             default:
                 System.out.println("There's no such item here.");
+                return;
         }
     }
 

@@ -54,6 +54,7 @@ public class SouthShore extends Island implements SouthShoreRequirements {
                 break;
             default:
                 System.out.println("There's no such item here.");
+                return;
         }
     }
     /* this will be needed for later when we need to reset supplies on the south shore daily 

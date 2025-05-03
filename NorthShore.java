@@ -73,6 +73,7 @@ public class NorthShore extends Island implements NorthShoreRequirements {
                 break;
             default:
                 System.out.println("There's no such item here.");
+                return;
         }
     }
 

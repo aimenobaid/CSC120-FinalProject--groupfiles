@@ -35,6 +35,7 @@ public class DarkForest extends Island implements DarkForestRequirements{
             //add cases for other items
             default:
                 System.out.println("There's no such item here.");
+                return;
         }
     }
 

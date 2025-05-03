@@ -19,6 +19,7 @@ public class LightTemple extends Island implements LightForestRequirements {
             //add cases for other items
             default:
                 System.out.println("There's no such item here.");
+                return;
         }
     }
     

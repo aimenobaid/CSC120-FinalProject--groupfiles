@@ -1,5 +1,25 @@
 Architecure Diagram: https://docs.google.com/drawings/d/1Kdz_9xdI5osGZPDPGFbb5GNC8VAh5xtsRH_oBl-vIxs/edit?usp=sharing 
 
+# New TO DO for finilazing the project:
+
+1) Fix inventory Bug, Aimen: **YES**
+
+2) Starting to write game ending events/Death:
+        --> Rescue depending on number of days survived.
+        --> Volcanic eruption based on luck and trying to build a shelter in the wrong place
+        --> In Player:
+            - Health below 10 kills you
+            -Hunger below 10 kills you
+            -Thirst below 10 kills you
+            -Losing a fight decreases Health by 70 ish.
+        --> Fixing the advance day and stats logic to be consistent.
+            -Advancing a day should decrease your hunger and thirst but increase your health.
+            -South shore supply collection should rest every day, should not be able to collect infinite supplies on one day.
+
+
+3) play game and make sure we meet all rubric requirements (see 'rubric.md' and below) ALSO address all question comments and add javadocs and other comments for the purpose of being graded 
+
+
 
 # Combined/Updated TO DO (as of 4/26 9am)
 1) all child location classes should be fully built out and cases added to main so that their functionality can be used
@@ -30,25 +50,9 @@ ALSO go through and make sure methods like fight(), buildShelter(), buildFire(),
                 --> Now it increments actions and deducts from inventory.
                 --> Can eat all types of food not just fish.
 
-2) Starting to write game ending events/Death:
-        --> Rescue depending on number of days survived.
-        --> Volcanic eruption based on luck and trying to build a shelter in the wrong place
-        --> In Player:
-            - Health below 10 kills you
-            -Hunger below 10 kills you
-            -Thirst below 10 kills you
-            -Losing a fight decreases Health by 70 ish.
-        --> Fixing the advance day and stats logic to be consistent.
-            -Advancing a day should decrease your hunger and thirst but increase your health.
-            -South shore supply collection should rest every day, should not be able to collect infinite supplies on one day.
-
 3) make pop up graphic for map at the mountain peak - **YES** but could be better?
 
-4) play game and make sure we meet all rubric requirements (see 'rubric.md' and below) ALSO address all question comments and add javadocs and other comments for the purpose of being graded
-
-from the official final project repo
-# CSC120-FinalProject
-
+From the official final project repo:
 ## Deliverables:
  - Your final codebase
  - Your revised annotated architecture diagram

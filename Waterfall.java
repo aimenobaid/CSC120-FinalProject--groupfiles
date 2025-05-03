@@ -60,6 +60,7 @@ public class Waterfall extends Island implements WaterfallRequirements {
                 break;
             default:
                 System.out.println("There's no such item here.");
+                return;
         }
     }
 
