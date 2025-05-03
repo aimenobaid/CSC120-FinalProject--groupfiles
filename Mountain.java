@@ -12,9 +12,7 @@ public class Mountain extends Island //implements MountainRequirements
 
     /**
      * Constructor for the Mountain class.
-     * Initializes the mountain with a name and description.
-     * Sets the initial state of atPeak and inCave to false.
-     * @param name The name of the mountain.
+     * Initializes the mountain with a description and sets the initial state of atPeak and inCave to false.
      * @param description The description of the mountain.
      */
     public Mountain() {
@@ -24,7 +22,7 @@ public class Mountain extends Island //implements MountainRequirements
     }
 
     /**
-     * Prints description of the mountain to the player.
+     * Prints description of the mountain.
      */
     @Override
     public void describe() {
@@ -97,7 +95,6 @@ public class Mountain extends Island //implements MountainRequirements
         atPeak = true;
     }
 
-
     /**
      * Displays a map of the island if the player is at the peak.
      * If not at the peak, prints a message indicating that they need to climb to the peak first.
@@ -161,7 +158,11 @@ public class Mountain extends Island //implements MountainRequirements
         }
         System.out.println(help);
     }
-    // Movement methods
+    
+    /**
+     * Moves the player to the North Shore and prints a message about their path.
+     * @return Their new location (North Shore).
+     */
     @Override
     public Island moveNorth() {
         System.out.println("You head downwards and arrive at the North Shore");

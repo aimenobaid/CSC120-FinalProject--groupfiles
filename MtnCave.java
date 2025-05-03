@@ -1,7 +1,8 @@
 public class MtnCave extends Island {
 
     /**
-     * * Constructor for the MtnCave class. Initializes the cave description and sets the opponent flag.
+     * * Constructor for the MtnCave class. 
+     * Initializes cave with a description and sets the opponent flag to true.
      * * @param description The description of the cave.
      */
     public MtnCave() {
@@ -42,14 +43,21 @@ public class MtnCave extends Island {
             default:
                 System.out.println("There's no such item here to collect.");
                 return;
+         }
     }
-}
-    //sort of a movement method so update w/ that system
+
+    /**
+     * Allows player to leave the cave and return to the mountain. Prints a message about the journey.
+     * @return The next island to move to (northExit) which is the moutnain.
+     */
     public Island leaveCave(){
         System.out.println("You quickly run out of the cave and step out into the light. The mountain troll cannot get you here. You are on the side of the mountain. There is a path leading up to the peak or down towards the Light Forest.");
         return northExit;
     }
 
+    /**
+     * Displays possible commands for the player specific to the location.
+     */
     public void help(){
         String help = """
         📍 You are inside the Mountain Cave.
