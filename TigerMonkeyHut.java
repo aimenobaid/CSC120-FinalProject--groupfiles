@@ -95,14 +95,25 @@ public class TigerMonkeyHut extends Island{
         suppliesCollectedToday = true;
     }
 
-    public void FightMonkey(){
+    public boolean FightMonkey(){
         if(luckPoints <= 50 && suppliesCollectedToday){
             System.out.println("As you rummage around in the hut, the Tiger Monkey appears in the doorway. He lets out a horrible roar, and begins barrelling towards you.");
             opponent = true;
+            if(fight()){
+                System.out.println("You lost your fight with the Tiger Monkey!");
+                return false;
+            }
+            else{
+                System.out.println("You knock the Tiger Monkey unconscious. He falls to the hard floor. You live to steal another day. Maybe it's time to get out of here?");
+                opponent = false;
+                return true;
+            }
         }
         else if(luckPoints > 50 && suppliesCollectedToday){
             System.out.println("You hear a rustle outside. The Tiger Monkey could be nearby. You should get out of here soon.");
+            return true;
         }
+        return true;
     }
 
     @Override
@@ -138,8 +149,7 @@ public class TigerMonkeyHut extends Island{
     }
 
     public void run(){
-        System.out.println("You run away from the Monkey. But you drop some things on the way out.");
-
+        System.out.println("You run away from the Monkey. You end up in the Dark Forest, further east, but feel more tired and hungry.");
         adjustLuck(-10);
     }
 

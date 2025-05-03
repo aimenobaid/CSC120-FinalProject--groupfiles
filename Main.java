@@ -79,7 +79,12 @@ public class Main {
                 }
                 case "fight" -> {
                     //player.getLocation().fight();
-                    if(!player.getLocation().fight()){
+                    if(player.getLocation() instanceof TigerMonkeyHut tmh){
+                        if(!tmh.FightMonkey()){
+                            player.changeHealth(-70);
+                        }
+                    }
+                    else if(!player.getLocation().fight()){
                         player.changeHealth(-70);
                     }
                 }
