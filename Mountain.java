@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Frame;
 
-public class Mountain extends Island //implements MountainRequirements 
+public class Mountain extends Island implements MountainRequirements 
 {
     public boolean atPeak;
     public boolean inCave;

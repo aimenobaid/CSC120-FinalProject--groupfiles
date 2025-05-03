@@ -25,6 +25,11 @@ public abstract class Island implements IslandRequirements {
     public static Waterfall waterfallInstance;
     public static TigerMonkeyHut tigerMonkeyHutInstance; 
 
+    /**
+     * Constructor for Island class
+     * Initializes the island with a description and an empty inventory with available items.
+     * @param description
+     */
     public Island(String description) {
         this.description = description;
         if (inventory.isEmpty()) {
@@ -39,7 +44,13 @@ public abstract class Island implements IslandRequirements {
         }
     }
 
-    /** Define exits for movement */
+    /**
+     * Defines exits for movement methods.
+     * @param north as the location to the north
+     * @param south as the location to the south
+     * @param east as the location to the east
+     * @param west as the location to the west
+     */
     public void setExits(Island north, Island south, Island east, Island west) {
         this.northExit = north;
         this.southExit = south;
@@ -47,7 +58,10 @@ public abstract class Island implements IslandRequirements {
         this.westExit = west;
     }
 
-    /** Default movement methods */
+    /**
+     * Default movement method for north. Prints generic message to move, prints error if no north exit.
+     * @return the new island location if it exists, otherwise returns the current island.
+     */
     public Island moveNorth() {
         if (northExit != null) {
             System.out.println("You move north.");
@@ -57,6 +71,11 @@ public abstract class Island implements IslandRequirements {
             return this;
         }
     }
+
+    /**
+     * Default movement method for south. Prints generic message to move, prints error if no south exit.
+     * @return the new island location if it exists, otherwise returns the current island.
+     */
     public Island moveSouth() {
         if (southExit != null) {
             System.out.println("You move south.");
@@ -67,7 +86,10 @@ public abstract class Island implements IslandRequirements {
         }
     }
 
-
+    /**
+     * Default movement method for east. Prints generic message to move, prints error if no east exit.
+     * @return the new island location if it exists, otherwise returns the current island.
+     */
     public Island moveEast() {
         if (eastExit != null) {
             System.out.println("You move east.");
@@ -78,6 +100,10 @@ public abstract class Island implements IslandRequirements {
         }
     }
 
+    /**
+     * Default movement method for west. Prints generic message to move, prints error if no west exit.
+     * @return the new island location if it exists, otherwise returns the current island.
+     */
     public Island moveWest() {
         if (westExit != null) {
             System.out.println("You move west.");
@@ -88,12 +114,17 @@ public abstract class Island implements IslandRequirements {
         }
     }
 
-    // ===== Abstract Methods ===== //
+    // ===== Abstract Methods ===== // !!!!!!!!NEED JAVADOCS HELP!!!!!!!
     public abstract void describe(); 
     public abstract void collectItem(String item);
     public abstract void help(); 
     
     // ====== GAME PROGRESSION ====== //
+    
+    /**
+     * Increments the number of actions taken today. If the number of actions reaches the daily limit, it advances to the next day.
+     * Also increases hunger and thirst every 5 actions and alerts the player.
+     */
     public static void incrementActions() {
         actionsToday++;
         if (actionsToday >= ACTIONS_PER_DAY) {
@@ -108,9 +139,16 @@ public abstract class Island implements IslandRequirements {
         System.out.println("You are getting tired. Your hunger and thirst are increasing.");
     }
 
+    /**
+     * Overridden in child classes to reset daily status changes.
+     */
     public void newDay() {
     }
 
+    /**
+     * Advances the game to the next day, resets actions, and checks for rescue conditions.
+     * Increases hunger and thirst, and heals the player slightly by increasing health.
+     */
     public static void advanceDay() {
         currentDay++;
         actionsToday = 0;
@@ -125,7 +163,7 @@ public abstract class Island implements IslandRequirements {
             System.out.println("🏆 YOU WIN! You survived " + currentDay + " days.");
             System.exit(0);
         }
-        // === DAILY PLAYER STATUS CHANGES ===
+        // === DAILY PLAYER STATUS CHANGES === //
         Player globalPlayer = Player.getInstance();
         globalPlayer.increaseHunger(10);
         globalPlayer.increaseThirst(10);
@@ -143,11 +181,20 @@ public abstract class Island implements IslandRequirements {
         }
     }
 
+    /**
+     * Returns the current day of the game.
+     * @return the current day number
+     */
     public static int getCurrentDay() {
         return currentDay;
     }
 
     // ===== SURVIVAL ===== //
+
+    /**
+     * Builds a shelter if the player has enough materials and if the location allows it.
+     * If the shelter is already built, it informs the player. Same for if the player doesn't have enough materials.
+     */
     public void buildShelter() {
         if (shelterBuilt) {
             System.out.println("You already have a shelter here.");
@@ -168,18 +215,28 @@ public abstract class Island implements IslandRequirements {
         incrementActions();
     }
     
+    /**
+     * Overridden in child classes to allow or disallow shelter building. .
+     * @return boolean false, not allowed by default
+     */
     protected boolean canBuildShelter() {
-        return false;  // By default, shelters aren't allowed
+        return false; 
     }
     
     protected boolean shelterBuilt = false;  // Centralized shelter tracking
 
-    /** Override in child classes to track shelter status */
+    /**
+     * Overridden in child classes to track shelter status. 
+     * @return boolean false, by defult, no shelter is built.
+     */
     protected boolean hasShelter() {
         return false;
     }
 
-    /** Fire w multiple options */
+    /** 
+     * Allows player to build a fire if they have the required materials.
+     * Alerts the player if they don't have enough materials. Increments actions.
+     */
     public void buildFire() {
         if (getItemCount("stick") >= 3 && getItemCount("rock") >= 2) {
             inventory.put("stick", inventory.get("stick") - 3);
@@ -194,7 +251,12 @@ public abstract class Island implements IslandRequirements {
         }
         incrementActions();
     }
-    /** Combat */
+    
+    /** 
+     * Allows the player to fight an opponent if one exists. Results are determined by luck points.
+     * Increments actions and checks if the player wins or loses the fight.
+     * If the player wins, they gain luck points. If they lose, they lose luck points. 
+     */
     public boolean fight() {
         Random rand = new Random();
         int chance = rand.nextInt(100) + 1;
@@ -217,13 +279,21 @@ public abstract class Island implements IslandRequirements {
         }
             
     }
-    /** Exploring */
+    
+    /** 
+     * Allows the player to look around the island and see its description.
+     * Increments actions. 
+     */
     public void lookAround() {
         System.out.println("You look around: " + description);
         incrementActions();
     }
 
     // ====== LUCK SYSTEM ==== //
+    /**
+     * Adjusts the player's luck points. If luck points reach 100, the player is rescued.
+     * @param change the amount to change luck points by
+     */
     public static void adjustLuck(int change) {
         if (luckPoints >= 100) {
             System.out.println("You hear a distant rumble... a boat appears on the horizon!");
@@ -237,6 +307,10 @@ public abstract class Island implements IslandRequirements {
     }
 
     // ===== INVENTORY ===== //
+    /**
+     * Adds an item to the inventory. If the item already exists, it increments the count.
+     * @param item the item to add
+     */
     public static int getItemCount(String item) {
         return inventory.getOrDefault(item, 0);
     }
@@ -246,10 +320,18 @@ public abstract class Island implements IslandRequirements {
 
 
     // ===== Getters ===== //
+    /**
+     * Returns the name of the island.
+     * @return the name of the island
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the description of the island.
+     * @return description the description of the island
+     */
     public String getDescription() {
         return description;
     }
