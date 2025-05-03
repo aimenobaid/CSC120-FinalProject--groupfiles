@@ -6,7 +6,7 @@ Architecure Diagram: https://docs.google.com/drawings/d/1Kdz_9xdI5osGZPDPGFbb5GN
 
 2) Starting to write game ending events/Death:
         --> Rescue depending on number of days survived. Aimen: **YES** //hopefully should be working
-        --> Volcanic eruption based on luck and trying to build a shelter in the wrong place
+        --> Volcanic eruption based on luck and trying to build a shelter in the wrong place **YES**
         --> In Player: Aimen: **YES** // also hopefully should be working
             - Health below 10 kills you
             -Hunger below 10 kills you
