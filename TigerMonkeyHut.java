@@ -90,11 +90,13 @@ public class TigerMonkeyHut extends Island{
     }
 
     public void FightMonkey(){
-        if(luckPoints < 50){
-            
+        if(luckPoints < 50 && suppliesCollectedToday){
+            System.out.println("As you rummage around in the hut, the Tiger Monkey appears in the doorway. He lets out a horrible roar, and begins barrelling towards you.");
+            opponent = true;
+            fight();
         }
-        if(luckPoints >= 50){
-            
+        else if(luckPoints >= 50 && suppliesCollectedToday){
+            System.out.println("You hear a rustle outside. The Tiger Monkey could be nearby. You should get out of here soon.");
         }
     }
 
