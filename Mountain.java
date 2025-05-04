@@ -42,26 +42,29 @@ public class Mountain extends Island implements MountainRequirements
      */
     @Override
     public void buildShelter() {
-        if (shelterBuilt) {
+        if (shelterBuilt) { 
             System.out.println("You already have a shelter on the mountain.");
             return;
-        }
-        if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
-            inventory.put("rock", inventory.get("rock") - 3);
-            inventory.put("stick", inventory.get("stick") - 3);
-
-            if (luckPoints >= 50) {
-                System.out.println("You managed to build a sturdy shelter on the mountain slope.");
-                shelterBuilt = true;
-            } else {
-                System.out.println("You built a shelter... but it collapses. You lose 5 luck points :(");
-                adjustLuck(-25);
-            }
         } else {
-            System.out.println("You need 3 rocks and 3 sticks to build a shelter.");
+            if (getItemCount("rock") >= 3 && getItemCount("stick") >= 3) {
+                inventory.put("rock", inventory.get("rock") - 3);
+                inventory.put("stick", inventory.get("stick") - 3);
+    
+                if (luckPoints >= 50) {
+                    System.out.println("You managed to build a sturdy shelter on the mountain slope.");
+                    shelterBuilt = true;
+                } else {
+                    System.out.println("You built a shelter... but it collapses. :(");
+                    adjustLuck(-25);
+                }
+            } else {
+                System.out.println("You need 3 rocks and 3 sticks to build a shelter.");
+            }
+            incrementActions();
         }
-        incrementActions();
+        
     }
+
 
     /**
      * Allows player to collect items from the mountain and prints a collection message.

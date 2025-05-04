@@ -47,7 +47,6 @@ public class NorthShore extends Island implements NorthShoreRequirements {
             case "fish":
                 inventory.put("fish", inventory.getOrDefault("fish", 0) + 1);
                 System.out.println("You speared a fish from the shallows.");
-                adjustLuck(2);
                 break;
             case "supplies":
                 inventory.put("supplies", inventory.getOrDefault("supplies", 0) + 1);

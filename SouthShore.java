@@ -67,7 +67,6 @@ public class SouthShore extends Island implements SouthShoreRequirements {
             case "fish":
                 inventory.put("fish", inventory.getOrDefault("fish", 0) + 1);
                 System.out.println("You speared a fish from the shallows.");
-                adjustLuck(2);
                 break;
             default:
                 System.out.println("There's no such item here to collect.");

@@ -131,12 +131,13 @@ public abstract class Island implements IslandRequirements {
             advanceDay();
         }
 
-        if(actionsToday%5==0){
-            Player globalPlayer = Player.getInstance();
-            globalPlayer.increaseHunger(5);
-            globalPlayer.increaseThirst(5);
-        }
-        System.out.println("You are getting tired. Your hunger and thirst are increasing.");
+        // =======This is NOT working as intended, idk why or how to fix======== //
+        // if(actionsToday%5==0){
+        //     Player globalPlayer = Player.getInstance();
+        //     globalPlayer.increaseHunger(5);
+        //     globalPlayer.increaseThirst(5);
+        // }
+        // System.out.println("You are getting tired. Your hunger and thirst are increasing.");
     }
 
     /**
@@ -295,7 +296,7 @@ public abstract class Island implements IslandRequirements {
      * @param change the amount to change luck points by
      */
     public static void adjustLuck(int change) {
-    //THIS ISN'T WORKING, IT DOENS't SAY YOU WIN WHEN YOU GET 100 LUCK POINTS !!!
+    //==============THIS ISN'T WORKING, IT DOENS't SAY YOU WIN WHEN YOU GET 100 LUCK POINTS !!! ============//
         if (luckPoints >= 100) {
             System.out.println("You hear a distant rumble... a boat appears on the horizon!");
             System.out.println("You wave frantically, and they spot you. You're rescued!");
