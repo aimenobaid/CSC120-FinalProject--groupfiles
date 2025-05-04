@@ -120,6 +120,7 @@ public class LightForest extends Island implements LightForestRequirements {
     public void petAnimal(){
         System.out.println("You quietly wait for the animal to approach you before patting it gently on the snout.");
         adjustLuck(2);
+        animal = false;
     }
 
     /**

@@ -62,7 +62,7 @@ public class Stream extends Island {
     @Override
     public void help() {
         String help = """
-            📍 You are in the Tiger Monkey Hut.
+            📍 You are at the Stream.
             Available Commands:
             - go north / south / east / west
             - collect rock / stick / water / fish
