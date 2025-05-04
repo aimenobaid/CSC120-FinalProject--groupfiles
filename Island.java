@@ -6,6 +6,7 @@ public abstract class Island implements IslandRequirements {
     protected String name;
     protected String description;
     protected boolean opponent = false;
+    protected boolean shelter = false;
 
     protected static int luckPoints = 50; // example starting value
     protected static HashMap<String, Integer> inventory = new HashMap<>();
@@ -30,7 +31,8 @@ public abstract class Island implements IslandRequirements {
      * Initializes the island with a description and an empty inventory with available items.
      * @param description
      */
-    public Island(String description) {
+    public Island(String name, String description) {
+        this.name = name;
         this.description = description;
         if (inventory.isEmpty()) {
             inventory.put("rock", 0);
@@ -231,7 +233,7 @@ public abstract class Island implements IslandRequirements {
      * @return boolean false, by defult, no shelter is built.
      */
     protected boolean hasShelter() {
-        return false;
+        return shelterBuilt;
     }
 
     /** 

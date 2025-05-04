@@ -7,7 +7,7 @@ public class NorthShore extends Island implements NorthShoreRequirements {
      * @param description The description of the north shore.
      */
     public NorthShore() {
-        super("You are on the North Shore. There are rocks, sticks, fresh pools, and fish.");
+        super("North Shore", "You are on the North Shore. There are rocks, sticks, fresh pools, and fish.");
     }
 
     /**

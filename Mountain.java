@@ -16,7 +16,7 @@ public class Mountain extends Island implements MountainRequirements
      * @param description The description of the mountain.
      */
     public Mountain() {
-        super("You've arrived at the Misty Mountain. There are paths leading up to the peak with rocks and coal along the way.");
+        super("Mountain", "You've arrived at the Misty Mountain. There are paths leading up to the peak with rocks and coal along the way.");
         this.atPeak = false;
         this.inCave = false;
     }

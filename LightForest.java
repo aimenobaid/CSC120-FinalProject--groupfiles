@@ -8,7 +8,7 @@ public class LightForest extends Island implements LightForestRequirements {
      * @param description The description of the light forest.
      */
     public LightForest() {
-        super("You are in the Light Forest. There are tall trees whose leaves are high above you. The forest extends for miles around.");
+        super("Light Forest", "You are in the Light Forest. There are tall trees whose leaves are high above you. The forest extends for miles around.");
         this.shelterBuilt = false;
     }
 
@@ -37,10 +37,15 @@ public class LightForest extends Island implements LightForestRequirements {
      */
     @Override
     public void buildShelter() {
-    super.buildShelter();
-    if (shelterBuilt) {
-        System.out.println("Your shelter blends perfectly among the tall trees.");
-    }   
+    if (!shelterBuilt) {
+        super.buildShelter();  // Use standard recipe and logic
+        if (shelterBuilt) {
+            System.out.println("Your shelter blends in perfectly among the tall trees.");
+            shelter = true;
+        }
+    } else {
+        System.out.println("Your shelter stands firm in the Light Forest.");
+    }
     }
 
     /**
