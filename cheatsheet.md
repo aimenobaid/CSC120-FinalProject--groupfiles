@@ -27,7 +27,7 @@ If you go south, you end up at the Misty Mountain. Commands:
 - inventory, stats, help
 - build shelter
 - climb mountain
-If your location is at the peak, you can also view the map
+If your location is at the peak, you can also see the map (view map)
 
 If you go east from here, you end up at the Mountain Cave face-to-face with a troll. Commands:
 - go north/south/east/west
