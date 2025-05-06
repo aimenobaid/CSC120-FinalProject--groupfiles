@@ -5,7 +5,7 @@ public class Stream extends Island {
      * @param description The description of the stream.
      */
     public Stream() {
-        super("You arrive at a freshwater stream connecting the mountain to the shore.");
+        super("Stream", "You arrive at a freshwater stream connecting the mountain to the shore.");
     }
 
     /**
@@ -15,6 +15,8 @@ public class Stream extends Island {
     public void describe() {
         System.out.println(description);
     }
+
+    
 
     /**
      * Allows player to collect items from the stream and prints a collection message.
@@ -41,7 +43,6 @@ public class Stream extends Island {
         case "fish":
             inventory.put("fish", inventory.getOrDefault("fish", 0) + 1);
             System.out.println("You caught a fish from the stream.");
-            adjustLuck(2);
             break;
         default:
             System.out.println("There's no such item here to collect.");
@@ -63,7 +64,7 @@ public class Stream extends Island {
     @Override
     public void help() {
         String help = """
-            📍 You are in the Tiger Monkey Hut.
+            📍 You are at the Stream.
             Available Commands:
             - go north / south / east / west
             - collect rock / stick / water / fish

@@ -6,7 +6,7 @@ public class MtnCave extends Island {
      * * @param description The description of the cave.
      */
     public MtnCave() {
-        super("You have entered a cave in the Misty Mountain. It is dark and damp. You cannot see more than a few inches in front of you. Suddenly a mountain troll comes out of the darkness. You must leave immediately or fight him.");
+        super("Mountain Cave", "You have entered a cave in the Misty Mountain. It is dark and damp. You cannot see more than a few inches in front of you. Suddenly a mountain troll comes out of the darkness. You must leave immediately or fight him.");
         super.opponent = true;
     }
 

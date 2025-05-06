@@ -6,6 +6,7 @@ public abstract class Island implements IslandRequirements {
     protected String name;
     protected String description;
     protected boolean opponent = false;
+    protected boolean shelter = false;
 
     protected static int luckPoints = 50; // example starting value
     protected static HashMap<String, Integer> inventory = new HashMap<>();
@@ -30,7 +31,8 @@ public abstract class Island implements IslandRequirements {
      * Initializes the island with a description and an empty inventory with available items.
      * @param description
      */
-    public Island(String description) {
+    public Island(String name, String description) {
+        this.name = name;
         this.description = description;
         if (inventory.isEmpty()) {
             inventory.put("rock", 0);
@@ -131,12 +133,13 @@ public abstract class Island implements IslandRequirements {
             advanceDay();
         }
 
-        if(actionsToday%5==0){
-            Player globalPlayer = Player.getInstance();
-            globalPlayer.increaseHunger(5);
-            globalPlayer.increaseThirst(5);
-        }
-        System.out.println("You are getting tired. Your hunger and thirst are increasing.");
+        // =======This is NOT working as intended, idk why or how to fix======== //
+        // if(actionsToday%5==0){
+        //     Player globalPlayer = Player.getInstance();
+        //     globalPlayer.increaseHunger(5);
+        //     globalPlayer.increaseThirst(5);
+        // }
+        // System.out.println("You are getting tired. Your hunger and thirst are increasing.");
     }
 
     /**
@@ -230,7 +233,7 @@ public abstract class Island implements IslandRequirements {
      * @return boolean false, by defult, no shelter is built.
      */
     protected boolean hasShelter() {
-        return false;
+        return shelterBuilt;
     }
 
     /** 
@@ -295,7 +298,7 @@ public abstract class Island implements IslandRequirements {
      * @param change the amount to change luck points by
      */
     public static void adjustLuck(int change) {
-    //THIS ISN'T WORKING, IT DOENS't SAY YOU WIN WHEN YOU GET 100 LUCK POINTS !!!
+    //==============THIS ISN'T WORKING, IT DOENS't SAY YOU WIN WHEN YOU GET 100 LUCK POINTS !!! ============//
         if (luckPoints >= 100) {
             System.out.println("You hear a distant rumble... a boat appears on the horizon!");
             System.out.println("You wave frantically, and they spot you. You're rescued!");

@@ -7,7 +7,7 @@ public class DarkForest extends Island implements DarkForestRequirements{
      * @param description The description of the dark forest.
      */
     public DarkForest() {
-        super("You are in the Dark Forest.");
+        super("Dark Forest", "You are in the Dark Forest.");
         super.opponent = true;
     }
 
@@ -26,6 +26,11 @@ public class DarkForest extends Island implements DarkForestRequirements{
     @Override
     protected boolean canBuildShelter() {
         return true;
+    }
+
+    @Override
+    protected boolean hasShelter() {
+        return shelterBuilt;  // Check if shelter is built
     }
 
     /**

@@ -23,15 +23,14 @@ public class Main {
         Island.waterfallInstance = waterfall;
         TigerMonkeyHut tigerMonkeyHut = new TigerMonkeyHut();
 
-
         // Setting up all the connections
         northShore.setExits(null, mountain, lightForest, darkForest);
         southShore.setExits(stream, null, lightForest, darkForest);
-        mountain.setExits(northShore, waterfall, mtnCave, darkForest);
+        mountain.setExits(northShore, waterfall, mtnCave, mountain);
         mtnCave.setExits(mountain, waterfall, lightForest, mountain);
-        lightForest.setExits(lightTemple, stream, lightForest, mountain);
+        lightForest.setExits(lightTemple, stream, null, mtnCave);
         darkForest.setExits(northShore, stream, mountain, tigerMonkeyHut);
-        lightTemple.setExits(northShore, stream, lightForest, darkForest);
+        lightTemple.setExits(northShore, lightForest, null, mtnCave);
         stream.setExits(waterfall, southShore, lightForest, darkForest);
         waterfall.setExits(mountain, stream, lightForest, darkForest);
         tigerMonkeyHut.setExits(darkForest, waterfall, mountain, null);
