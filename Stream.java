@@ -5,7 +5,7 @@ public class Stream extends Island {
      * @param description The description of the stream.
      */
     public Stream() {
-        super("You arrive at a freshwater stream connecting the mountain to the shore.");
+        super("Stream", "You arrive at a freshwater stream connecting the mountain to the shore.");
     }
 
     /**
@@ -64,7 +64,7 @@ public class Stream extends Island {
     @Override
     public void help() {
         String help = """
-            📍 You are in the Tiger Monkey Hut.
+            📍 You are at the Stream.
             Available Commands:
             - go north / south / east / west
             - collect rock / stick / water / fish

@@ -7,7 +7,7 @@ public class DarkForest extends Island implements DarkForestRequirements{
      * @param description The description of the dark forest.
      */
     public DarkForest() {
-        super("You are in the Dark Forest.");
+        super("Dark Forest", "You are in the Dark Forest.");
         super.opponent = true;
     }
 

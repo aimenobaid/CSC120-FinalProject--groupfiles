@@ -7,7 +7,7 @@ public class SouthShore extends Island implements SouthShoreRequirements {
      * @param description The description of the south shore.
      */
     public SouthShore() {
-        super("You are on the South Shore. You see shipwreck debris on the shore and a stream winding down to the water from a mountain peak in the distance.");
+        super("South Shore", "You are on the South Shore. You see shipwreck debris on the shore and a stream winding down to the water from a mountain peak in the distance.");
         this.suppliesCollectedToday = false;
     }
 

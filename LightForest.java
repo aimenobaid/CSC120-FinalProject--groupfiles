@@ -8,7 +8,7 @@ public class LightForest extends Island implements LightForestRequirements {
      * @param description The description of the light forest.
      */
     public LightForest() {
-        super("You are in the Light Forest. There are tall trees whose leaves are high above you. The forest extends for miles around.");
+        super("Light Forest", "You are in the Light Forest. There are tall trees whose leaves are high above you. The forest extends for miles around.");
         this.shelterBuilt = false;
     }
 
@@ -42,10 +42,15 @@ public class LightForest extends Island implements LightForestRequirements {
      */
     @Override
     public void buildShelter() {
-    super.buildShelter();
-    if (shelterBuilt) {
-        System.out.println("Your shelter blends perfectly among the tall trees.");
-    }   
+    if (!shelterBuilt) {
+        super.buildShelter();  // Use standard recipe and logic
+        if (shelterBuilt) {
+            System.out.println("Your shelter blends in perfectly among the tall trees.");
+            shelter = true;
+        }
+    } else {
+        System.out.println("Your shelter stands firm in the Light Forest.");
+    }
     }
 
     /**
@@ -120,6 +125,7 @@ public class LightForest extends Island implements LightForestRequirements {
     public void petAnimal(){
         System.out.println("You quietly wait for the animal to approach you before patting it gently on the snout.");
         adjustLuck(2);
+        animal = false;
     }
 
     /**
@@ -148,8 +154,8 @@ public class LightForest extends Island implements LightForestRequirements {
     }
 
     /**
-     * Moves the player to the North Shore and prints a message about their path.
-     * @return Their new location (North Shore).
+     * Moves the player to the light temple and prints a message about their path.
+     * @return Their new location (Light Temple).
      */
     @Override
     public Island moveNorth() {
@@ -158,8 +164,8 @@ public class LightForest extends Island implements LightForestRequirements {
     }
 
     /**
-     * Moves the player to the South Shore and prints a message about their path.
-     * @return Their new location (South Shore).
+     * Moves the player to the waterfall and prints a message about their path.
+     * @return Their new location (Waterfall).
      */
     @Override
     public Island moveSouth() {
@@ -168,7 +174,7 @@ public class LightForest extends Island implements LightForestRequirements {
     }
 
     /**
-     * Attempts to move the player further eest but prints a message indicating that they cannot go further eest.
+     * Attempts to move the player further east but prints a message indicating that they cannot go further eest.
      * @return Their current location.
      */
     @Override
@@ -178,8 +184,8 @@ public class LightForest extends Island implements LightForestRequirements {
     }
 
     /**
-     * Moves the player wast to the Mountain and prints a message about their path.
-     * @return Their new location (Mountain).
+     * Moves the player wast to the Mountain cave and prints a message about their path.
+     * @return Their new location (Mountain Cave).
      */
     @Override
     public Island moveWest() {
