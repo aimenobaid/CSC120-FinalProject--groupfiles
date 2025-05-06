@@ -17,14 +17,19 @@ public class NorthShore extends Island implements NorthShoreRequirements {
 
     @Override
     public void buildShelter() {
-    if (!shelterBuilt) {
-        super.buildShelter();  // Use standard recipe and logic
-        if (shelterBuilt) {
-            System.out.println("You built a sturdy shelter overlooking the ocean, with the sound of waves to keep you company.");
+        if (!shelterBuilt) {
+            super.buildShelter();  // Use standard recipe and logic
+            if (shelterBuilt) {
+                System.out.println("You built a sturdy shelter overlooking the ocean, with the sound of waves to keep you company.");
+            }
+        } else {
+            System.out.println("Your shelter stands firm on the shore, ready for another night.");
         }
-    } else {
-        System.out.println("Your shelter stands firm on the shore, ready for another night.");
     }
+
+    @Override
+    protected boolean hasShelter() {
+        return shelterBuilt;  // Check if shelter is built
     }
 
     @Override

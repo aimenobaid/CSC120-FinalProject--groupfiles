@@ -28,6 +28,11 @@ public class DarkForest extends Island implements DarkForestRequirements{
         return true;
     }
 
+    @Override
+    protected boolean hasShelter() {
+        return shelterBuilt;  // Check if shelter is built
+    }
+
     /**
      * Allows player to build a shelter if they have enough resources.
      * If shelter is already built, prints a message and returns.

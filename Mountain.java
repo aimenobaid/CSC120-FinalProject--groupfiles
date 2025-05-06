@@ -34,6 +34,11 @@ public class Mountain extends Island implements MountainRequirements
         return true;  // Shelter is possible, but risky
     }
 
+    @Override
+    protected boolean hasShelter() {
+        return shelterBuilt;  // Check if shelter is built
+    }
+
     /**
      * Allows player to build a shelter if they have enough resources.
      * If shelter is already built, prints a message and returns.

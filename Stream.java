@@ -16,6 +16,8 @@ public class Stream extends Island {
         System.out.println(description);
     }
 
+    
+
     /**
      * Allows player to collect items from the stream and prints a collection message.
      * Increments the action count and adds item to inventory. Prints error message if item is not recognized.

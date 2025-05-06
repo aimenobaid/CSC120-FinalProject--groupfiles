@@ -29,6 +29,11 @@ public class LightForest extends Island implements LightForestRequirements {
         return true;  // Shelter building allowed here
     }
 
+    @Override
+    protected boolean hasShelter() {
+        return shelterBuilt;  // Check if shelter is built
+    }
+
 
     /**
      * Allows player to build a shelter if they have enough resources.
