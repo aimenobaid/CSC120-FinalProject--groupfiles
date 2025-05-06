@@ -1,4 +1,25 @@
-Architecure Diagram: https://docs.google.com/drawings/d/1Kdz_9xdI5osGZPDPGFbb5GNC8VAh5xtsRH_oBl-vIxs/edit?usp=sharing 
+## Additional Reflection Questions
+ - What was your **overall approach** to tackling this project?
+ - What **new thing(s)** did you learn / figure out in completing this project?
+ - Is there anything that you wish you had **implemented differently**?
+ - If you had **unlimited time**, what additional features would you implement?
+ - What was the most helpful **piece of feedback** you received while working on your project? Who gave it to you?
+ - If you could go back in time and give your past self some **advice** about this project, what hints would you give?
+ - _If you worked with a team:_ please comment on how your **team dynamics** influenced your experience working on this project.
+
+ # Reflection:
+
+        We approached this project as a very broad idea that could be creatively refined during the process. The concept of a deserted island is a very common one, and we felt like we could do a lot with the idea, and therefore have the player have a similar kind of gratifying experience depending on the choices they made.
+
+        One new thing we tackled was having the map image pop up when you reached the peak of the mountain. This required us to learn about JFrames and JDialogues, which were ultimately very useful skills and felt like it added an extra element to our game.
+
+        We felt satisfied with our implementation. We could have used a more narrative approach and have the player go through a set series of tasks, but we felt like our freedom of choice implementation was more fun and more challenging for us as coders to consider how flexible our classes had to be. If we had unlimited time, we would love to make the fights more exciting (probably by adding more scanners and making them more interactives), as well as having more minigames and sidequests as part of the build-your-own-adventure style, so players have some structure. 
+
+        One piece of advice we received was during an early code review, which was to include more of the broader methods in the broad Island class, which we ended up implementing. This was helpful in the help method specifically, where we made a broader list before overwriting it in the child classes. It also might've been helpful to figure out how we were going to do movements first, since we ran into a little bit of confusion whether or not we should use a HashMap or not, which could've gone more efficiently.
+
+        Our team dynamic worked very well, as we all worked on our own parts of the island before implementing it together. We met weekly and were very organized, which helped us complete the project and feel satisfied with our work.
+
+Below are notes from our various meetings:
 
 # New TO DO for finilazing the project:
 
